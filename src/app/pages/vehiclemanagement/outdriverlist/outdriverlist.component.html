@@ -1,0 +1,48 @@
+<div class="contentbox">
+  <div class="contentit-l">
+    <mat-card-title>外租车列表</mat-card-title>
+    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
+  </div>
+  <div class="contenttex-r">
+    <button ejs-button cssClass="e-info mat-width" class="mat-green" style="width:auto!important;" [routerLink]="['/biz/vehicle-management/outdriver-insert']">新增外租车</button>
+  </div>
+</div>
+<form class="listfrom" [formGroup]="searchp" >
+  <mat-form-field class="col-md-3">
+    <label>
+      <input matInput  formControlName="Trnum" />
+    </label>
+    <span  matPrefix style="color: #888">车牌号：&nbsp;</span>
+  </mat-form-field>
+  <button ejs-button cssClass="e-info mat-width" (click)="Search()">查询</button>
+</form>
+
+<ejs-grid #grid  allowResizing= 'true' height="{{gridheight}}"
+          [allowExcelExport]='true'  allowSorting='false'
+          [allowSelection]="true"
+          [enableHover]="false"
+          allowPaging='true'  class="contlistbox">
+  <e-columns >
+    <e-column  headerText='资源编号' field="ResourceId" isPrimaryKey='true' width='210'>
+      <ng-template #template let-data>
+
+        <a [routerLink]="['/biz/vehicle-management/ourdriver-detail', data.ResourceId]">
+          <span style="margin-left: 5px;">{{data.ResourceId}}</span>
+        </a>
+
+      </ng-template>
+    </e-column>
+    <e-column  headerText='司机' field="Drname" isPrimaryKey='true' width='110'></e-column>
+    <e-column  headerText='车牌号' field="Trnum" isPrimaryKey='true' width='135'></e-column>
+    <e-column  headerText='车型' field="Trtype" isPrimaryKey='true' width='125'></e-column>
+    <e-column  headerText='载重' field="Weight" isPrimaryKey='true' width='100'></e-column>
+    <e-column  headerText='容积' field="Volume" isPrimaryKey='true' width='100'></e-column>
+    <e-column  headerText='长' field="Length" isPrimaryKey='true' width='90'></e-column>
+    <e-column  headerText='宽' field="Width" isPrimaryKey='true' width='90'></e-column>
+    <e-column  headerText='高' field="Height" isPrimaryKey='true' width='90'></e-column>
+    <e-column  headerText='平台资源' field="IsplatformUser" isPrimaryKey='true' width='110'></e-column>
+    <e-column  headerText='状态' field="Enabel" isPrimaryKey='true' width='90'></e-column>
+    <e-column  headerText='创建时间' field="CreateDateTime" isPrimaryKey='true' width='165'></e-column>
+  </e-columns>
+</ejs-grid>
+

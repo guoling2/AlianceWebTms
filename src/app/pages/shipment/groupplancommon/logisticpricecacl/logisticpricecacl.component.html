@@ -1,0 +1,22 @@
+
+{{ErrorMsg}}
+<div class="ulbox" *ngIf="ErrorTips.length>0">
+  <ul>
+    <li *ngFor="let item of ErrorTips,let i = index">
+      <h2>编号：{{i+1}}  </h2>
+      <p>异常 {{item.ErrorTips}}</p>
+    </li>
+  </ul>
+</div>
+<div class="countbox" [hidden]="hidden">
+  <div class="fa-3x">
+    <i class="fas fa-circle-notch fa-spin"></i>
+    <b>正在进行运费计算，请稍后~</b>
+  </div>
+</div>
+<div class="btnbox"><button ejs-button (click)="dialogRef.close()" cssClass="e-info mat-reject mat-width">取消关闭</button> </div>
+<!--<button ejs-button (click)="dialogRef.close()">关闭</button>-->
+
+
+
+<button style="display: none;" ejs-button (click)="cacl()">Demo测试</button>

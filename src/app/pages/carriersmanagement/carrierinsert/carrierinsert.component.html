@@ -1,0 +1,67 @@
+<div class="contentbox">
+  <div class="contentit-l">
+    <div><i class="fas fa-compass"></i> 当前位置：<a [routerLink]="['/biz/carriers-management/carriers']" >运输商资料列表</a>  /
+      <b>新增</b></div>
+  </div>
+
+</div>
+<mat-card class="userbox">
+  <mat-card-content>
+    <form [formGroup]="saveform">
+    <h3>资料新增</h3>
+    <div class="saltbox">
+      <div>
+        <mat-form-field style="width:100%" >
+          <label><input matInput placeholder="承运商名称" formControlName="RName"></label>
+          <mat-error>承运商名称<strong>必须的</strong></mat-error>
+          <mat-hint align="start">请输入<strong>承运商名称</strong></mat-hint>
+        </mat-form-field>
+        <mat-checkbox formControlName="AllowAddHandlerFee">计费合同</mat-checkbox>
+
+
+      </div>
+      <div>
+        <mat-form-field style="width:100%" >
+          <label><input matInput placeholder="性质" formControlName="RType"></label>
+          <mat-hint align="start">请输入性质</mat-hint>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field style="width:100%" >
+          <label><input matInput placeholder="联系人" formControlName="LinkMan"></label>
+          <mat-error>联系人<strong>必须的</strong></mat-error>
+          <mat-hint align="start">请输入<strong>联系人</strong></mat-hint>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field style="width:100%" >
+          <label><input matInput placeholder="联系电话" formControlName="LinkTel"></label>
+          <mat-error>联系电话<strong>必须的</strong></mat-error>
+          <mat-hint align="start">请输入<strong>联系电话</strong></mat-hint>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field style="width:100%" >
+          <label><input matInput placeholder="联系地址" formControlName="LinkAddress"></label>
+          <mat-hint align="start">请输入联系地址</mat-hint>
+        </mat-form-field>
+      </div>
+
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_20">
+        <div fxFlex="100">
+          <mat-form-field style="width:100%" >
+            <label><input matInput placeholder="备注" formControlName="Mark"></label>
+            <mat-hint align="start">请输入备注</mat-hint>
+          </mat-form-field>
+        </div>
+    </div>
+    <div class="btnboxs">
+      <button ejs-button cssClass="e-info mat-width"
+              appTmssaveconfirm
+              comfirmMessage="保存运输商数吗?"
+              (onSuggest)="save($event)">保存</button>
+    </div>
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,17 @@
+.contentbox {padding:10px 15px 0px 15px;wdith:100%;height:auto;margin-bottom:0px;clear:both;overflow:auto}
+.contentit-l {width:40%;height:auto;float: left;}
+.contenttex-r {width:60%;height:auto;float: right;}
+.contenttex-r button {margin-left:10px;margin-top:5px;float:right}
+.listfrom {width:100%;height:auto;margin:0 0 5px 0!important;}
+.listfrom button {margin-left:0px}
+.contlistbox {margin:-10px 13px 0px 13px}
+.mat-form-field {margin-left:15px;;}
+.e-grid .e-headercell, .e-grid .e-detailheadercell {height:35px!important;}
+.contlistbox a {text-decoration: none}
+.contlistbox a:hover {text-decoration:underline}
+.mat-card-subtitle {margin-bottom:10px!important;}
+.tipsbox {padding-top:15px;}
+.tipsbox i {font-style: normal;margin:0 10px;color:#dd0031;font-size:14px}
+.sourcelength {float:right;margin-right:12px}
+.sourcelength b {color:#dd0031}
+.e-tooltip-wrap {white-space: nowrap!important;top:105px!important;}

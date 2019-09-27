@@ -1,0 +1,59 @@
+<h1><i class="fas fa-search"></i>运输商查询</h1>
+<div>
+  <form [formGroup]="form" >
+    <!--CD(代号),JC（简称）,KN(客户名称),LK(联系人),LT(联系电话)-->
+    <div  fxLayoutAlign="space-between center" class="margin_t_10">
+      <div fxFlex="100"><mat-form-field style="width:100%"><label><input matInput placeholder="运输商名称" formControlName="RName"></label></mat-form-field></div>
+    </div>
+    <div class="btnboxs">
+      <button   ejs-button cssClass="e-info mat-width"  (click)="search(0)" >查询</button>
+      <button   ejs-button cssClass="e-info mat-width"  class="mat-reject" (click)="close()" >关闭</button>
+    </div>
+  </form>
+
+</div>
+<div>
+  <div class="searchtit"><h2>查询结果</h2></div>
+  <table mat-table [dataSource]="customeraddressdatasource" class="searchtable">
+    <ng-container matColumnDef="ResourceId">
+      <th mat-header-cell *matHeaderCellDef> No</th>
+      <td mat-cell *matCellDef="let element">
+        <ejs-tooltip #tooltip content='点击选择这个运输商'  position="BottomCenter" style="padding-left:0!important;padding-right:0!important;">
+          <button ejs-button cssClass="e-flat" [isPrimary]="true" style="padding-left:0!important;padding-right:0!important;"
+                  (click)="chosevehicel(element)">{{element.ResourceId}}</button>
+        </ejs-tooltip>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="RName">
+      <th mat-header-cell *matHeaderCellDef> 运输商名称</th>
+      <td mat-cell *matCellDef="let element"> {{element.RName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="RType">
+      <th mat-header-cell *matHeaderCellDef> 类型</th>
+      <td mat-cell *matCellDef="let element"> {{element.RType}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="LinkMan">
+      <th mat-header-cell *matHeaderCellDef> 联系人</th>
+      <td mat-cell *matCellDef="let element"> {{element.LinkMan}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="LinkTel">
+      <th mat-header-cell *matHeaderCellDef> 联系电话</th>
+      <td mat-cell *matCellDef="let element"> {{element.LinkTel}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+  </table>
+  <div class="mat-table__bottom">
+
+    <!--    <mat-spinner [diameter]="20" *ngIf="dataSource.loading$ | async"></mat-spinner>-->
+
+    <mat-paginator (page)="changepage($event)" [pageIndex]="pageindex" [length]="pagelength" showFirstLastButtons></mat-paginator>
+
+    <!--    <mat-paginator [pageSize]="10" [pageSizeOptions]="[3, 5, 10]" [length]="dataSource.paginatorTotal$ | async" [showFirstLastButtons]="true"></mat-paginator>-->
+  </div>
+
+</div>

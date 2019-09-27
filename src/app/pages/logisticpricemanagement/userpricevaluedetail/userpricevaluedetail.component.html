@@ -1,0 +1,81 @@
+<div *ngIf="userTrincRoutePrice">
+  <div class="contentbox">
+    <div class="contentit-l">
+      <div><i class="fas fa-compass"></i> 当前位置：<a [routerLink]="['/biz/logisticprice-management/price-value-list']" >计费数据列表</a>  / <b>详细信息</b></div>
+    </div>
+    <div class="contenttex-r">
+      <button ejs-button cssClass="e-info mat-width mat-reject" (click)="del()">删除</button>
+    </div>
+  </div>
+  <mat-card class="userbox">
+    <mat-card-content>
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+        <div fxFlex="24">
+          数据编号：<ejs-textbox  [ngModel]="userTrincRoutePrice.PriceId" [readonly]="true"></ejs-textbox>
+        </div>
+        <div fxFlex="24">
+          合同编号：
+          <ejs-textbox  [ngModel]="userTrincRoutePrice.ContractId" [readonly]="true"></ejs-textbox>
+        </div>
+        <div fxFlex="24">
+          合同名称：
+          <ejs-textbox  [ngModel]="userTrincRoutePrice.ContractName" [readonly]="true"></ejs-textbox>
+        </div>
+        <div fxFlex="24">
+          归属运输代表：
+          <ejs-textbox  [ngModel]="userTrincRoutePrice.OwnTrincName" [readonly]="true"></ejs-textbox>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_101">
+        <div fxFlex="24">
+          起运地：
+          <ejs-textbox  [ngModel]="userTrincRoutePrice.StartAreaDesc" [readonly]="true"></ejs-textbox>
+        </div>
+        <div fxFlex="49.3">
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <div fxFlex="49">
+              到货地：
+              <ejs-textbox  [ngModel]="userTrincRoutePrice.ToAreaProvince" [readonly]="true"></ejs-textbox>
+            </div>
+            <div fxFlex="49" style="padding-top:20px">
+              <ejs-textbox  [ngModel]="userTrincRoutePrice.ToAreaDesc" [readonly]="true"></ejs-textbox>
+            </div>
+          </div>
+        </div>
+        <div fxFlex="24">
+          运输时限：<ejs-numerictextbox value="0"  [ngModel]="userTrincRoutePrice.TimeLimite"  readonly="true"></ejs-numerictextbox>
+        </div>
+
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_101">
+        <div fxFlex="24" style="padding-top:20px">
+          执行最低价：<ejs-switch id="checked" [ngModel]="userTrincRoutePrice.RunPriceLimite"  disabled="true" ></ejs-switch>
+        </div>
+        <div fxFlex="24">
+          最低价：<ejs-numerictextbox [ngModel]="userTrincRoutePrice.MinPrice"  readonly="true"></ejs-numerictextbox>
+        </div>
+        <div fxFlex="24">
+          创建人：<ejs-textbox  [ngModel]="userTrincRoutePrice.UserName" [readonly]="true"></ejs-textbox>
+        </div>
+        <div fxFlex="24">
+          创建时间：<ejs-textbox  [ngModel]="userTrincRoutePrice.DateTime" [readonly]="true"></ejs-textbox>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="userbox" style="margin-bottom:10px">
+    <mat-card-content>
+      <div id="items">
+    <div *ngFor=" let e of this.userTrincRoutePrice.PriceValues; let i = index ">
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+        <div fxFlex="47"> 列名：<ejs-textbox [ngModel]="e.TemplateDataName"  [readonly]="true"></ejs-textbox></div>
+        <div fxFlex="47">单价：
+          <ejs-numerictextbox  min="0" step="0.001"  [(ngModel)]="e.Price" ></ejs-numerictextbox></div>
+        <div fxFlex="5" align="right" style="padding-top:13px">
+          <button cssClass="e-info mat-auto" ejs-button (click)="motifypricevalye(e)">修改</button>
+      </div>
+    </div>
+  </div>
+</div>
+    </mat-card-content>
+  </mat-card>

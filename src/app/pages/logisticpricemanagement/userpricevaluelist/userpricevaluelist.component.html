@@ -1,0 +1,139 @@
+<div class="control-section">
+  <!-- sample level element  -->
+  <div class="col-lg-12 col-sm-12 col-md-12 center">
+    Click/Touch the button to view the sample
+  </div>
+  <div class="col-lg-12 col-sm-12 col-md-12 center">
+    <a class="e-btn" id="newTab" (click)="newTabClick()" target="_blank">Open in new Tab</a>
+  </div>
+  <!-- sample level element  -->
+  <div id="wrapper">
+    <div class="col-lg-12 col-sm-12 col-md-12" id="sidebar-section">
+      <div class="col-lg-12 col-sm-12 col-md-12">
+        <!--header-section  declaration -->
+<!--        <div class="main-header" id="header-section">-->
+<!--          <ul class="header-list">-->
+<!--            <li class="float-left header-style icon-menu" id="hamburger" (click)="openClick()"></li>-->
+<!--            <li class="float-left header-style nav-pane"><b>Navigation Pane</b></li>-->
+<!--            <li class="header-style float-right support border-left"><b>Support</b></li>-->
+<!--          </ul>-->
+<!--        </div>-->
+        <!--end of header-section  declaration -->
+        <!-- sidebar element declaration -->
+        <ejs-sidebar id="sidebar-treeview" class="dock-menu" #sidebarTreeviewInstance width='290px'
+                     [mediaQuery]='mediaQuery' [target]='target'>
+          <div class="main-menu">
+            <div class="table-content" style="padding:20px 20px 10px 20px;height:auto!important;">
+              <label>
+                <input type="text" placeholder="Search..." class="search-icon" >
+              </label>
+              <p class="lefttits">计费策略</p>
+            </div>
+            <div>
+              <!-- Treevie element declaration -->
+              <ejs-treeview #priceStrategytreeview id="main-treeview" [fields]='field'  expandOn='Click' (nodeClicked)="openpricedata($event)">
+                <ng-template #nodeTemplate="" let-data="">
+                  {{data.nodeText}}
+                </ng-template>
+              </ejs-treeview>
+
+            </div>
+          </div>
+        </ejs-sidebar>
+        <!-- end of sidebar element -->
+
+        <!-- main-content declaration -->
+        <div class="main-content" id="main-text">
+          <div class="sidebar-content" style="height:calc(700px - 100px)" >
+            <div class="contentbox">
+              <div class="contentit-l">
+                <mat-card-title>计费数据列表</mat-card-title>
+                <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
+              </div>
+              <div class="contenttex-r">
+              </div>
+            </div>
+            <form class="listfrom" [formGroup]="searchp" >
+              <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_20">
+                <div fxFlex="32">
+                  <mat-form-field>
+                    <label>
+                      <input matInput  formControlName="TemplateSettingName" readonly="readonly" (click)="openClick()" />
+                    </label>
+                    <span  matPrefix style="color: #888">模板名称：&nbsp;</span>
+                  </mat-form-field>
+                </div>
+                <div fxFlex="32">
+                  <mat-form-field>
+                    <label>
+                      <input matInput  formControlName="RName" />
+                    </label>
+                    <span  matPrefix style="color: #888">运输代表：&nbsp;</span>
+                  </mat-form-field>
+                </div>
+                <div fxFlex="32">
+                  <mat-form-field>
+                    <label>
+                      <input matInput  formControlName="ContractName" />
+                    </label>
+                    <span  matPrefix style="color: #888">合同协议：&nbsp;</span>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_20">
+                <div fxFlex="32">
+                  <mat-form-field>
+                    <label>
+                      <input matInput  formControlName="StartAreaDesc" />
+                    </label>
+                    <span  matPrefix style="color: #888">起运地描述：&nbsp;</span>
+                  </mat-form-field>
+                </div>
+                <div fxFlex="32">
+                  <mat-form-field>
+                    <label>
+                      <input matInput  formControlName="ToAreaDesc" />
+                    </label>
+                    <span  matPrefix style="color: #888">到货地描述：&nbsp;</span>
+                  </mat-form-field>
+                </div>
+                <div fxFlex="32">
+                  <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+                </div>
+              </div>
+
+            </form>
+            <div class="line" style="margin:0 0 10px 0!important;"></div>
+            <ejs-grid  #pricedatasource  allowResizing= 'true' height="315px"
+                       autoFit="true"
+                       [allowExcelExport]='true'  allowSorting='true'
+                       [allowSelection]="true"
+                       [enableHover]="true"
+                       allowPaging='false'>
+              <e-columns>
+                <e-column headerText='价格编号' width='240' >
+                  <ng-template #template let-data>
+
+
+                    <a [routerLink]="['/biz/logisticprice-management/price-value-detail/', data.PriceId]">
+                      <span style="margin-left: 5px;">{{data.PriceId}}</span>
+                    </a>
+
+                  </ng-template>
+                </e-column>
+              <e-column field='RName' headerText='运输代表' width='220' ></e-column>
+              <e-column field='ContractName' headerText='运输协议' width='130'></e-column>
+              <e-column field='StartAreaDesc' headerText='起运地' width='180' ></e-column>
+              <e-column field='ToAreaProvince' headerText='到货省' width='180' ></e-column>
+              <e-column field='ToAreaDesc' headerText='到货市区/区' width='180'></e-column>
+              <e-column field='TimeLimite' headerText='运输时限'  width='120' ></e-column>
+              <e-column field='MinPrice' headerText='最低一票'  width='120' ></e-column>
+              </e-columns>
+            </ejs-grid>
+          </div>
+        </div>
+        <!-- end of main-content -->
+      </div>
+    </div>
+  </div>
+</div>

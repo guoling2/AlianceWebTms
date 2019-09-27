@@ -1,0 +1,52 @@
+.contentbox {padding:10px 10px 10px 10px;wdith:100%;height:auto;clear:both;overflow:hidden;margin:0 10px 0 10px;background:#fff;border-bottom:1px #e1e1e1 solid}
+.contentit-l {width:40%;height:auto;float: left;}
+.contenttex-r {width:60%;height:auto;float: right;}
+.contentit-l div {width:100%;height:auto;margin-top:0px;font-size:16px;color:#666}
+.contentit-l a {color:#666;text-decoration: none}
+.contentit-l a:hover {color:#111;text-decoration:none;cursor:pointer}
+.contentit-l b {font-weight: normal;color:#111}
+.contenttex-r button {margin-left:10px;margin-top:-5px;float:right}
+input.e-input, .e-input-group input.e-input, .e-input-group.e-control-wrapper input.e-input, textarea.e-input, .e-input-group textarea.e-input, .e-input-group.e-control-wrapper textarea.e-input{padding:0!important;color:#555!important;}
+.orderbox {margin:10px 10px 10px 10px;width:auto;padding:10px 10px 5px 10px;}
+.listfrom button {margin-right:15px}
+.mat-form-field {margin-right:15px}
+.cardborder {padding:0 0 5px 0;font-size:16px;color:#333;border-bottom:1px #e2e2e2 solid}
+.fontacommon_18 {width:18px!important;}
+.cardborder b {font-weight:normal}
+.orderinfo {padding:5px 10px;border:1px #e2e2e2 solid;margin-top:10px}
+.infotext {margin-top:0px}
+.userbox {border:1px #e2e2e2 solid;margin-top:10px}
+.userbox2 {border:1px #e2e2e2 solid;margin-top:10px;padding:5px}
+.userico {width:100%;height:142px;background:#0378d5;border-right:1px #e2e2e2 solid;text-align: center}
+.icobox {margin:45px auto;font-size:26px;color:#fff}
+.icobox h3 {margin-top:5px;font-size:14px;font-weight: normal;color:#fff}
+.textbox {width:95%;margin:3px auto;}
+.margints_10 {margin-top:5px;}
+.totalbox {width:100%;height:30px;line-height:30px;background:#0378d5;font-weight: normal;color:#fff;font-size:14px;}
+.totalbox i {margin:0 5px 0 10px}
+.contlistbox {margin-top:10px}
+.btnbox {width:100%;margin:20px 0 10px 0;text-align: center}
+.pagebtn {margin-left:10px;padding:10px 10px}
+
+
+.wrapper {width:98%;font-size: 14px;}
+.StepProgress {position: relative;padding-left: 45px;list-style: none;}
+.StepProgress::before {display: inline-block;content: '';position: absolute;top: 0;left: 15px;width: 10px;height: 100%;border-left: 2px solid #CCC;}
+.StepProgress-item {position: relative;counter-increment: list}
+.StepProgress-item:not(:last-child) {padding-bottom: 18px;}
+.StepProgress-item::before {display: inline-block;content: '';position: absolute;left: -30px;height: 100%;width: 10px;top: 2px;}
+.StepProgress-item::after {
+  content: '';display: inline-block;position: absolute;top: 2px;left: -37px;width: 12px;height: 12px;border: 2px solid #CCC;border-radius: 50%;background-color: #FFF;}
+.StepProgress-item.is-done::before {border-left: 2px solid #0378d5;}
+.StepProgress-item.is-done::after {
+  content: "✔";font-size: 10px;color: #FFF;text-align: center;border: 2px solid #0378d5;background-color: #0378d5;
+}
+.StepProgress-item.current::before {border-left: 2px solid #0378d5;}
+.StepProgress-item.current::after {
+  content:"";padding-top: 1px;font-size: 16px;text-align: center;color: #0378d5;border: 2px solid #0378d5;background-color: white;
+}
+.StepProgress strong {display: block;}
+.StepProgress-item p{line-height:24px;margin:0!important;font-size:12px}
+
+
+

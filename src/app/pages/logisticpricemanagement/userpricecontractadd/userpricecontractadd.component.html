@@ -1,0 +1,64 @@
+<h1><i class="fas fa-coins"></i>新增计费协议</h1>
+<div *ngIf="errormsg">{{errormsg}}</div>
+<form [formGroup]="saveform">
+<div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_20">
+  <div fxFlex="100">
+    协议名称：<ejs-textbox   formControlName="ContractName"></ejs-textbox>
+    <app-form-error-tips   [webforms]="saveform" errormsg="协议名称是必须的" controlname="ContractName"></app-form-error-tips>
+  </div>
+</div>
+<div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_20">
+    <div fxFlex="100">
+    运价模板：<ejs-dropdownlist
+    [dataSource]='pricetemplatesettings'
+    [fields]='pricetemplatesettingsfields'
+    placeholder='选择一种运费模板'
+    [popupHeight]='150' formControlName="UsePriceTemplateSettingId"></ejs-dropdownlist>
+    <app-form-error-tips errormsg="运费模板"
+                         [webforms]="saveform" controlname="UsePriceTemplateSettingId"></app-form-error-tips>
+    </div>
+</div>
+<div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_20">
+    <div fxFlex="100">
+      结算方式：<ejs-dropdownlist [dataSource]="caclmethoddatasource" [fields]='commonfileds' formControlName="CaclMethod"></ejs-dropdownlist>
+      <app-form-error-tips   [webforms]="saveform" errormsg="结算方式是必须的" controlname="CaclMethod"></app-form-error-tips>
+    </div>
+</div>
+<div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_20">
+    <div fxFlex="100">
+      付款方式：<ejs-dropdownlist [dataSource]="payMethodDataSource" [fields]='commonfileds' formControlName="PayMethod"></ejs-dropdownlist>
+      <app-form-error-tips   [webforms]="saveform" errormsg="结算周期是必须的" controlname="PayMethod"></app-form-error-tips>
+    </div>
+</div>
+<div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_20">
+  <div fxFlex="100">
+    自动生成账单：<mat-slide-toggle formControlName="AutoGenerateBill"></mat-slide-toggle>
+  </div>
+</div>
+<div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_20">
+  <div fxFlex="100">
+    计算结果：
+    <ejs-dropdownlist [dataSource]="PriceResultProcessMethodDataSource" [fields]='commonfileds' formControlName="PriceResultProcessMethod"></ejs-dropdownlist>
+    <app-form-error-tips   [webforms]="saveform" errormsg="请设置计算结果" controlname="PriceResultProcessMethod"></app-form-error-tips>
+<!--    <mat-select formControlName="PriceResultProcessMethod">-->
+<!--  <option value="1" selected>保持不变</option>-->
+<!--  <option value="2">抹零</option>-->
+<!--</mat-select>-->
+  </div>
+</div>
+<div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_20">
+  <div fxFlex="49">
+    生效日期（始）：<ejs-datetimepicker format='yyyy-MM-dd HH:mm' formControlName="TaskBeginTime"></ejs-datetimepicker>
+</div>
+  <div fxFlex="49">
+    生效日期（止）：<ejs-datetimepicker format='yyyy-MM-dd HH:mm' formControlName="TaskEndTime"></ejs-datetimepicker>
+  </div>
+</div>
+</form>
+<div class="btnboxs">
+  <button ejs-button class="mat-green mat-width"(click)="save()">保存</button>
+  <button ejs-button class="mat-reject mat-width" (click)="closepage()">关闭</button>
+</div>
+
+
+

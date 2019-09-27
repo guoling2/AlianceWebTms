@@ -1,0 +1,101 @@
+
+<app-biz-outdrivermotify [flag]="1" ></app-biz-outdrivermotify>
+
+
+<!--<div class="bendbox">
+  <div class="serttits"><i class="fas fa-info-circle"></i>基本信息</div>
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+    <div fxFlex="19">派车单号：<ejs-textbox  placeholder="派车单号" ngModel="" ></ejs-textbox></div>
+    <div fxFlex="19">车辆来源：<ejs-textbox  placeholder="车辆来源" ngModel="" ></ejs-textbox></div>
+    <div fxFlex="19">所属组织：<ejs-dropdownlist placeholder="所属组织" ngModel="" ></ejs-dropdownlist></div>
+    <div fxFlex="19">使用组织：<ejs-dropdownlist  placeholder="使用组织" ngModel=""></ejs-dropdownlist></div>
+    <div fxFlex="19">付款方式：<ejs-dropdownlist  placeholder="付款方式" ngModel=""></ejs-dropdownlist></div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+    <div fxFlex="19">月结车辆：<ejs-checkbox  label="月结车辆" ngModel="" ></ejs-checkbox></div>
+    <div fxFlex="19">是否车头：<ejs-dropdownlist required  placeholder="是否车头" ngModel="" ></ejs-dropdownlist></div>
+    <div fxFlex="19">常跑线路：<ejs-dropdownlist placeholder="常跑线路" ngModel="" ></ejs-dropdownlist></div>
+    <div fxFlex="19">GPS厂商：<ejs-dropdownlist  placeholder="GPS厂商" ngModel=""></ejs-dropdownlist></div>
+    <div fxFlex="19">GPS机构号：<ejs-dropdownlist  placeholder="GPS机构号" ngModel=""></ejs-dropdownlist></div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+    <div fxFlex="19">车牌颜色：<ejs-textbox  placeholder="车牌颜色" ngModel="" ></ejs-textbox></div>
+    <div fxFlex="19">车型：<ejs-textbox  placeholder="车型" ngModel="" ></ejs-textbox></div>
+    <div fxFlex="19">核定载重：<ejs-textbox placeholder="核定载重-吨" ngModel="" ></ejs-textbox></div>
+    <div fxFlex="19">核定体积：<ejs-textbox  placeholder="核定体积" ngModel=""></ejs-textbox></div>
+    <div fxFlex="19">车辆颜色：<ejs-textbox  placeholder="车辆颜色" ngModel=""></ejs-textbox></div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+    <div fxFlex="19">车长：<ejs-textbox  placeholder="车长" ngModel="" ></ejs-textbox></div>
+    <div fxFlex="19">车宽：<ejs-textbox  placeholder="车宽" ngModel="" ></ejs-textbox></div>
+    <div fxFlex="19">车高：<ejs-textbox placeholder="车高" ngModel="" ></ejs-textbox></div>
+    <div fxFlex="19">品牌：<ejs-textbox  placeholder="品牌" ngModel=""></ejs-textbox></div>
+    <div fxFlex="19">购买日期：<ejs-datetimepicker format='yyyy-MM-dd HH:mm' placeholder="购买日期" ngModel=""></ejs-datetimepicker></div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+    <div fxFlex="19">车架号：<ejs-textbox  placeholder="车架号" ngModel="" ></ejs-textbox></div>
+    <div fxFlex="19">发动机号：<ejs-textbox  placeholder="发动机号" ngModel="" ></ejs-textbox></div>
+    <div fxFlex="19">道路运输证号：<ejs-textbox placeholder="道路运输证号" ngModel="" ></ejs-textbox></div>
+    <div fxFlex="19">牌照类型：<ejs-dropdownlist  placeholder="牌照类型" ngModel=""></ejs-dropdownlist></div>
+    <div fxFlex="19">营运证号：<ejs-textbox  placeholder="营运证号" ngModel=""></ejs-textbox></div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+    <div fxFlex="19">养路票号：<ejs-textbox  placeholder="养路票号" ngModel="" ></ejs-textbox></div>
+    <div fxFlex="19">保险单号：<ejs-textbox  placeholder="保险单号" ngModel="" ></ejs-textbox></div>
+    <div fxFlex="19">保险到期时间：<ejs-datetimepicker  format='yyyy-MM-dd HH:mm' ngModel="" ></ejs-datetimepicker></div>
+    <div fxFlex="19">年检到期时间：<ejs-datetimepicker format='yyyy-MM-dd HH:mm' ngModel=""></ejs-datetimepicker></div>
+    <div fxFlex="19">承保单位：<ejs-textbox  placeholder="承保单位" ngModel=""></ejs-textbox></div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+    <div fxFlex="100">备注：<ejs-textbox  placeholder="备注" ngModel="" ></ejs-textbox></div>
+  </div>
+</div>
+<div class="bendbox">
+  <div class="serttits"><i class="fas fa-car"></i>车主信息</div>
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+    <div fxFlex="19">车属单位：<ejs-textbox  placeholder="车属单位" ngModel="" ></ejs-textbox></div>
+    <div fxFlex="19">电话：<ejs-textbox  placeholder="电话" ngModel="" ></ejs-textbox></div>
+    <div fxFlex="59.5">地址：<ejs-textbox  placeholder="地址" ngModel="" ></ejs-textbox></div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+    <div fxFlex="19">车主：<ejs-textbox  placeholder="车主" ngModel="" ></ejs-textbox></div>
+    <div fxFlex="19">手机号：<ejs-textbox  placeholder="手机号" ngModel="" ></ejs-textbox></div>
+    <div fxFlex="19">身份证号：<ejs-textbox  placeholder="身份证号" ngModel="" ></ejs-textbox></div>
+    <div fxFlex="19">司机：<ejs-textbox  placeholder="司机" ngModel="" ></ejs-textbox></div>
+    <div fxFlex="19">手机号：<ejs-textbox  placeholder="手机号" ngModel="" ></ejs-textbox></div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+    <div fxFlex="19">身份证号：<ejs-textbox  placeholder="身份证号" ngModel="" ></ejs-textbox></div>
+    <div fxFlex="19">驾驶证号：<ejs-textbox  placeholder="驾驶证号" ngModel="" ></ejs-textbox></div>
+    <div fxFlex="59.5">司机住址：<ejs-textbox  placeholder="司机住址" ngModel="" ></ejs-textbox></div>
+  </div>
+</div>
+<div class="bendbox margin-b-10">
+  <div class="serttits"><i class="fas fa-file-upload"></i>照片信息</div>
+  <div class="form-group" fxLayout="row" fxLayoutAlign="space-between center" >
+    <div fxFlex="15" class="upload-box box">
+      <input type="file" name="file-5[]" id="file-1" class="inputfile inputfile-1" data-multiple-caption="{count} files selected" multiple />
+      <label for="file-1"><figure><i class="fas fa-upload"></i></figure> <span>行驶证照片</span></label>
+    </div>
+    <div fxFlex="15" class="upload-box box">
+      <input type="file" name="file-5[]" id="file-2" class="inputfile inputfile-4" data-multiple-caption="{count} files selected" multiple />
+      <label for="file-2"><figure><i class="fas fa-upload"></i></figure> <span>运营证照片</span></label>
+    </div>
+    <div fxFlex="15" class="upload-box box">
+      <input type="file" name="file-5[]" id="file-3" class="inputfile inputfile-4" data-multiple-caption="{count} files selected" multiple />
+      <label for="file-3"><figure><i class="fas fa-upload"></i></figure> <span>车辆照片</span></label>
+    </div>
+    <div fxFlex="15" class="upload-box box">
+      <input type="file" name="file-5[]" id="file-4" class="inputfile inputfile-4" data-multiple-caption="{count} files selected" multiple />
+      <label for="file-4"><figure><i class="fas fa-upload"></i></figure> <span>道路运输证照片</span></label>
+    </div>
+    <div fxFlex="15" class="upload-box box">
+      <input type="file" name="file-5[]" id="file-5" class="inputfile inputfile-4" data-multiple-caption="{count} files selected" multiple />
+      <label for="file-5"><figure><i class="fas fa-upload"></i></figure> <span>人车合影照片</span></label>
+    </div>
+    <div fxFlex="15" class="upload-box box">
+      <input type="file" name="file-5[]" id="file-6" class="inputfile inputfile-4" data-multiple-caption="{count} files selected" multiple />
+      <label for="file-6"><figure><i class="fas fa-upload"></i></figure> <span>保险卡照片</span></label>
+    </div>
+  </div>
+</div>-->

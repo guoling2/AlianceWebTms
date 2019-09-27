@@ -1,0 +1,87 @@
+<div>
+  <ng-container *ngIf="ShipmentOrder===null">
+    正在加载托运单数据
+  </ng-container>
+
+  <div *ngIf="ShipmentOrder">
+    <h2><i class="fas fa-truck"></i>托运单明细 - 物流单号：{{ShipmentOrder.OrderTrackServerId}}</h2>
+    <mat-tab-group  class="example-stretched-tabs mat-elevation-z4" (selectedTabChange)="openindex($event)" style="margin-top:10px;box-shadow: none!important;">
+      <mat-tab label="托运单信息" >
+        <ng-template matTabContent>
+          <div class="simple_tit"><i class="fas fa-file-alt"></i>基础信息</div>
+          <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+            <div fxFlex="18" class="simpetx">
+              系统订单编号：<ejs-textbox  placeholder="派车单号" ngModel="{{ShipmentOrder.SystemOrderId}}" readonly></ejs-textbox>
+            </div>
+            <div fxFlex="18" class="simpetx">
+              上门提货：<ejs-textbox  placeholder="派车单号" ngModel="{{ShipmentOrder.IfCargoFromOrigin}}" readonly></ejs-textbox>
+            </div>
+            <div fxFlex="18" class="simpetx">
+              送货方式：<ejs-textbox  placeholder="派车单号" ngModel="{{ShipmentOrder.IfDesctPickUpMySelf}}" readonly></ejs-textbox>
+            </div>
+            <div fxFlex="18" class="simpetx">
+              送货方式：<ejs-textbox  placeholder="派车单号" ngModel="{{ShipmentOrder.SendWay}}" readonly></ejs-textbox>
+            </div>
+            <div fxFlex="18" class="simpetx">
+              发货联系人：<ejs-textbox  placeholder="派车单号" ngModel="{{ShipmentOrder.OrigincustomLinkman}}" readonly></ejs-textbox>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+            <div fxFlex="18" class="simpetx">
+              发货联系电话：<ejs-textbox  placeholder="派车单号" ngModel="{{ShipmentOrder.Origintel}}" readonly></ejs-textbox>
+            </div>
+            <div fxFlex="18" class="simpetx">
+              到货联系人：<ejs-textbox  placeholder="派车单号" ngModel="{{ShipmentOrder.DestLinkman}}" readonly></ejs-textbox>
+            </div>
+            <div fxFlex="18" class="simpetx">
+              到货联系方式：<ejs-textbox  placeholder="派车单号" ngModel="{{ShipmentOrder.Desttel}}" readonly></ejs-textbox>
+            </div>
+            <div fxFlex="18" class="simpetx">
+              到货城市：<ejs-textbox  placeholder="派车单号" ngModel="{{ShipmentOrder.DestCity}}" readonly></ejs-textbox>
+            </div>
+            <div fxFlex="18" class="simpetx">
+              到货区域：<ejs-textbox  placeholder="派车单号" ngModel="{{ShipmentOrder.Destarea}}" readonly></ejs-textbox>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+            <div fxFlex="49.5" class="simpetx">
+              到货地址：<ejs-textbox  placeholder="派车单号" ngModel="{{ShipmentOrder.DestAddress}}" readonly></ejs-textbox>
+            </div>
+            <div fxFlex="49.5" class="simpetx">
+              运输路径：<ejs-textbox  placeholder="派车单号" ngModel="{{ShipmentOrder.TransferRouteWay}}" readonly></ejs-textbox>
+            </div>
+          </div>
+          <div class="simple_tit"><i class="fas fa-info-circle"></i>运输品相</div>
+          <table class="simpletab">
+            <tbody>
+            <tr *ngFor="let item of ShipmentOrder.ShipmentOrderItems">
+              <td>{{item.Package}}</td>
+              <td>{{item.PackingType}}</td>
+              <td>{{item.PackageCount}}</td>
+              <td>{{item.PackageVolM}}</td>
+              <td>{{item.PackageWeightKg}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </ng-template>
+      </mat-tab>
+      <mat-tab label="物流跟踪信息"  >
+        <ng-template matTabContent>
+          <ng-container *ngIf="messresult===null">
+            正在加载跟踪数据
+          </ng-container><!--        Content 2 - Loaded: {{getTimeLoaded(2) | date:'medium'}}-->
+          <div class="wrapper">
+            <ul class="StepProgress">
+              <li class="StepProgress-item current" *ngFor="let a of messresult"><strong>{{a.TaskStatuedDesv}}</strong>
+                <p>{{a.TrackMessage}}</p>
+                {{a.CreateTime}}
+              </li>
+            </ul>
+          </div>
+        </ng-template>
+      </mat-tab>
+    </mat-tab-group>
+
+  </div>
+
+</div>

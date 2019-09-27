@@ -1,0 +1,31 @@
+<h1><i class="fas fa-folder-plus"></i>模板新增</h1>
+<!--服务器错误提示-->
+<div *ngIf="errormsg">{{errormsg}}</div>
+<form [formGroup]="saveform">
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_20">
+    <div fxFlex="100">
+      模板名称:  <ejs-textbox   formControlName="TemplateName"></ejs-textbox>
+      <app-form-error-tips errormsg="模板名称是必须的" [webforms]="saveform" controlname="TemplateName"></app-form-error-tips>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_20">
+    <div fxFlex="100">
+      作用范围： <ejs-textbox  value="运输"></ejs-textbox>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_20">
+    <div fxFlex="100">
+      费用策略:
+      <ejs-dropdownlist
+        [dataSource]='pricestategyData'
+        [fields]='pricestategyfields'
+        placeholder='选择一种计费策略'
+        [popupHeight]='150' formControlName="UseStrategyId"></ejs-dropdownlist>
+      <app-form-error-tips errormsg="计费策略是必须的" [webforms]="saveform" controlname="UseStrategyId"></app-form-error-tips>
+    </div>
+  </div>
+</form>
+<div class="btnboxs">
+  <button ejs-button class="mat-green mat-width" (click)="save()">保存</button>
+  <button ejs-button class="mat-reject mat-width" (click)="closepage()">关闭</button>
+</div>

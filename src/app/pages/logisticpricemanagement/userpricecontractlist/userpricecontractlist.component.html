@@ -1,0 +1,38 @@
+
+
+<div style="padding:10px 0"><button ejs-button cssClass="e-info" (click)="open()">添加计费协议</button></div>
+<div>
+
+  <ejs-grid #grid  allowResizing= 'true' height="350px"
+            [dataSource]="usercontractdatasource"
+            [allowExcelExport]='true'  allowSorting='false'
+            [allowSelection]="true"
+            [enableHover]="false"
+            allowPaging='false'>
+    <e-columns >
+
+      <e-column field='ContractId'  headerText='协议编号'  width='155'></e-column>
+      <e-column field='ContractName'  headerText='协议名称'  width='155'></e-column>
+      <e-column field='UsePriceStrategyName'  headerText='计费策略'  width='125'></e-column>
+      <e-column field='CaclMethodDesc'  headerText='付款方式'  width='155'></e-column>
+      <e-column field='PriceResultProcessMethodDesc'  headerText='计算结果'  width='120'></e-column>
+      <e-column field='TaskBeginTime'  headerText='协议开始日期'  width='165'></e-column>
+      <e-column field='TaskEndTime'  headerText='协议结束日期'  width='165'></e-column>
+      <e-column field='Enabel'  headerText='状态'  width='100'></e-column>
+      <e-column  headerText='操作' width='115'>
+        <ng-template #template let-data>
+          <div>
+            <button mat-icon-button type="button"  color="warn" matTooltip="删除">
+              <mat-icon>delete</mat-icon>
+            </button>
+            <button [routerLink]="['/biz/logisticprice-management/price-value-insert',data.ContractId]"
+            mat-icon-button type="button" style="color:#666" matTooltip="维护">
+            <mat-icon>build</mat-icon>
+          </button>
+          </div>
+        </ng-template>
+      </e-column>
+    </e-columns>
+  </ejs-grid>
+
+</div>

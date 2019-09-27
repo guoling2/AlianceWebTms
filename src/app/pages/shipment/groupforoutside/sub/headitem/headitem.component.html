@@ -1,0 +1,68 @@
+<div>
+  <mat-card class="userbox">
+    <mat-card-content>
+      <form [formGroup]="saveform">
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+          <div fxFlex="32">派车单号  <ejs-textbox formControlName="ShipmentGroupId" placeholder="系统生成" readonly="readonly"></ejs-textbox></div>
+          <div fxFlex="32">运输任务  <ejs-textbox formControlName="TaskTypeDesc"  readonly="readonly"></ejs-textbox></div>
+          <div fxFlex="32">派车时间  <ejs-datetimepicker format='yyyy-MM-dd HH:mm'  formControlName="SendCarTime"></ejs-datetimepicker></div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+          <div fxFlex="32">
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+              <div fxFlex="88">承运商<ejs-textbox formControlName="TrincName"  placeholder=""></ejs-textbox></div>
+              <div fxFlex="9" style="float:right;padding-top:15px">
+                <button ejs-button cssClass="e-small" (click)="selectvehicel($event,'600px','600px')"><i class="fas fa-search"></i></button>
+              </div>
+            </div>
+          </div>
+          <div fxFlex="32" style="padding-top:15px">
+            使用车型
+            <ejs-dropdownlist
+
+              [fields]='vehicleContainerfields' placeholder="车型" formControlName="UseVehicelContainerId"    [dataSource]='vehicleContainerData'>
+              <ng-template #itemTemplate let-data>
+                <div>
+                  <div class=""> {{data.Name}} </div>
+                  <div class="">
+                    容积 {{data.Weightcapacity}} M3 载重{{data.Volumecapacity}} (吨)
+                    长  {{data.TypeLegth}}宽 {{data.TypeWidth}}  高  {{data.TypeHeight}}
+                  </div>
+                </div>
+              </ng-template>
+            </ejs-dropdownlist>
+            <div style="float: right;padding-top:15px">
+
+            </div>
+          </div>
+          <div fxFlex="32">车牌号 <ejs-textbox formControlName="CarryingToolName"></ejs-textbox></div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+          <div fxFlex="32">
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+              <div fxFlex="92">运输件数  <ejs-numerictextbox  min="0" formControlName="SendOrderCount" readonly="readonly" ></ejs-numerictextbox></div>
+              <div fxFlex="8" style="text-align: right">(件)</div>
+            </div>
+          </div>
+          <div fxFlex="32">
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+              <div fxFlex="92">运输重量  <ejs-numerictextbox  min="0" formControlName="SendOrderWeight" readonly="readonly" ></ejs-numerictextbox></div>
+              <div fxFlex="8" style="text-align: right">(T)</div>
+            </div>
+          </div>
+          <div fxFlex="32">
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+              <div fxFlex="90">运输体积  <ejs-numerictextbox  min="0" formControlName="SendOrderVol" readonly="readonly" ></ejs-numerictextbox></div>
+              <div fxFlex="10" style="text-align: right">(M3)</div>
+            </div>
+          </div>
+        <!--应付合计   <ejs-numerictextbox step='1' min="0" formControlName="PackageHigh"></ejs-numerictextbox>-->
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+          <div fxFlex="32"> 司机姓名 <ejs-textbox formControlName="DriverName"></ejs-textbox></div>
+          <div fxFlex="66">运输备注<ejs-textbox formControlName="Mark" showClearButton="true"></ejs-textbox></div>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

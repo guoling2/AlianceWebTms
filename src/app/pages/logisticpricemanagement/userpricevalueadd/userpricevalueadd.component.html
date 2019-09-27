@@ -1,0 +1,69 @@
+<div class="contentbox">
+  <div class="contentit-l">
+    <div><i class="fas fa-compass"></i> 当前位置：<a [routerLink]="['/biz/carriers-management/carriers']" >运输商资料列表</a>  / <b>维修</b></div>
+  </div>
+  <div class="contenttex-r">
+    <button cssClass="e-info mat-width" ejs-button (click)="savedata(false)">保存</button>
+    <button cssClass="e-info mat-width mat-green" ejs-button (click)="savedata(true)">保存&新增</button>
+  </div>
+</div>
+    <div *ngIf="userPriceContractModel">
+      <form [formGroup]="headsaveform">
+        <mat-card class="userbox">
+          <mat-card-content>
+            <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_20">
+              <div fxFlex="32">
+                承运方：{{userPriceContractModel.OwnTransportationpoolName}}
+              </div>
+              <div fxFlex="32">
+                运价协议：{{userPriceContractModel.ContractName}}
+              </div>
+              <div fxFlex="32">
+                运价策略：{{userPriceContractModel.UsePriceStrategyName}}
+              </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_20">
+              <div fxFlex="100">
+                <div style="border-bottom:#e1e1e1 dashed 1px;padding:5px 0;margin-bottom:5px;color:#c11521">起运地：</div>
+                <app-bin-areacascading formControlName="StartAreaId" [useid]="true"></app-bin-areacascading>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_20">
+              <div fxFlex="100">
+                <div style="border-bottom:#e1e1e1 dashed 1px;padding:5px 0;margin-bottom:5px;color:#c11521">到货地：</div>
+                <app-bin-areacascading formControlName="ToAreaId" [useid]="true"></app-bin-areacascading>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_20a">
+              <div fxFlex="32">
+                运输时限：<ejs-numerictextbox value="0" formControlName="TimeLimite"></ejs-numerictextbox>
+              </div>
+              <div fxFlex="32" style="padding-top:20px">
+                执行最低价：<ejs-switch id="checked" formControlName="RunPriceLimite" ></ejs-switch>
+              </div>
+              <div fxFlex="32">
+                最低价：<ejs-numerictextbox formControlName="MinPrice" ></ejs-numerictextbox>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+        <mat-card class="userbox" style="margin-bottom:10px">
+          <mat-card-content>
+            <div>
+          <h3 class="h3tits">  运费设置</h3>
+          <div formArrayName="PriceValues">
+            <div *ngFor=" let e of this.PriceValuesFormArray.controls; let i = index " [formGroupName]="i">
+              <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+                <div fxFlex="49"> 列名：<ejs-textbox formControlName="TemplateDataName" [enabled]="false"></ejs-textbox></div>
+                <div fxFlex="49" class="margin_015">单价：<ejs-numerictextbox format="n3" min="0" step="0.001" formControlName="Price"></ejs-numerictextbox></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+          </mat-card-content>
+        </mat-card>
+
+      </form>
+    </div>
+

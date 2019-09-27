@@ -1,0 +1,72 @@
+<div class="contentbox">
+  <div class="contentit-l">
+    <div><i class="fas fa-compass"></i> 当前位置：<a [routerLink]="['/biz/carriers-management/carriers']" >运输商资料列表</a>  / <b>{{CarriersTransportationpoolDetail?.RName}}</b></div>
+  </div>
+  <div class="contenttex-r">
+    <button ejs-button cssClass="e-info mat-width mat-reject"
+            appTmssaveconfirm
+            comfirmMessage="是否删除?"
+            (onSuggest)="del($event)">删除</button>
+    <button ejs-button cssClass="e-info mat-width"
+            appTmssaveconfirm
+            comfirmMessage="是否修改保存数据?"
+            (onSuggest)="update($event)"
+    >修改/保存</button>
+  </div>
+</div>
+<mat-card class="userbox" *ngIf="CarriersTransportationpoolDetail">
+  <mat-card-content>
+    <mat-tab-group dynamicHeight="true">
+      <mat-tab label="承运商信息">
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_20">
+          <div fxFlex="32">
+            承运商编号:<ejs-textbox ngModel="{{CarriersTransportationpoolDetail.ResourceId}}" readonly="true"></ejs-textbox>
+          </div>
+          <div fxFlex="32">
+            承运商名称：<ejs-textbox   ngModel="{{CarriersTransportationpoolDetail.RName}}" ></ejs-textbox>
+          </div>
+<!--          如果没有关联平台用户 提示下-->
+<!--          <ng-container *ngIf="!CarriersTransportationpoolDetail.IsplatformUser">-->
+<!--            关联平台用户-->
+<!--          </ng-container>-->
+          <div fxFlex="32">
+            性质：<ejs-textbox  placeholder="性质" ngModel="{{CarriersTransportationpoolDetail.RType}}" readonly="true"></ejs-textbox>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_20">
+          <div fxFlex="32">联系人：<ejs-textbox  placeholder="联系人" [(ngModel)]="CarriersTransportationpoolDetail.LinkMan" ></ejs-textbox></div>
+          <div fxFlex="32">联系电话：<ejs-textbox  placeholder="联系电话" [(ngModel)]="CarriersTransportationpoolDetail.LinkTel"></ejs-textbox></div>
+          <div fxFlex="32">联系地址：<ejs-textbox  placeholder="联系地址" [(ngModel)]="CarriersTransportationpoolDetail.LinkAddress"></ejs-textbox></div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+          <div fxFlex="25">创建日期：<ejs-textbox  placeholder="创建日期" ngModel="{{CarriersTransportationpoolDetail.CreateDateTime}}" readonly="true"></ejs-textbox></div>
+          <div fxFlex="25">创建人：<ejs-textbox  placeholder="创建人" ngModel="{{CarriersTransportationpoolDetail.CreateUser}}" readonly="true"></ejs-textbox></div>
+          <div fxFlex="25">
+            计费合同:  <mat-checkbox class="example-margin" [(ngModel)]="CarriersTransportationpoolDetail.AllowAddHandlerFee"></mat-checkbox>
+            状态： <mat-checkbox class="example-margin" [(ngModel)]="CarriersTransportationpoolDetail.Enabel"></mat-checkbox></div>
+          <div fxFlex="25"></div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+          <div fxFlex="100">备注：<ejs-textbox rows="2" [multiline]="true"  placeholder="备注" [(ngModel)]="CarriersTransportationpoolDetail.Mark"></ejs-textbox></div>
+        </div>
+      </mat-tab>
+      <mat-tab label="运输协议">
+        <app-biz-userpricecontractlist></app-biz-userpricecontractlist>
+      </mat-tab>
+      <mat-tab label="第三标签">
+        3
+      </mat-tab>
+    </mat-tab-group>
+
+  </mat-card-content>
+</mat-card>
+
+
+
+
+
+
+
+
+
+

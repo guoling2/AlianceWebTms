@@ -1,0 +1,16 @@
+.contentbox {padding:10px 10px 10px 10px;wdith:100%;height:auto;clear:both;overflow:hidden;margin:0 10px 0 10px;background:#fff;border-bottom:1px #e1e1e1 solid}
+.contentit-l {width:40%;height:auto;float: left;}
+.contenttex-r {width:60%;height:auto;float: right;}
+.pagebtnbox {width:280px;margin:0 auto;text-align: center}
+.pagebtn {margin:20px 10px;font-size:18px;padding:8px 10px!important;border:none}
+.pagebtn i {margin-right:2px;}
+.contentit-l div {width:100%;height:auto;margin-top:0px;font-size:16px;color:#666}
+.contentit-l a {color:#666;text-decoration: none}
+.contentit-l a:hover {color:#111;text-decoration:none;cursor:pointer}
+.contentit-l b {font-weight: normal;color:#111}
+.contenttex-r button {margin-left:10px;margin-top:-5px;float:right}
+.bendbox {margin:10px 10px 0px 10px;width:auto;padding:0 10px 10px 10px;background:#fff}
+.listfrom button {margin-right:15px}
+.mat-form-field {margin-right:15px}
+.sourcelength {height:32px;line-height:32px;float:right;border:1px #e1e1e1 solid;margin-top:13px;width:auto;display:block;padding:0 10px;font-size:14px;color:#666}
+.sourcelength b {color:#e21641}

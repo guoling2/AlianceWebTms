@@ -1,0 +1,12 @@
+.contentbox {padding:10px 15px 0px 15px;wdith:100%;height:auto;margin-bottom:0px;clear:both;overflow:auto}
+.contentit-l {width:40%;height:auto;float: left;}
+.contenttex-r {width:60%;height:auto;float: right;}
+.contenttex-r button {margin-left:10px;margin-top:5px;float:right}
+.listfrom {width:100%;height:auto;margin:0 0 5px 0!important;}
+.listfrom button {margin-left:10px}
+.contlistbox {margin:10px 0px 0px 0px}
+.bendbox {margin:10px 10px 0px 10px;width:auto;padding:0 10px 10px 10px;}
+.listfrom button {margin-right:15px}
+.mat-form-field {margin-right:15px}
+.sourcelength {height:32px;line-height:32px;float:right;border:1px #e1e1e1 solid;margin-top:13px;width:auto;display:block;padding:0 10px;font-size:14px;color:#666}
+.sourcelength b {color:#e21641}

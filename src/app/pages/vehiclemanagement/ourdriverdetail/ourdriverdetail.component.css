@@ -1,0 +1,27 @@
+.contentbox {padding:10px 15px 10px 15px;wdith:100%;height:auto;clear:both;overflow:hidden;margin:0 15px 0 15px;background:#fff;border-bottom:1px #e1e1e1 solid}
+.contentit-l {width:40%;height:auto;float: left;}
+.contenttex-r {width:60%;height:auto;float: right;}
+.pagebtnbox {width:280px;margin:0 auto;text-align: center}
+.pagebtn {margin:20px 10px;font-size:18px;padding:8px 10px!important;border:none}
+.pagebtn i {margin-right:2px;}
+.contentit-l div {width:100%;height:auto;margin-top:0px;font-size:16px;color:#666}
+.contentit-l a {color:#666;text-decoration: none}
+.contentit-l a:hover {color:#111;text-decoration: underline}
+.contentit-l b {font-weight: normal;color:#111}
+.contenttex-r button {margin-left:10px;margin-top:-5px;float:right}
+.bendbox {margin:10px 15px 0px 15px;width:auto;padding:5px 15px 5px 15px;background:#fff;border-radius: 0px}
+.serttits {line-height:35px;height:35px;font-size:16px;color:#666;border-bottom:1px #eee solid;margin-bottom:10px}
+.serttits i {margin-right:3px}
+.margin_t_10 {margin-top:5px;}
+.margin_t_20 {margin-top:10px;}
+input.e-input, .e-input-group input.e-input, .e-input-group.e-control-wrapper input.e-input, textarea.e-input, .e-input-group textarea.e-input, .e-input-group.e-control-wrapper textarea.e-input{padding:1px 0 1px!important}
+.e-input-group .e-input-group-icon, .e-input-group.e-control-wrapper .e-input-group-icon{margin-top:0!important;}
+.box .inputfile {width: 0.1px;height: 0.1px;opacity: 0;overflow: hidden;position: absolute;z-index: -1;}
+.box label {display: block;width: 128px;height: 128px;margin: 0 auto;border-radius: 50%;background-color: #f4f5f6;border: dotted 1px #9a9fa8;}
+.box figure {display: block;margin: 40px 0 0;text-align: center;}
+.box span {display: block;font-size: 14px;font-weight:normal;line-height: 1.43;text-align: center;color: #9a9fa8;margin-top:5px;}
+.upload-box {display: inline-block;overflow: hidden;margin-right: 4px;box-sizing: border-box;padding: 0;margin-bottom: 3px;cursor: pointer;}
+.upload-box label {width: 80%;height:120px;border-radius: 4px;cursor: pointer}
+.margin-b-10 {margin-bottom:10px}
+.mulproperty {border-spacing: unset!important;width:100%}
+.mulproperty td {padding:0!important;margin:0!important;}

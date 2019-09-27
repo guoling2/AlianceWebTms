@@ -1,0 +1,63 @@
+<div class="contentbox">
+  <div class="contentit-l">
+    <div><i class="fas fa-compass"></i> 当前位置：配载发车 / <b>派车单明细</b></div>
+  </div>
+  <div class="contenttex-r">
+<!--    <ng-container *ngIf="insideShipmentGroup.IsSend">-->
+<!--      <button ejs-button cssClass="e-info mat-width" class="mat-reject" >反审</button>-->
+<!--    </ng-container>-->
+    <ng-container *ngIf="insideShipmentGroup?.IsSend==false">
+      <button ejs-button cssClass="e-info mat-width" class="mat-reject" (click)="Del(insideShipmentGroup.ShipmentGroupId)" >删单</button>
+      <button ejs-button cssClass="e-info mat-width" class="mat-green"  (click)="Send(insideShipmentGroup.ShipmentGroupId)">发运</button>
+<!--      <button ejs-button cssClass="e-info mat-width" style="width:auto!important;" class="mat-deepblue">修改派车单</button>-->
+    </ng-container>
+
+<!--    <button ejs-button cssClass="e-info mat-width" style="width:auto!important;">派车单打印</button>-->
+
+  </div>
+</div>
+<div class="bendbox">
+  <ng-container *ngIf="insideShipmentGroup!=null">
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+      <div fxFlex="32">派车单号：<ejs-textbox  placeholder="派车单号" ngModel="{{insideShipmentGroup.ShipmentGroupId}}" readonly></ejs-textbox></div>
+      <div fxFlex="32">配载类型：<ejs-textbox  placeholder="配载类型" ngModel="{{insideShipmentGroup.MissonType}}" readonly></ejs-textbox></div>
+      <div fxFlex="32">合计运费：<ejs-textbox  placeholder="合计运费" ngModel="{{insideShipmentGroup.TotalLogisticFee}}" readonly></ejs-textbox></div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+      <div fxFlex="32">发运时间：<ejs-textbox  placeholder="发运时间" ngModel="{{insideShipmentGroup.SendCarTime}}" readonly></ejs-textbox></div>
+      <div fxFlex="32">车辆类型：<ejs-textbox  placeholder="车辆类型" ngModel="{{insideShipmentGroup.VehicelTypeDesc}}" readonly></ejs-textbox></div>
+      <div fxFlex="32">车牌号：<ejs-textbox  placeholder="车牌号" ngModel="{{insideShipmentGroup.CarryingToolName}}" readonly></ejs-textbox></div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+      <div fxFlex="32">司机姓名：<ejs-textbox  placeholder="司机姓名" ngModel="{{insideShipmentGroup.ShipmentUserDesc}}" readonly></ejs-textbox></div>
+      <div fxFlex="32">成本分摊方式：<app-biz-groupfeeblance [InputValue]="insideShipmentGroup.LogisticFeeBlanceMethod" [ReadOnly]="true"></app-biz-groupfeeblance></div>
+      <div fxFlex="32">创建时间：<ejs-textbox  placeholder="创建时间" ngModel="{{insideShipmentGroup.CreateDateTime}}" readonly></ejs-textbox></div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+      <div fxFlex="32">经办人：<ejs-textbox  placeholder="经办人" ngModel="{{insideShipmentGroup.CreateUserName}}" readonly></ejs-textbox></div>
+      <div fxFlex="66">运输备注：<ejs-textbox  placeholder="运输备注" ngModel="{{insideShipmentGroup.Mark}}" readonly></ejs-textbox></div>
+    </div>
+  </ng-container>
+  <ejs-grid height="{{gridheight}}" #logitsticitemgrid  [editSettings]='editSettings' [dataSource]="logisticItemDataSource"  allowPaging="true"  class="margin_t_10">
+    <e-columns>
+      <e-column field='SquenceId' headerText='序号' width='70'></e-column>
+      <e-column  headerText='物流单号' width='160'>
+        <ng-template #template let-data>
+          <a  appModalPage [modal]="'SimpleorderdetailComponent'"  [modal-data]="data.OrderLogisticDetailId">{{data.TrackServerId}}</a>
+        </ng-template>
+      </e-column>
+      <e-column field='PlanStatuedDesc' headerText='任务状态' width='120'></e-column>
+  <!--    <e-column field='PlanTaskType' headerText='任务类型' width='160'></e-column>-->
+      <e-column  field='OrigincustomLinkman' headerText='发货联系人' width='120' textAlign='Right'></e-column>
+      <e-column field='DestLinkman' headerText=' 收货联系人' width='120' textAlign='Right'></e-column>
+      <e-column field='ActionStoreName' headerText='当前站点' width='150' textAlign='Right'></e-column>
+      <e-column field='NextStoreName' headerText='下一站' width='150' textAlign='Right'></e-column>
+      <e-column field='NextArea' headerText='到货城区' width='150' textAlign='Right'></e-column>
+      <e-column field='LogisticFee' headerText='费用' width='120' textAlign='Right'></e-column>
+      <e-column field='PlanOrderItemCount' headerText='装车件数' width='120' textAlign='Right'></e-column>
+      <e-column field='PlanOrderItemWeight' headerText='装车重量' width='120' textAlign='Right'></e-column>
+      <e-column field='PlanOrderItemVol' headerText='装车体积' width='120' textAlign='Right'></e-column>
+      <e-column field='FinishDatetime' headerText='任务完成时间' width='120' textAlign='Right'></e-column>
+    </e-columns>
+  </ejs-grid>
+</div>

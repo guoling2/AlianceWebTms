@@ -1,0 +1,52 @@
+<div class="contentbox">
+  <div class="contentit-l">
+    <mat-card-title>费用模板列表</mat-card-title>
+    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
+  </div>
+  <div class="contenttex-r">
+    <button ejs-button  class="mat-green mat-width mat-auto"  (click)="openinsert()" >新增运费模板</button>
+  </div>
+</div>
+<form class="listfrom" [formGroup]="searchp" >
+  <mat-form-field class="col-md-3">
+    <label>
+      <input matInput  formControlName="Name" />
+    </label>
+    <span  matPrefix style="color: #888">模板名称：&nbsp;</span>
+  </mat-form-field>
+  <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+</form>
+
+<ejs-grid #grid  allowResizing= 'true' height="{{gridheight}}"
+          (dataStateChange)="dataStateChange($event)"
+          [allowExcelExport]='true'  allowSorting='true'
+          [allowSelection]="true"
+          [enableHover]="false"
+          allowPaging='false'  class="contlistbox">
+  <e-columns >
+
+    <e-column field='SettingId'  headerText='模板编号'  width='165'>
+      <ng-template #template let-data>
+
+        <a [routerLink]="['/biz/logisticprice-management/price-template-detail/', data.SettingId]">
+          <span style="margin-left: 5px;">{{data.SettingId}}</span>
+        </a>
+
+      </ng-template>
+    </e-column>
+
+    <e-column field='Name'  headerText='模板名称'  width='165'></e-column>
+
+    <e-column field='UseStrategyType'  headerText='使用策略'  width='165'></e-column>
+
+    <e-column field='DataCount'  headerText='列数量'  width='115'></e-column>
+
+    <e-column field='Enabel'  headerText='状态'  width='125'></e-column>
+
+    <e-column field='CreateUserName'  headerText='创建人'  width='115'></e-column>
+
+    <e-column field='CreateDateTime'  headerText='创建时间'  width='155'></e-column>
+
+
+  </e-columns>
+</ejs-grid>

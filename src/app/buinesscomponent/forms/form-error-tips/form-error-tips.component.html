@@ -1,0 +1,14 @@
+<!--<div *ngIf="reactForm">-->
+<!--<div *ngIf="check.errors">-->
+<!--  <div *ngIf="check.errors.required && check.touched" class="e-error">-->
+<!--   {{Message}}-->
+<!--  </div>-->
+<!--</div>-->
+<!--</div>-->
+
+<div *ngIf="check.invalid && (check.touched)"
+     class="alert alert-danger">
+  <div *ngIf="check.errors.required" class="e-error">
+    {{Message}}
+  </div>
+</div>

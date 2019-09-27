@@ -1,0 +1,79 @@
+<div class="contentbox">
+  <div class="contentit-l">
+    <mat-card-title>提货汇总查询</mat-card-title>
+    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
+  </div>
+  <div class="contenttex-r"></div>
+</div>
+<form class="listfrom" [formGroup]="searchp" >
+
+
+
+  <mat-form-field class="col-md-3">
+    <label>
+      <input matInput  formControlName="OrderTrackServerId" />
+    </label>
+    <span  matPrefix style="color: #888">物流单号：&nbsp;</span>
+  </mat-form-field>
+
+  <mat-form-field class="col-md-3">
+    <label>
+            <select matNativeControl  formControlName="PlanStatuedId">
+              <option value="10">已安排</option>
+              <option value="20">任务中</option>
+              <option value="30">已完成</option>
+            </select>
+    </label>
+    <span  matPrefix style="color: #888">任务状态：&nbsp;</span>
+  </mat-form-field>
+
+
+  <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+</form>
+<ejs-grid #grid  allowResizing= 'true' height="{{gridheight}}"
+          (dataStateChange)="dataStateChange($event)"
+          [allowExcelExport]='true'  allowSorting='false'
+          [allowSelection]="true"
+          [enableHover]="false"
+          allowPaging='true'  class="contlistbox">
+  <e-columns >
+
+    <e-column headerText='派车单号'  width='210'>
+      <ng-template #template let-data>
+        <a [routerLink]="['/biz/shipment/groupdetail', data.ShipmentGroupId]">{{data.ShipmentGroupId }} </a>
+      </ng-template>
+    </e-column>
+
+    <e-column field='ShipmentPlanId'  headerText='名称' [visible]="false"  [isPrimaryKey]="true" width='165'></e-column>
+
+
+    <e-column field='OrderTrackServerId'  headerText='物流单号'  width='165'></e-column>
+
+
+    <e-column field='ShipmentId'  headerText='名称'  [visible]="false"  width='165'></e-column>
+
+
+    <e-column field='ActionStoreName'  headerText='操作网点'  width='165'></e-column>
+
+
+    <e-column field='PlanStatuedId'  headerText='名称' [visible]="false"  width='165'></e-column>
+
+
+    <e-column field='CreateDatetime'  headerText='委派时间'  width='165'></e-column>
+
+
+    <e-column field='FinishDatetime'  headerText='完成时间'  width='165'></e-column>
+
+
+    <e-column field='CarryingToolName'  headerText='提货车牌号'  width='165'></e-column>
+
+
+    <e-column field='ShipmentUserDesc'  headerText='提货司机'  width='165'></e-column>
+
+
+    <e-column field='PlanOrderItemCount'  headerText='提货件数'  width='165'></e-column>
+
+
+
+  </e-columns>
+</ejs-grid>

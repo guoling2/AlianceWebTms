@@ -1,0 +1,23 @@
+<div class="contentbox">
+  <div class="contentit-l">
+    <div><i class="fas fa-compass"></i> 当前位置：配载发车 / <b>新增</b></div>
+  </div>
+  <div class="contenttex-r">
+    <button ejs-button cssClass="e-info mat-width"  (click)="savedata()">保存</button>
+    <ejs-tooltip #tooltip content='将会直接推送订单到司机终端中'  position="BottomCenter"
+                 style="padding-left:0!important;padding-right:0!important;">
+      <button style="margin-left:15px;" disabled="true" ejs-button cssClass="e-info mat-width"  (click)="savedata()">保存&发运</button>
+    </ejs-tooltip>
+  </div>
+</div>
+<div class="bendbox">
+  <form [formGroup]="saveform">
+
+    <app-shipmentplan-insert-headitem [saveform]="saveform" [tasktype]="inputtasktype"></app-shipmentplan-insert-headitem>
+    <!--<app-shipmentplan-insert-sendcarfeedetailinsert></app-shipmentplan-insert-sendcarfeedetailinsert>-->
+       <app-shipmentplan-insert-logisticitems [showaddbtn]="false" [showdelbtn]="false" [showspliter]="false"></app-shipmentplan-insert-logisticitems>
+
+
+  </form>
+
+</div>

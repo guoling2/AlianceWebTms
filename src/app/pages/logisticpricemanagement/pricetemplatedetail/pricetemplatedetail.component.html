@@ -1,0 +1,87 @@
+<div class="contentbox">
+  <div class="contentit-l">
+    <div><i class="fas fa-compass"></i> 当前位置：<a [routerLink]="['/biz/logisticprice-management/price-template-list']" >费用模板列表</a>  / <b>费用模板详细</b></div>
+  </div>
+  <div class="contenttex-r">
+    <button ejs-button cssClass="e-info mat-reject">删除</button>
+  </div>
+</div>
+
+<mat-card class="userbox">
+  <mat-card-content>
+   <div *ngIf="userPriceTemplateSetting" fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_20">
+     <div fxFlex="18">模板编号：{{userPriceTemplateSetting.SettingId}}</div>
+     <div fxFlex="18">模板名称：{{userPriceTemplateSetting.Name}}</div>
+     <div fxFlex="15">使用策略：{{userPriceTemplateSetting.UseStrategyType}}</div>
+     <div fxFlex="10">状态：<ejs-checkbox readonly="true" checked="{{userPriceTemplateSetting.Enabel}}"></ejs-checkbox></div>
+     <div fxFlex="10">创建人：{{userPriceTemplateSetting.CreateUserName}}</div>
+     <div fxFlex="18">创建时间：{{userPriceTemplateSetting.CreateDateTime}}</div>
+   </div>
+  </mat-card-content>
+</mat-card>
+<mat-card class="userbox">
+  <mat-card-content>
+  <div>
+    <form [formGroup]="saveform" *ngIf="userPriceTemplateSetting">
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_20">
+        <div fxFlex="24">
+          列名：<ejs-textbox   formControlName="ColumnDesc"></ejs-textbox>
+          <app-form-error-tips errormsg="列名是必须的" [webforms]="saveform" controlname="ColumnDesc"></app-form-error-tips>
+        </div>
+        <div fxFlex="24">
+          下行区间：<ejs-numerictextbox format="n3" value="0" formControlName="DownInterval"></ejs-numerictextbox>
+        </div>
+        <div fxFlex="24">
+          上行区间：<ejs-numerictextbox format="n3" value="0" formControlName="UpInterval" ></ejs-numerictextbox>
+        </div>
+        <div fxFlex="24">
+          区间属性：
+          <ejs-dropdownlist
+            [dataSource]='userPriceTemplateSetting.AvailableCaclSymboles'
+            [fields]='dropdownfields'
+            [popupHeight]='150' formControlName="InervalModel"></ejs-dropdownlist>
+          <app-form-error-tips errormsg="区间属性是必须的" [webforms]="saveform" controlname="InervalModel"></app-form-error-tips>
+        </div>
+      </div>
+    </form>
+    <div style="margin-top:10px;text-align: center"><button ejs-button cssClass="e-info mat-width mat-auto" (click)="save()">保存计费区间</button></div>
+  </div>
+  </mat-card-content>
+</mat-card>
+<mat-card class="userbox">
+  <mat-card-content>
+  <div>
+    <h3 class="h3tits">数据集合</h3>
+    <ejs-grid  [dataSource]='settingdatas' height="350px">
+      <e-columns>
+        <e-column field='TemplateDataId' headerText='列编号' width='150' ></e-column>
+        <e-column field='DisplanySquence' headerText='显示序列' width='120' ></e-column>
+        <e-column field='ColumnDesc' headerText='列名' width='120'></e-column>
+        <e-column field='DownInterval' headerText='下行区间'  format='N3'  width='120'></e-column>
+        <e-column field='UpInterval' headerText='上行区间'  format='N3'  width='120' ></e-column>
+        <e-column field='InervalModel' headerText='区间属性' width='120'></e-column>
+        <e-column  headerText='操作' width='130'>
+          <ng-template #template let-data>
+            <div>
+              <button
+                mat-icon-button
+                class="mat-gray"
+                type="button"
+                appTmssaveconfirm
+                comfirmMessage="是否删除?"
+                [extendata]="data.TemplateDataId"
+                (onSuggest)="delcol($event)"
+                matTooltip="删除">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </ng-template>
+        </e-column>
+      </e-columns>
+    </ejs-grid>
+  </div>
+  </mat-card-content>
+</mat-card>
+
+
+

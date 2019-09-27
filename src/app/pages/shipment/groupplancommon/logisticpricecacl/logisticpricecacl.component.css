@@ -1,0 +1,9 @@
+.ulbox ul {margin:0;padding:0}
+.ulbox li {list-style: none;border-bottom: 1px #ccc dashed;padding-bottom: 5px;margin:5px 0;}
+.ulbox h2 {font-size:14px;font-weight:normal;color:#dd0031;margin-bottom:5px!important;}
+.ulbox p {color:#666;font-size:12px;margin:5px 0!important;}
+.countbox b {font-size:16px;color:#666;display: block;width:100%;margin-top:5px;text-align:center;font-weight:normal}
+.fa-3x {text-align:center}
+.fa-3x i {margin:0 auto;color:#666}
+.btnbox {width:95px;margin:0 auto;}
+.btnbox button {margin-top:15px}

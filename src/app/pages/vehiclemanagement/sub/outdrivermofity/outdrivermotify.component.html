@@ -1,0 +1,99 @@
+<div class="contentbox">
+  <div class="contentit-l">
+      <i class="fas fa-compass"></i>
+      <ng-container [ngSwitch]="Operate">
+
+        <ng-container *ngSwitchCase="1">   <!--新增的-->
+          当前位置：<a [routerLink]="['/biz/vehicle-management/outdriver-list']" >外租车列表</a>  / <b>新增</b>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="2">  <!--修改的-->
+      当前位置：
+          <a [routerLink]="['/biz/vehicle-management/outdriver-list']" >外租车列表</a>  /
+          <a [routerLink]="['/biz/vehicle-management/ourdriver-detail',saverequest.ResourceId]" >{{saverequest.RName}}</a>/
+          修改
+
+        </ng-container>
+
+      </ng-container>
+
+  </div>
+  <div class="contenttex-r">
+    <button ejs-button cssClass="e-info mat-width"
+            appTmssaveconfirm
+            comfirmMessage="{{btnmessage}}?"
+            (onSuggest)="save($event)">保存</button>
+  </div>
+</div>
+
+
+<div>
+
+  <form [formGroup]="saveform">
+    <div class="bendbox">
+      <div class="serttits"><i class="fas fa-user-alt"></i>司机信息</div>
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+        <div fxFlex="49">司机姓名：
+          <ejs-textbox  placeholder="司机姓名"  formControlName="RName"></ejs-textbox>
+          <app-form-error-tips errormsg="司机姓名是必须的"
+                               [webforms]="saveform" controlname="RName"></app-form-error-tips>
+        </div>
+        <div fxFlex="49">手机号：<ejs-textbox  placeholder="手机号" formControlName="Drtel"></ejs-textbox>
+          <app-form-error-tips errormsg="手机手机号是必须的"
+                               [webforms]="saveform" controlname="Drtel"></app-form-error-tips>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+        <div fxFlex="49">身份证号：<ejs-textbox  placeholder="身份证号" formControlName="Dridnum"></ejs-textbox></div>
+        <div fxFlex="49">驾驶证号：<ejs-textbox  placeholder="驾驶证号" formControlName="Drlicensenum" ></ejs-textbox></div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+        <div fxFlex="100">司机住址：<ejs-textbox  placeholder="司机住址" formControlName="Draddr" ></ejs-textbox></div>
+      </div>
+    </div>
+    <div class="bendbox">
+      <div class="serttits"><i class="fas fa-car"></i>车辆信息</div>
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+        <div fxFlex="32">车牌号码：
+          <ejs-textbox  placeholder="车牌号码"  formControlName="Trnum"></ejs-textbox>
+          <app-form-error-tips errormsg="车牌号码是必须的"
+                               [webforms]="saveform" controlname="Trnum"></app-form-error-tips>
+        </div>
+        <div fxFlex="32">车型：
+          <ejs-dropdownlist
+
+            [fields]='fields' placeholder="车型" formControlName="Trtype"    [dataSource]='vehicleContainerData'>
+            <ng-template #itemTemplate let-data>
+              <div>
+                <div class=""> {{data.Name}} </div>
+                <div class="">
+                  容积 {{data.Weightcapacity}} M3 载重{{data.Volumecapacity}} (吨)
+                  长  {{data.TypeLegth}}宽 {{data.TypeWidth}}  高  {{data.TypeHeight}}
+                </div>
+              </div>
+            </ng-template>
+          </ejs-dropdownlist>
+          <app-form-error-tips errormsg="车型是必须的"
+                               [webforms]="saveform" controlname="Trtype"></app-form-error-tips>
+        </div>
+        <div fxFlex="32">车辆来源：<ejs-textbox  placeholder="车辆来源" formControlName="RType"  readonly="readonly" ></ejs-textbox></div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+        <div fxFlex="32">GPS厂商：<ejs-textbox  placeholder="GPS厂商" formControlName="Gpstype" ></ejs-textbox></div>
+        <div fxFlex="32">GPS机构号：<ejs-textbox  placeholder="GPS机构号"formControlName="Gpsno"  ></ejs-textbox></div>
+        <div fxFlex="32">其他信息：<ejs-textbox  placeholder="其他信息" ></ejs-textbox></div>
+      </div>
+    </div>
+    <div class="bendbox">
+      <div class="serttits"><i class="fas fa-info-circle"></i>备注信息</div>
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+        <div fxFlex="100">
+          计费合同:<mat-checkbox formControlName="AllowAddHandlerFee"></mat-checkbox>
+          状态：<mat-checkbox  formControlName="Enabel"></mat-checkbox></div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_20">
+        <div fxFlex="100">备注：<ejs-textbox rows="3" [multiline]="true" placeholder="备注" formControlName="Mark" ></ejs-textbox></div>
+      </div>
+    </div>
+  </form>
+</div>

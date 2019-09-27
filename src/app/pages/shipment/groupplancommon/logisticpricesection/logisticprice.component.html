@@ -1,0 +1,34 @@
+<!--协议名称    合同运费计算-->
+<!--合同运费-->
+<!--手工运费-->
+<!--提货费用-->
+<!--送货费用-->
+<!--其他费用-->
+<!--其他费用备注-->
+<!--应付合计-->
+
+<!--预付运费-->
+<!--押金-->
+<!--到付-->
+<!--回付-->
+<mat-card class="userbox" style="margin-top:10px">
+  <mat-card-content>
+    <form [formGroup]="saveform">
+    <div fxLayout="row"  fxLayoutAlign="space-between center" class="margin_t_10">
+
+       <div fxFlex="32">运输协议：   <ejs-dropdownlist
+         [index]="userPriceContractModel?.length>0?0:-1"
+         [dataSource]="userPriceContractModel" [fields]="{text: 'ContractName', value: 'ContractId', iconCss: null, groupBy: 'UsePriceStrategyName'}"
+       formControlName="LogisticContractId"></ejs-dropdownlist></div>
+      <div fxFlex="32">运费分摊方式  <app-biz-groupfeeblance formControlName="LogisticFeeBlanceMethod"></app-biz-groupfeeblance> </div>
+      <div fxFlex="32"><button ejs-button cssClass="e-info mat-width"  (click)="savedata($event)">运费计算</button></div>
+    </div>
+      <div fxLayout="row"  fxLayoutAlign="space-between center" class="margin_t_10">
+        <div fxFlex="32">    合同运费: <ejs-numerictextbox min="0"  readonly="readonly" formControlName="TransportContractFee"></ejs-numerictextbox></div>
+        <div fxFlex="32">  手工运费: <ejs-numerictextbox step='1' min="0" formControlName="TransportHandlerFee"></ejs-numerictextbox></div>
+        <div fxFlex="32">   应付合计:<ejs-numerictextbox step='1' min="0" ></ejs-numerictextbox></div>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
+
