@@ -48,6 +48,15 @@ export class LogisticpriceComponent implements OnInit {
 
     this.saveform.addControl('UseVehicelContainerId', new FormControl());
 
+    this.saveform.addControl('SubClassFee', new FormGroup({
+      Prepaidamt: new FormControl(0),
+      Cardamt: new FormControl(0),
+      Depositamt: new FormControl(0),
+      Arrivalamt: new FormControl(0),
+      Returnamt: new FormControl(0),
+      Monthlyamt: new FormControl(0),
+        }));
+
     this.saveform.get(this.usercheckId).valueChanges.subscribe(($event: string) => {
              this.SettingContract($event);
     });

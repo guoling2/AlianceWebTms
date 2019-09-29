@@ -37,5 +37,8 @@ export class ShipplanGroupOutsideService {
       this.appConfiguration.Server + '/api/ShipmentPlanGroupForOutside/detail?shipmenggroupId=' + shipmenggroupId);
   }
 
+  public DelShipplanGroup(shipmenggroupId: string): Observable<TmsResponseModle> {
+    return  this.httpclient.delete<TmsResponseModle>(this.appConfiguration.Server + '/api/ShipmentPlanGroupForOutside/' + shipmenggroupId);
+  }
 
 }

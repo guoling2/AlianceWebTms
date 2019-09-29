@@ -77,6 +77,9 @@ export class OutsidePlanGroupCreateComponent implements OnInit {
       if (a.StatusCode === TmsresponseStatusCode.Succeed()) {
         this.emitService.eventEmit.emit(
           new EmitAlertMessage(AlertMessageType.Info, '系统信息', a.Info, MessageShowType.Toast));
+
+        this.router.navigateByUrl('biz/shipment/outside-shipment-detail/' + a.Data);
+
       } else {
         this.emitService.eventEmit.emit(
           new EmitAlertMessage(AlertMessageType.Error, '系统信息', '验证失败', MessageShowType.Toast));

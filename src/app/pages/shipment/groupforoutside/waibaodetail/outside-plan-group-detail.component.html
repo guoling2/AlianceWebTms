@@ -1,10 +1,11 @@
 <div class="contentbox">
   <div class="contentit-l">
-    <div><i class="fas fa-compass"></i> 当前位置：<a [routerLink]="['/biz/']" >计费数据列表</a>  / <b>详细信息</b></div>
+    <div><i class="fas fa-compass"></i> 当前位置：<a [routerLink]="['/biz/shipment/waibaosendlist']" >转运外包汇总</a>  / <b>详细信息</b></div>
   </div>
   <div class="contenttex-r">
     <ng-container *ngIf="outsideShipmentGroup?.IsSend==false">
-      <button ejs-button cssClass="e-info mat-width" class="mat-reject" (click)="Del(outsideShipmentGroup.ShipmentGroupId)" >删单</button>
+      <button ejs-button cssClass="e-info mat-width" class="mat-reject"
+              appTmssaveconfirm  comfirmMessage="确认删除派车单吗?"  (onSuggest)="Del($event)"  [extendata]="outsideShipmentGroup.ShipmentGroupId">删单</button>
       <button ejs-button cssClass="e-info mat-width" class="mat-green"  (click)="Send(outsideShipmentGroup.ShipmentGroupId)">发运</button>
       <!--      <button ejs-button cssClass="e-info mat-width" style="width:auto!important;" class="mat-deepblue">修改派车单</button>-->
     </ng-container>
@@ -15,24 +16,30 @@
   <mat-card class="userbox">
     <mat-card-content>
         <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
-          <div fxFlex="32">
+          <div fxFlex="24">
             派车单号：<ejs-textbox  placeholder="派车单号" ngModel="{{outsideShipmentGroup.ShipmentGroupId}}" readonly></ejs-textbox>
           </div>
-          <div fxFlex="32">
+          <div fxFlex="24">
             承运商：<ejs-textbox   ngModel="{{outsideShipmentGroup.TrincName}}" readonly></ejs-textbox>
           </div>
-          <div fxFlex="32">
-            配载类型：<ejs-textbox   ngModel="{{outsideShipmentGroup.TaskTypeDesc}}" readonly></ejs-textbox>
+          <div fxFlex="24">
+            承运商联系人：<ejs-textbox   ngModel="" readonly></ejs-textbox>
+          </div>
+          <div fxFlex="24">
+            联系电话：<ejs-textbox   ngModel="" readonly></ejs-textbox>
           </div>
         </div>
         <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
-          <div fxFlex="32">
+          <div fxFlex="24">
+            配载类型：<ejs-textbox   ngModel="{{outsideShipmentGroup.TaskTypeDesc}}" readonly></ejs-textbox>
+          </div>
+          <div fxFlex="24">
             车型：<ejs-textbox   ngModel="{{outsideShipmentGroup.VehicelTypeDesc}}" readonly></ejs-textbox>
           </div>
-          <div fxFlex="32">
+          <div fxFlex="24">
             车牌号：<ejs-textbox   ngModel="{{outsideShipmentGroup.CarryingToolName}}" readonly></ejs-textbox>
           </div>
-          <div fxFlex="32">
+          <div fxFlex="24">
             司机：<ejs-textbox   ngModel="{{outsideShipmentGroup.DriverName}}" readonly></ejs-textbox>
           </div>
         </div>
@@ -47,54 +54,51 @@
     <mat-card-content>
 <!--  //运费信息-->
       <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
-        <div fxFlex="19">
+        <div fxFlex="24">
           运费分摊：<app-biz-groupfeeblance  ReadOnly="true"  [InputValue]="outsideShipmentGroup.LogisticFeeBlanceMethod?.toString()"></app-biz-groupfeeblance>
         </div>
-        <div fxFlex="19">
-          合同费用：<ejs-numerictextbox  min="0"  [value]="outsideShipmentGroup.TransportContractFee" readonly="readonly" ></ejs-numerictextbox>
+        <div fxFlex="24">
+          合同费用：<ejs-numerictextbox  min="0" showSpinButton="false"  [value]="outsideShipmentGroup.TransportContractFee" readonly="readonly" ></ejs-numerictextbox>
         </div>
-        <div fxFlex="19">
+        <div fxFlex="24">
           手工费用：<ejs-numerictextbox  min="0"  [value]="outsideShipmentGroup.TransportHandlerFee" readonly="readonly" ></ejs-numerictextbox>
         </div>
-        <div fxFlex="19">
-          运费合计：<ejs-numerictextbox  min="0"  [value]="(outsideShipmentGroup.TransportContractFee+outsideShipmentGroup.TransportHandlerFee).toFixed(2)" readonly="readonly" ></ejs-numerictextbox>
-        </div>
-        <div fxFlex="19">
-          预付费：<ejs-numerictextbox  min="0"  [value]="outsideShipmentGroup.SubClassFee.Prepaidamt" readonly="readonly" ></ejs-numerictextbox>
+        <div fxFlex="24">
+          运费合计：<ejs-numerictextbox  min="0"  showSpinButton="false"  [value]="(outsideShipmentGroup.TransportContractFee+outsideShipmentGroup.TransportHandlerFee).toFixed(2)" readonly="readonly" ></ejs-numerictextbox>
         </div>
       </div>
       <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
-        <div fxFlex="19">
-          油卡费：<ejs-numerictextbox  min="0"  [value]="outsideShipmentGroup.SubClassFee.Cardamt" readonly="readonly" ></ejs-numerictextbox>
+        <div fxFlex="15.5">
+          预付费：<ejs-numerictextbox  min="0" showSpinButton="false"   [value]="outsideShipmentGroup.SubClassFee.Prepaidamt" readonly="readonly" ></ejs-numerictextbox>
         </div>
-        <div fxFlex="19">
-          押金：<ejs-numerictextbox  min="0"  [value]="outsideShipmentGroup.SubClassFee.Depositamt" readonly="readonly" ></ejs-numerictextbox>
+        <div fxFlex="15.5">
+          油卡费：<ejs-numerictextbox  min="0"  showSpinButton="false" [value]="outsideShipmentGroup.SubClassFee.Cardamt" readonly="readonly" ></ejs-numerictextbox>
         </div>
-        <div fxFlex="19">
-          到付：<ejs-numerictextbox  min="0"  [value]="outsideShipmentGroup.SubClassFee.Arrivalamt" readonly="readonly" ></ejs-numerictextbox>
+        <div fxFlex="15.5">
+          押金：<ejs-numerictextbox  min="0" showSpinButton="false"  [value]="outsideShipmentGroup.SubClassFee.Depositamt" readonly="readonly" ></ejs-numerictextbox>
         </div>
-        <div fxFlex="19">
-          回付：<ejs-numerictextbox  min="0"  [value]="outsideShipmentGroup.SubClassFee.Returnamt" readonly="readonly" ></ejs-numerictextbox>
+        <div fxFlex="15.5">
+          到付：<ejs-numerictextbox  min="0" showSpinButton="false"  [value]="outsideShipmentGroup.SubClassFee.Arrivalamt" readonly="readonly" ></ejs-numerictextbox>
         </div>
-        <div fxFlex="19">
-          月结：<ejs-numerictextbox  min="0"  [value]="outsideShipmentGroup.SubClassFee.Monthlyamt" readonly="readonly" ></ejs-numerictextbox>
+        <div fxFlex="15.5">
+          回付：<ejs-numerictextbox  min="0"  showSpinButton="false"  [value]="outsideShipmentGroup.SubClassFee.Returnamt" readonly="readonly" ></ejs-numerictextbox>
+        </div>
+        <div fxFlex="15.5">
+          月结：<ejs-numerictextbox  min="0"  showSpinButton="false"  [value]="outsideShipmentGroup.SubClassFee.Monthlyamt" readonly="readonly" ></ejs-numerictextbox>
         </div>
       </div>
       <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
-        <div fxFlex="19">
-          应结金额：<ejs-numerictextbox  min="0"  [value]="outsideShipmentGroup.FinaceStatued.TotalGatheringAmount" [enabled]="false" ></ejs-numerictextbox>
+        <div fxFlex="24">
+          应结金额：<ejs-numerictextbox  min="0"  showSpinButton="false" [value]="outsideShipmentGroup.FinaceStatued.TotalGatheringAmount" [enabled]="false" ></ejs-numerictextbox>
         </div>
-        <div fxFlex="19">
-          已结金额：<ejs-numerictextbox  min="0"  [value]="outsideShipmentGroup.FinaceStatued.FinishGatheringAmount" [enabled]="false"></ejs-numerictextbox>
+        <div fxFlex="24">
+          已结金额：<ejs-numerictextbox  min="0"  showSpinButton="false"  [value]="outsideShipmentGroup.FinaceStatued.FinishGatheringAmount" [enabled]="false"></ejs-numerictextbox>
         </div>
-        <div fxFlex="19">
-          未结金额：<ejs-numerictextbox  min="0"  [value]="outsideShipmentGroup.FinaceStatued.UnGatheringAmount" [enabled]="false" ></ejs-numerictextbox>
+        <div fxFlex="24">
+          未结金额：<ejs-numerictextbox  min="0" showSpinButton="false"  [value]="outsideShipmentGroup.FinaceStatued.UnGatheringAmount" [enabled]="false" ></ejs-numerictextbox>
         </div>
-        <div fxFlex="19">
+        <div fxFlex="24">
           <ejs-checkbox label="清账" [checked]="outsideShipmentGroup.FinaceStatued.IsClear" [disabled] = "true"></ejs-checkbox>
-        </div>
-        <div fxFlex="19">
-
         </div>
       </div>
     </mat-card-content>
