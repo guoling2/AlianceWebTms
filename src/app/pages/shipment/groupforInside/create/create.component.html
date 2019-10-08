@@ -14,8 +14,10 @@
   <form [formGroup]="saveform">
 
     <app-shipmentplan-insert-headitem [saveform]="saveform" [tasktype]="inputtasktype"></app-shipmentplan-insert-headitem>
+
+    <app-shipment-logisticprice [saveform]="saveform"  [UseVehicelContainerId]=false usercheckId="CarringToolId"></app-shipment-logisticprice>
     <!--<app-shipmentplan-insert-sendcarfeedetailinsert></app-shipmentplan-insert-sendcarfeedetailinsert>-->
-       <app-shipmentplan-insert-logisticitems [showaddbtn]="false" [showdelbtn]="false" [showspliter]="false"></app-shipmentplan-insert-logisticitems>
+    <app-shipmentplan-insert-logisticitems [showaddbtn]="false" [showdelbtn]="false" [showspliter]="false"></app-shipmentplan-insert-logisticitems>
 
 
   </form>

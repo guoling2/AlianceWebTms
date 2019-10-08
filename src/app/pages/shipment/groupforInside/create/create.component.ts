@@ -108,33 +108,37 @@ export class InsidePlanGroupCreateComponent implements OnInit {
 
 
       const model = <InsideShipmentGroupModel>this.saveform.getRawValue();
+      model.SendShipmentIds = [];
+      this.itemServiceService.LogisticItemSource.forEach(a => {
+        model.SendShipmentIds.push(a.ShipmentId);
+      });
       this.groupInsideServiceService.CreateShipplanGroup(model).subscribe(a => {
         if (a.StatusCode === TmsresponseStatusCode.Succeed()) {
           this.emitService.eventEmit.emit(
             new EmitAlertMessage(AlertMessageType.Info, '系统信息', '派车单运输信息创建成功', MessageShowType.Toast));
-
-          const i = this.itemServiceService.LogisticItemSource.length - 1;
-          this.itemServiceService.LogisticItemSource.forEach((item, index) => {
-            this.shipplanGroupInsideServiceService.AttchShipmentItem({
-              TaskType: '',
-              ShipmentId: item.ShipmentId,
-              ShipmentGrpupId: a.Data,
-              SquenceId: item.SquenceId
-            }).subscribe(resultx => {
-
-              if (i === index) {
-
-
-                this.router.navigateByUrl('biz/shipment/groupdetail/' + a.Data);
-              }
-
-              this.emitService.eventEmit.emit(
-                new EmitAlertMessage(AlertMessageType.Info, '系统信息', resultx.Info, MessageShowType.Toast));
-            });
-
-          });
-          this.emitService.eventEmit.emit(
-            new EmitAlertMessage(AlertMessageType.Info, '系统信息', '开始附加托运单', MessageShowType.Toast));
+          this.router.navigateByUrl('biz/shipment/groupdetail/' + a.Data);
+          // const i = this.itemServiceService.LogisticItemSource.length - 1;
+          // this.itemServiceService.LogisticItemSource.forEach((item, index) => {
+          //   this.shipplanGroupInsideServiceService.AttchShipmentItem({
+          //     TaskType: '',
+          //     ShipmentId: item.ShipmentId,
+          //     ShipmentGrpupId: a.Data,
+          //     SquenceId: item.SquenceId
+          //   }).subscribe(resultx => {
+          //
+          //     if (i === index) {
+          //
+          //
+          //       this.router.navigateByUrl('biz/shipment/groupdetail/' + a.Data);
+          //     }
+          //
+          //     this.emitService.eventEmit.emit(
+          //       new EmitAlertMessage(AlertMessageType.Info, '系统信息', resultx.Info, MessageShowType.Toast));
+          //   });
+          //
+          // });
+          // this.emitService.eventEmit.emit(
+          //   new EmitAlertMessage(AlertMessageType.Info, '系统信息', '开始附加托运单', MessageShowType.Toast));
         } else {
           this.emitService.eventEmit.emit(
             new EmitAlertMessage(AlertMessageType.Error, '系统信息', a.Info, MessageShowType.Toast));

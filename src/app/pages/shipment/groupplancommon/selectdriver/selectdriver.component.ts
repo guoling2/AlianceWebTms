@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Vehicelmodel} from '../../../../../models/vehiclemanagement/vehicelmodel';
+import {Vehicelmodel} from '../../../../models/vehiclemanagement/vehicelmodel';
 
 @Component({
   selector: 'app-selectdriver',

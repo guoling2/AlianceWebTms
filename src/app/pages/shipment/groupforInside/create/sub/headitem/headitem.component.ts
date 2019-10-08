@@ -12,8 +12,8 @@ import {LogisticStoreServiceService} from '../../../../../../services/logisticst
 import {LogisticStoreAuthorizeServiceService} from '../../../../../../services/logisticstore/logistic-store-authorize-service.service';
 import {CustomerTaxServiceService} from '../../../../../../services/customers/customer-tax-service.service';
 import {DialogservicesService} from '../../../../../../help/dialogservices.service';
-import {SelectvehicelComponent} from '../../../sub/selectvehicel/selectvehicel.component';
-import {SelectdriverComponent} from '../../../sub/selectdriver/selectdriver.component';
+import {SelectvehicelComponent} from '../../../../groupplancommon/selectvehicel/selectvehicel.component';
+import {SelectdriverComponent} from '../../../../groupplancommon/selectdriver/selectdriver.component';
 import {Vehicelmodel} from '../../../../../../models/vehiclemanagement/vehicelmodel';
 import {LogisticStore} from '../../../../../../models/LogisticStore/logistic-store';
 import {LogisticItemComponentService} from '../../../../../../services/shiipplangroup/shipplan-item-service.service';
@@ -92,9 +92,13 @@ export class HeaditemComponent implements OnInit  {
     this.saveform.addControl('SendOrderCount', new FormControl({value: 0, disabled: false}));
     this.saveform.addControl('SendOrderWeight', new FormControl({value: 0, disabled: false}));
     this.saveform.addControl('SendOrderVol', new FormControl({value: 0, disabled: false}));
-
     this.saveform.addControl('Mark', new FormControl());
 
+    this.saveform.addControl('SendTrincId', new FormControl());
+    this.saveform.addControl('SendTrincName', new FormControl());
+
+
+    this.saveform.addControl('VehicelSourceFrom', new FormControl());
 
     this.itemServiceService.LogisiticItemAddBehavior.subscribe(next => {
 
@@ -135,6 +139,12 @@ export class HeaditemComponent implements OnInit  {
         this.saveform.patchValue({ShipmentUserId: result.PrimaryDriverId});
         this.saveform.patchValue({ShipmentUserDesc: result.PrimaryDriverName});
         this.saveform.patchValue({ShipmentUserLinkTel: result.PrimaryDriverTel});
+        this.saveform.patchValue({VehicelSourceFrom: result.VehicelSourceFrom});
+
+        this.saveform.patchValue({SendTrincId: result.VehicelId});
+        this.saveform.patchValue({SendTrincName: result.VehicelName});
+
+
         console.log(result);
        // this.saveform.patchValue('CarringToolId', result);
       }

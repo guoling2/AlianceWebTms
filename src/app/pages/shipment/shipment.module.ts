@@ -33,9 +33,9 @@ import { SendsonghuolistfortransferComponent } from './groupforInside/sendsonghu
 import { SendsonghuolistforcircleriptripComponent } from './groupforInside/sendsonghuolistforcircleriptrip/sendsonghuolistforcircleriptrip.component';
 import { SendsonghuolistforouterComponent } from './groupforoutside/sendsonghuolistforouter/sendsonghuolistforouter.component';
 import { ShipplangroudattchlistComponent } from './groupforInside/sendgroupinsidecommonlist/sub/shipplangroudattchlist/shipplangroudattchlist.component';
-import {SelectdriverComponent} from './groupforInside/sub/selectdriver/selectdriver.component';
-import {SelectorderComponent} from './groupforInside/sub/selectorder/selectorder.component';
-import {SelectvehicelComponent} from './groupforInside/sub/selectvehicel/selectvehicel.component';
+import {SelectdriverComponent} from './groupplancommon/selectdriver/selectdriver.component';
+import {SelectorderComponent} from './groupplancommon/selectorder/selectorder.component';
+import {SelectvehicelComponent} from './groupplancommon/selectvehicel/selectvehicel.component';
 import {HeaditemComponent} from './groupforInside/create/sub/headitem/headitem.component';
 import {LogisticitemsComponent} from './groupplancommon/logisticitemssection/logisticitems.component';
 import {SendsonghuolistfortihuoComponent} from './groupforInside/sendsonghuolistfortihuo/sendsonghuolistfortihuo.component';
@@ -55,6 +55,7 @@ import { LogisticpricecaclComponent } from './groupplancommon/logisticpricecacl/
 import { WaibaosendlistComponent } from './groupforoutside/after/waibaoaftersendlist/waibaosendlist.component';
 import { OutsidePlanGroupDetailComponent } from './groupforoutside/waibaodetail/outside-plan-group-detail.component';
 import { LogisticitemdetailComponent } from './groupplancommon/logisticitemdetail/logisticitemdetail.component';
+import {PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
 
 
 
@@ -173,7 +174,8 @@ const routes: Routes = [
     LogistictoreModule,
     DialogModule,
     UploaderModule,
-    ShipplangroupModule
+    ShipplangroupModule,
+    PerfectScrollbarModule
   ],
   exports: [
     FormsModule,

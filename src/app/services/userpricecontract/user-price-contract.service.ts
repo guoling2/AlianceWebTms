@@ -24,9 +24,9 @@ export class UserPriceContractService {
    */
   public Delete(dataid: string): Observable<TmsResponseModle> {
 
+   // api/ApiWithActions/5
 
-
-    return this.httpclient.delete<TmsResponseModle>(this.appConfiguration.Server + '/api/查询地址1/Delete'+ dataid)
+    return this.httpclient.delete<TmsResponseModle>(this.appConfiguration.Server + '/api/UserPriceContract/' + dataid)
       .pipe(
         tap(heroes => console.log(heroes)));
   }

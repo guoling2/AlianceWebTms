@@ -1,9 +1,9 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef, PageEvent} from '@angular/material';
-import {Vehicelmodel} from '../../../../../models/vehiclemanagement/vehicelmodel';
+import {Vehicelmodel} from '../../../../models/vehiclemanagement/vehicelmodel';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {BaseVehicelServiceService} from '../../../../../services/vehiclemanagement/base-vehicel-service.service';
-import {PageQueryResult} from '../../../../../models/page-query-result';
+import {BaseVehicelServiceService} from '../../../../services/vehiclemanagement/base-vehicel-service.service';
+import {PageQueryResult} from '../../../../models/page-query-result';
 
 @Component({
   selector: 'app-selectvehicel',
@@ -23,6 +23,7 @@ export class SelectvehicelComponent implements OnInit {
 
   customeraddressdatasource: Vehicelmodel[] = [];
 
+  private currentcarsource: string;
   constructor(
               private vehicelServiceService: BaseVehicelServiceService,
               private fb: FormBuilder,
@@ -34,14 +35,18 @@ export class SelectvehicelComponent implements OnInit {
       vehicelName: '' ,
       weightcapacity: '',
       volumecapacity: '',
+      vehiceltype: '',
       pageindex: this.pageindex,
       pagesize: 50
     });
   }
 
-  search(pageindex: number) {
+  search(pageindex: number, carsource: string) {
+
+    this.currentcarsource = carsource;
 
     this.form.patchValue({pageindex: pageindex + 1});
+    this.form.patchValue({vehiceltype: carsource});
 
     this.vehicelServiceService.Search(this.form.getRawValue()).subscribe((a: PageQueryResult<Vehicelmodel[]>) => {
       this.customeraddressdatasource = a.QueryResult;
@@ -53,6 +58,8 @@ export class SelectvehicelComponent implements OnInit {
 
   chosevehicel(element: Vehicelmodel) {
 
+    element.VehicelSourceFrom = this.currentcarsource;
+
     this.dialogRef.close(element);
   }
 
@@ -61,6 +68,6 @@ export class SelectvehicelComponent implements OnInit {
   }
 
   changepage($event: PageEvent) {
-    this.search( $event.pageIndex);
+    this.search($event.pageIndex, this.currentcarsource);
   }
 }

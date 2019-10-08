@@ -23,7 +23,7 @@ import {UpdateModelType} from 'src/app/models/tms-data-entity';
 import {ej} from '@syncfusion/ej2-data/dist/global';
 import data = ej.data;
 import {AlertMessageType, EmitAlertMessage, MessageShowType} from '../../../help/emit-alert-message';
-import {SelectvehicelComponent} from '../groupforInside/sub/selectvehicel/selectvehicel.component';
+import {SelectvehicelComponent} from '../groupplancommon/selectvehicel/selectvehicel.component';
 import {Vehicelmodel} from '../../../models/vehiclemanagement/vehicelmodel';
 import {ShipplangroudattchlistComponent} from '../groupforInside/sendgroupinsidecommonlist/sub/shipplangroudattchlist/shipplangroudattchlist.component';
 import {ShimentNoSendGroupView} from '../../../models/shipplangroup/shiment-no-send-group-view';

@@ -22,7 +22,8 @@
       <e-column  headerText='操作' width='115'>
         <ng-template #template let-data>
           <div>
-            <button mat-icon-button type="button"  color="warn" matTooltip="删除">
+            <button mat-icon-button type="button"  color="warn" matTooltip="删除"
+                    appTmssaveconfirm  comfirmMessage="删除运价合同吗，不可恢复！"  (onSuggest)="Del($event)"  [extendata]="data.ContractId">
               <mat-icon>delete</mat-icon>
             </button>
             <button [routerLink]="['/biz/logisticprice-management/price-value-insert',data.ContractId]"

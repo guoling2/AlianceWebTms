@@ -11,6 +11,7 @@ import {OutdriverinsertComponent} from './outdriverinsert/outdriverinsert.compon
 import {FormsHelpModule} from '../../buinesscomponent/forms/formshelp.module';
 import { OutdrivermotifyComponent } from './sub/outdrivermofity/outdrivermotify.component';
 import { OutdriverupdateComponent } from './outdriverupdate/outdriverupdate.component';
+import {LogisticpriceModule} from '../logisticpricemanagement/logisticprice.module';
 
 
 
@@ -49,7 +50,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     CommonbizmoduleModule,
     RouterModule.forChild(routes),
-    FormsHelpModule
+    FormsHelpModule,
+    LogisticpriceModule
   ],
   exports: [
     FormsModule,

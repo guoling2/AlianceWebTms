@@ -12,5 +12,6 @@ export class LogisticMathRequest {
   public  LogisticContractId: string;
 
   public LogisticMathItem: LogisticMathItemModel[];
+  public UseVehicelId: string;
 }
 

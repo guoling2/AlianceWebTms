@@ -35,4 +35,8 @@ export class Vehicelmodel {
    * 载重
    */
   Weightcapacity: number;
+  /**
+   * 车辆来源
+   */
+  VehicelSourceFrom: string;
 }

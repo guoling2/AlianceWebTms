@@ -34,9 +34,16 @@ export class LogisticItemModel extends TmsDataEntity {
 
   PlanOrderItemVol: number;
 
+
+  PlanOrderItemWeightForTon: number;
+
+  PlanOrderItemVolForcubicmeter: number;
+
   LogisticFee: number;
 
   // 完成时间
   FinishDatetime ?: Date;
   OrderLogisticDetailId: string;
+
+
 }

@@ -14,6 +14,7 @@ import {EmitService} from '../../../../help/emit-service';
 import {AlertMessageType, EmitAlertMessage, MessageShowType} from '../../../../help/emit-alert-message';
 import {LogisticItemComponentService} from '../../../../services/shiipplangroup/shipplan-item-service.service';
 import {LogisticMathResponse} from '../../../../models/shipplangroup/logistic-math-response';
+import {AbstractShipmentGroupModel} from '../../../../models/shipplangroup/abstract-shipment-group-model';
 
 @Component({
   selector: 'app-shipment-logisticprice',
@@ -26,6 +27,9 @@ export class LogisticpriceComponent implements OnInit {
   public saveform: FormGroup;
   @Input()
   public usercheckId: string;
+  @Input()
+  public  UseVehicelContainerId = true;
+
 
   public  userPriceContractModel: UserPriceContractModel[];
 
@@ -47,6 +51,8 @@ export class LogisticpriceComponent implements OnInit {
     this.saveform.addControl('LogisticFeeBlanceMethod', new FormControl({value: '10', disabled: false}));
 
     this.saveform.addControl('UseVehicelContainerId', new FormControl());
+
+    this.saveform.addControl('UseVehicelWeight', new FormControl());
 
     this.saveform.addControl('SubClassFee', new FormGroup({
       Prepaidamt: new FormControl(0),
@@ -78,30 +84,36 @@ export class LogisticpriceComponent implements OnInit {
       return;
     }
 
-    const inputvalue =  <OutsideShipmentGroupModel>this.saveform.getRawValue();
+    const inputvalue =  <AbstractShipmentGroupModel>this.saveform.getRawValue();
 
-    if (inputvalue.TrincId === null) {
+    if (inputvalue.SendTrincId === null) {
       this.emitService.eventEmit.emit(
         new EmitAlertMessage(AlertMessageType.Error, '系统信息', '请选择要计费的运输代表', MessageShowType.Toast));
       return;
     }
-    if (inputvalue.LogisticContractId === null) {
-      this.emitService.eventEmit.emit(
-        new EmitAlertMessage(AlertMessageType.Error, '系统信息', '请选择一个运输协议', MessageShowType.Toast));
-      return;
-    }
+
+
+      if (inputvalue.LogisticContractId === null) {
+        this.emitService.eventEmit.emit(
+          new EmitAlertMessage(AlertMessageType.Error, '系统信息', '请选择一个运输协议', MessageShowType.Toast));
+        return;
+      }
+
+  if (this.UseVehicelContainerId) {
     if (inputvalue.UseVehicelContainerId === null) {
       this.emitService.eventEmit.emit(
         new EmitAlertMessage(AlertMessageType.Error, '系统信息', '请选择一个运输车型', MessageShowType.Toast));
       return;
     }
-
+     } else {
+     inputvalue.UseVehicelContainerId = 0;
+  }
     console.log(inputvalue);
 
     const x = new LogisticMathRequest();
     x.LogisticContractId = inputvalue.LogisticContractId;
-    x.RunTincName = inputvalue.TrincName;
-    x.TrincId = inputvalue.TrincId;
+    x.RunTincName = inputvalue.SendTrincName;
+    x.TrincId = inputvalue.SendTrincId;
     x.UseVehicelContainerId = inputvalue.UseVehicelContainerId;
     x.LogisticMathItem = [];
     this.itemServiceService.LogisticItemSource.forEach(a => {
@@ -116,6 +128,8 @@ export class LogisticpriceComponent implements OnInit {
           TotalCount: a.PlanOrderItemCount });
 
     });
+
+    console.log(x);
 
     const dialogRef = this.dialog.open(LogisticpricecaclComponent, {
       minWidth: 50,

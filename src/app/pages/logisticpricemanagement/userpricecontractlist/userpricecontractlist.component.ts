@@ -6,6 +6,9 @@ import {MatDialog} from '@angular/material/dialog';
 import {ActivatedRoute} from '@angular/router';
 import {UserPriceContractService} from '../../../services/userpricecontract/user-price-contract.service';
 import {UserPriceContractModel} from '../../../models/UserPriceContract/user-price-contract-model';
+import {TmssaveconfirmEvent} from '../../../directive/tmssaveconfirm.directive';
+import {EmitService} from '../../../help/emit-service';
+import {AlertMessageType, EmitAlertMessage, MessageShowType} from '../../../help/emit-alert-message';
 
 @Component({
   selector: 'app-biz-userpricecontractlist',
@@ -18,7 +21,7 @@ export class UserpricecontractlistComponent implements OnInit {
 
    usercontractdatasource: UserPriceContractModel[];
 
-  constructor(private route: ActivatedRoute, private dialog: MatDialog, private userPriceContractService: UserPriceContractService) { }
+  constructor(private emitService: EmitService,private route: ActivatedRoute, private dialog: MatDialog, private userPriceContractService: UserPriceContractService) { }
 
   ngOnInit() {
 
@@ -50,6 +53,18 @@ export class UserpricecontractlistComponent implements OnInit {
   }
 
   routeto(ContractId: string) {
+
+  }
+
+  Del(event: TmssaveconfirmEvent) {
+
+    if (event.ActionFlag) {
+      this.userPriceContractService.Delete(event.ExtendData.toString()).subscribe(a => {
+        this.emitService.eventEmit.emit(
+          new EmitAlertMessage(AlertMessageType.Info, '系统信息', a.Info, MessageShowType.Toast));
+        this.search();
+      });
+    }
 
   }
 }

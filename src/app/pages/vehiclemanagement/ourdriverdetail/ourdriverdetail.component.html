@@ -13,106 +13,118 @@
 </div>
 
 <div *ngIf="modeldata">
-  <div class="bendbox">
-    <div class="serttits"><i class="fas fa-user-alt"></i>车主信息</div>
-    <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
-      <div fxFlex="32">
-        资源编号：<ejs-textbox   [(ngModel)]="modeldata.ResourceId" ></ejs-textbox>
-      </div>
-      <div fxFlex="32">
-        姓名：<ejs-textbox   [(ngModel)]="modeldata.Drname" ></ejs-textbox>
-      </div>
-      <div fxFlex="32">
-        联系电话：<ejs-textbox   [(ngModel)]="modeldata.Drtel" ></ejs-textbox>
-      </div>
-    </div>
-    <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
-      <div fxFlex="32">
-        身份证号：<ejs-textbox   [(ngModel)]="modeldata.Dridnum" ></ejs-textbox>
-      </div>
-      <div fxFlex="32">
-        驾驶证号：<ejs-textbox   [(ngModel)]="modeldata.Drlicensenum" ></ejs-textbox>
-      </div>
-      <div fxFlex="32">
-        家庭住址：<ejs-textbox   [(ngModel)]="modeldata.Draddr" ></ejs-textbox>
-      </div>
-    </div>
 
-  </div>
-  <div class="bendbox">
-    <div class="serttits"><i class="fas fa-car"></i>车辆信息</div>
-    <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
-      <div fxFlex="19">
-        车牌号码：<ejs-textbox   [(ngModel)]="modeldata.Trnum" readonly="readonly"  ></ejs-textbox>
+  <mat-tab-group>
+    <mat-tab label="司机&车辆">  <div class="bendbox">
+      <div class="serttits"><i class="fas fa-user-alt"></i>车主信息</div>
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+        <div fxFlex="32">
+          资源编号：<ejs-textbox   [(ngModel)]="modeldata.ResourceId" ></ejs-textbox>
+        </div>
+        <div fxFlex="32">
+          姓名：<ejs-textbox   [(ngModel)]="modeldata.Drname" ></ejs-textbox>
+        </div>
+        <div fxFlex="32">
+          联系电话：<ejs-textbox   [(ngModel)]="modeldata.Drtel" ></ejs-textbox>
+        </div>
       </div>
-      <div fxFlex="19">
-        车辆类型：<ejs-textbox   [(ngModel)]="modeldata.Trtype"  readonly="readonly" ></ejs-textbox>
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+        <div fxFlex="32">
+          身份证号：<ejs-textbox   [(ngModel)]="modeldata.Dridnum" ></ejs-textbox>
+        </div>
+        <div fxFlex="32">
+          驾驶证号：<ejs-textbox   [(ngModel)]="modeldata.Drlicensenum" ></ejs-textbox>
+        </div>
+        <div fxFlex="32">
+          家庭住址：<ejs-textbox   [(ngModel)]="modeldata.Draddr" ></ejs-textbox>
+        </div>
       </div>
-      <div fxFlex="19">
-        属性：<ejs-textbox   [(ngModel)]="modeldata.Source" readonly="readonly"  ></ejs-textbox>
-      </div>
-      <div fxFlex="19">
-        载重：<ejs-textbox   [(ngModel)]="modeldata.Weight" readonly="readonly"  ></ejs-textbox>
-      </div>
-      <div fxFlex="19">
-        容积：<ejs-textbox   [(ngModel)]="modeldata.Volume" readonly="readonly"  ></ejs-textbox>
-      </div>
-    </div>
-    <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
-      <div fxFlex="19">
-        长：<ejs-textbox   [(ngModel)]="modeldata.Length"  readonly="readonly" ></ejs-textbox>
-      </div>
-      <div fxFlex="19">
-        宽：<ejs-textbox   [(ngModel)]="modeldata.Width" readonly="readonly"  ></ejs-textbox>
-      </div>
-      <div fxFlex="19">
-        高：<ejs-textbox   [(ngModel)]="modeldata.Height"  readonly="readonly" ></ejs-textbox>
-      </div>
-      <div fxFlex="19">
-        GPS信息：<ejs-textbox  placeholder="GPS厂商"  [(ngModel)]="modeldata.Gpstype" readonly="readonly"  ></ejs-textbox>
-      </div>
-      <div fxFlex="19">
-        <ejs-textbox  placeholder="GPS机构号" style="margin-top:21px" [(ngModel)]="modeldata.Gpsno" readonly="readonly"  ></ejs-textbox>
-      </div>
-    </div>
-  </div>
-  <div class="bendbox">
-    <div class="serttits"><i class="fas fa-info-circle"></i>其他</div>
-    <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
-      <div fxFlex="15"> 计费合同:<mat-checkbox style="margin-left: 5px;" [(ngModel)]="modeldata.AllowAddHandlerFee" readonly="readonly"></mat-checkbox></div>
-      <div fxFlex="15">
-
-        状态：<mat-checkbox  [(ngModel)]="modeldata.Enabel"  style="margin-left: 5px;" readonly="readonly" ></mat-checkbox>
-      </div>
-      <div fxFlex="15">
-        平台用户：<mat-checkbox  [(ngModel)]="modeldata.IsplatformUser"  style="margin-left: 5px;" readonly="readonly" ></mat-checkbox>
-      </div>
-      <div fxFlex="55"></div>
-    </div>
-    <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_20">
-      <div fxFlex="19">
-        <table class="mulproperty">
-          <tr>
-            <td class="left-side">创建人：</td><td><ejs-textbox readonly="readonly" [(ngModel)]="modeldata.CreateUser" ></ejs-textbox></td>
-          </tr>
-        </table>
-      </div>
-      <div fxFlex="19">
-        <table class="mulproperty">
-          <tr>
-            <td class="left-side">创建时间：</td><td><ejs-textbox  [(ngModel)]="modeldata.CreateDateTime" readonly="readonly"  ></ejs-textbox></td>
-          </tr>
-        </table>
-      </div>
-      <div fxFlex="59.6"></div>
 
     </div>
-    <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
-      <div fxFlex="100">
-        备注：<ejs-textbox  rows="3" [multiline]="true" [(ngModel)]="modeldata.Mark" ></ejs-textbox>
+      <div class="bendbox">
+        <div class="serttits"><i class="fas fa-car"></i>车辆信息</div>
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+          <div fxFlex="19">
+            车牌号码：<ejs-textbox   [(ngModel)]="modeldata.Trnum" readonly="readonly"  ></ejs-textbox>
+          </div>
+          <div fxFlex="19">
+            车辆类型：<ejs-textbox   [(ngModel)]="modeldata.Trtype"  readonly="readonly" ></ejs-textbox>
+          </div>
+          <div fxFlex="19">
+            属性：<ejs-textbox   [(ngModel)]="modeldata.Source" readonly="readonly"  ></ejs-textbox>
+          </div>
+          <div fxFlex="19">
+            载重：<ejs-textbox   [(ngModel)]="modeldata.Weight" readonly="readonly"  ></ejs-textbox>
+          </div>
+          <div fxFlex="19">
+            容积：<ejs-textbox   [(ngModel)]="modeldata.Volume" readonly="readonly"  ></ejs-textbox>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+          <div fxFlex="19">
+            长：<ejs-textbox   [(ngModel)]="modeldata.Length"  readonly="readonly" ></ejs-textbox>
+          </div>
+          <div fxFlex="19">
+            宽：<ejs-textbox   [(ngModel)]="modeldata.Width" readonly="readonly"  ></ejs-textbox>
+          </div>
+          <div fxFlex="19">
+            高：<ejs-textbox   [(ngModel)]="modeldata.Height"  readonly="readonly" ></ejs-textbox>
+          </div>
+          <div fxFlex="19">
+            GPS信息：<ejs-textbox  placeholder="GPS厂商"  [(ngModel)]="modeldata.Gpstype" readonly="readonly"  ></ejs-textbox>
+          </div>
+          <div fxFlex="19">
+            <ejs-textbox  placeholder="GPS机构号" style="margin-top:21px" [(ngModel)]="modeldata.Gpsno" readonly="readonly"  ></ejs-textbox>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
+      <div class="bendbox">
+        <div class="serttits"><i class="fas fa-info-circle"></i>其他</div>
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+          <div fxFlex="15"> 计费合同:<mat-checkbox style="margin-left: 5px;" [(ngModel)]="modeldata.AllowAddHandlerFee" readonly="readonly"></mat-checkbox></div>
+          <div fxFlex="15">
+
+            状态：<mat-checkbox  [(ngModel)]="modeldata.Enabel"  style="margin-left: 5px;" readonly="readonly" ></mat-checkbox>
+          </div>
+          <div fxFlex="15">
+            平台用户：<mat-checkbox  [(ngModel)]="modeldata.IsplatformUser"  style="margin-left: 5px;" readonly="readonly" ></mat-checkbox>
+          </div>
+          <div fxFlex="55"></div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_20">
+          <div fxFlex="19">
+            <table class="mulproperty">
+              <tr>
+                <td class="left-side">创建人：</td><td><ejs-textbox readonly="readonly" [(ngModel)]="modeldata.CreateUser" ></ejs-textbox></td>
+              </tr>
+            </table>
+          </div>
+          <div fxFlex="19">
+            <table class="mulproperty">
+              <tr>
+                <td class="left-side">创建时间：</td><td><ejs-textbox  [(ngModel)]="modeldata.CreateDateTime" readonly="readonly"  ></ejs-textbox></td>
+              </tr>
+            </table>
+          </div>
+          <div fxFlex="59.6"></div>
+
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+          <div fxFlex="100">
+            备注：<ejs-textbox  rows="3" [multiline]="true" [(ngModel)]="modeldata.Mark" ></ejs-textbox>
+          </div>
+        </div>
+      </div></mat-tab>
+    <mat-tab label="运费协议">
+      <app-biz-userpricecontractlist></app-biz-userpricecontractlist>
+    </mat-tab>
+
+    <mat-tab label="联盟用户信息"></mat-tab>
+  </mat-tab-group>
+
+
+
+
 </div>
 
 <!--<div class="bendbox">-->

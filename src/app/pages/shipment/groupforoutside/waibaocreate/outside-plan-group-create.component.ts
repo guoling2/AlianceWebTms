@@ -82,7 +82,7 @@ export class OutsidePlanGroupCreateComponent implements OnInit {
 
       } else {
         this.emitService.eventEmit.emit(
-          new EmitAlertMessage(AlertMessageType.Error, '系统信息', '验证失败', MessageShowType.Toast));
+          new EmitAlertMessage(AlertMessageType.Error, '系统信息', a.Info, MessageShowType.Toast));
       }
     });
   }

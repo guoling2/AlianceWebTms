@@ -20,8 +20,8 @@
   <ng-container *ngIf="insideShipmentGroup!=null">
     <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
       <div fxFlex="32">派车单号：<ejs-textbox  placeholder="派车单号" ngModel="{{insideShipmentGroup.ShipmentGroupId}}" readonly></ejs-textbox></div>
-      <div fxFlex="32">配载类型：<ejs-textbox  placeholder="配载类型" ngModel="{{insideShipmentGroup.MissonType}}" readonly></ejs-textbox></div>
-      <div fxFlex="32">合计运费：<ejs-textbox  placeholder="合计运费" ngModel="{{insideShipmentGroup.TotalLogisticFee}}" readonly></ejs-textbox></div>
+      <div fxFlex="32">配载类型：<ejs-textbox  placeholder="配载类型" ngModel="{{insideShipmentGroup.TaskTypeDesc}}" readonly></ejs-textbox></div>
+      <div fxFlex="32">合计运费：<ejs-textbox  placeholder="合计运费" ngModel="{{insideShipmentGroup.TransportHandlerFee+insideShipmentGroup.TransportContractFee}}" readonly></ejs-textbox></div>
     </div>
     <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
       <div fxFlex="32">发运时间：<ejs-textbox  placeholder="发运时间" ngModel="{{insideShipmentGroup.SendCarTime}}" readonly></ejs-textbox></div>

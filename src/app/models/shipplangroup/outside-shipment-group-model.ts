@@ -12,6 +12,8 @@ export class OutsideShipmentGroupModel extends AbstractShipmentGroupModel {
   public CarryingToolName: string;
   public SendShipmentIds: string[];
 
+  public VehicelWeight: number;
+
 
 }
 

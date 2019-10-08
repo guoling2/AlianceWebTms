@@ -44,7 +44,7 @@ export class LogisticItemComponentService {
   }
    public  AttchItem(item: LogisticItemModel): void {
 
-
+   // 读取的数据的单位是克和立方厘米  需要转换为吨和方
 
     item.UpdateModelType = UpdateModelType.Insert;
 
@@ -57,8 +57,8 @@ export class LogisticItemComponentService {
       item.SquenceId += this.LogisticItemSource.length + 1;
 
       this.SendOrderCount = this.SendOrderCount + item.PlanOrderItemCount;
-      this.SendOrderVol = this.SendOrderVol + item.PlanOrderItemVol;
-      this.SendOrderWeight = this.SendOrderWeight + item.PlanOrderItemWeight;
+      this.SendOrderVol = this.SendOrderVol + (item.PlanOrderItemVol / 1000 / 1000);
+      this.SendOrderWeight = this.SendOrderWeight + (item.PlanOrderItemWeight / 1000 / 1000);
 
       this.LogisiticItemAddBehavior.next(item);
 

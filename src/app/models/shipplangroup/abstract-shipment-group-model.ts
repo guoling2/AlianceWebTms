@@ -35,6 +35,11 @@ export class AbstractShipmentGroupModel {
   public  FinaceStatued: ShipmentGroupFinaceStatued;
 
   public SubClassFee: ShipmentSubClassFee;
+
+  public SendTrincName: string;
+
+  public SendTrincId: string;
+
   /**
    * 总费用合计
    */

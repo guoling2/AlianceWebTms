@@ -12,13 +12,15 @@ import {HighlightDirective} from '../directive/highlight.directive';
 import {SimpleorderdetailComponent} from '../pages/myorder/simpleorderdetail/simpleorderdetail.component';
 import {TmssaveconfirmDirective} from '../directive/tmssaveconfirm.directive';
 import {PricetemplateinsertComponent} from '../pages/logisticpricemanagement/pricetemplateinsert/pricetemplateinsert.component';
+import {TmsnumberDirective} from '../directive/tmsnumber.directive';
 
 @NgModule({
   declarations: [
     SimpleorderdetailComponent,
     ModalPageDirective,
     HighlightDirective,
-    TmssaveconfirmDirective
+    TmssaveconfirmDirective,
+    TmsnumberDirective
   ],
   imports: [
     CommonModule,
