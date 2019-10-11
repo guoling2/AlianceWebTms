@@ -18,3 +18,6 @@
 .grodebtn {width:100%;height:auto;text-align:right;border-bottom:1px #eee solid;padding-bottom:12px;margin-bottom:15px}
 .grodebtn button {margin-right:10px}
 .margin_t_10 {margin-top:10px}
+.totalbox {width:100%;height:auto;padding:10px 0 5px 0;background:#fff;border-top:1px #ccc dashed;margin-top:10px}
+.totalbox span {margin:0 10px;color:#666}
+.totalbox span b {font-weight: normal;color:#e21641}

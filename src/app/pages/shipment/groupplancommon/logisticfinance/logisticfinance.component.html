@@ -1,0 +1,137 @@
+<div *ngIf="model">
+<div class="bendbox">
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="titboxs">
+    <div fxFlex="80">
+      <h1><i class="fas fa-file"></i>运费明细 </h1>
+    </div>
+    <div fxFlex="20" style="text-align: right">
+      <button ejs-button cssClass="e-info mat-width">费用调整</button>
+    </div>
+  </div>
+
+  <div  fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+    <div fxFlex="32">
+      合同运费: <ejs-numerictextbox min="0"   [value]="model.TransportContractFee" ></ejs-numerictextbox>
+    </div>
+    <div fxFlex="32">
+      手工运费: <ejs-numerictextbox step='1' min="0" [value]="model.TransportHandlerFee" ></ejs-numerictextbox>
+    </div>
+    <div fxFlex="32">
+      合计  <ejs-numerictextbox step='1' min="0" [value]="model.TransportAmount" ></ejs-numerictextbox>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_101">
+    <div fxFlex="15">
+      预付费：<ejs-numerictextbox  min="0" showSpinButton="false"   [value]="model.SubClassFee.Prepaidamt" ></ejs-numerictextbox>
+    </div>
+    <div fxFlex="15">
+      油卡费：<ejs-numerictextbox  min="0"  showSpinButton="false" [value]="model.SubClassFee.Cardamt"  ></ejs-numerictextbox>
+    </div>
+    <div fxFlex="15">
+      押金：<ejs-numerictextbox  min="0" showSpinButton="false"  [value]="model.SubClassFee.Depositamt"  ></ejs-numerictextbox>
+    </div>
+    <div fxFlex="15">
+      到付：<ejs-numerictextbox  min="0" showSpinButton="false"  [value]="model.SubClassFee.Arrivalamt"  ></ejs-numerictextbox>
+    </div>
+    <div fxFlex="15">
+      回付：<ejs-numerictextbox  min="0"  showSpinButton="false"  [value]="model.SubClassFee.Returnamt" ></ejs-numerictextbox>
+    </div>
+    <div fxFlex="15">
+      月结：<ejs-numerictextbox  min="0"  showSpinButton="false"  [value]="model.SubClassFee.Monthlyamt"  ></ejs-numerictextbox>
+    </div>
+  </div>
+</div>
+
+<div class="bendbox" style="padding-top:0!important;">
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="titboxs" style="margin-top:10px">
+    <div fxFlex="80">
+      <h1><i class="fas fa-file-contract"></i>合同信息 </h1>
+    </div>
+    <div fxFlex="20" style="text-align: right">
+      <button ejs-button cssClass="e-info mat-width">重新核算</button>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="">
+    <div fxFlex="24">
+      协议类型：<ejs-textbox  [value]="model.AutomaticContract.ContractType" readonly></ejs-textbox>
+    </div>
+    <div fxFlex="24">
+      协议名称：<ejs-textbox  [value]="model.AutomaticContract.ContractName" readonly></ejs-textbox>
+    </div>
+    <div fxFlex="24">
+      合约费用：<ejs-textbox [value]="model.AutomaticContract.TotalPrice.toFixed(3)" readonly></ejs-textbox>
+    </div>
+    <div fxFlex="24">
+      结算方式：<ejs-textbox [value]="model.AutomaticContract.CaclMethodDesc" readonly></ejs-textbox>
+    </div>
+  </div>
+
+</div>
+<div class="bendbox" style="padding-top:0!important;">
+  <h1 class="h1s"><i class="fas fa-coins"></i>核算明细</h1>
+  <table>
+    <thead>
+      <tr>
+        <th><span>编号</span></th>
+        <th><span>起运-到货</span></th>
+        <th><span>运单件数</span></th>
+        <th><span>运单重量</span></th>
+        <th><span>运单体积</span></th>
+        <th><span>运输单价</span></th>
+        <th><span>最低价</span></th>
+        <th><span>间接成本</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let a of model.AutomaticContract.ShipmentPayListCharges">
+        <td>{{a.SequenceId}}</td>
+        <td>{{a.SendArea}}-{{a.EndArea}}</td>
+        <td>{{a.TotalCount.toFixed(3)}}(件)</td>
+        <td>{{a.TotalCubicmetres.toFixed(3)}}(方)</td>
+        <td>{{a.TotalTon.toFixed(3)}}(吨)</td>
+        <td>
+          <span>数量：{{a.SingelCountPrice.toFixed(3)}}￥/件</span>|
+          <span>体积：{{a.SingelVolprice.toFixed(3)}}￥/方</span>|
+          <span>重量：{{a.SingelWeightprice.toFixed(3)}}￥/吨  </span>
+        </td>
+        <td>{{a.MinPrice.toFixed(3)}}</td>
+        <td>{{a.IndirectPrice.toFixed(3)}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="bendbox">
+<h1 class="h1s"><i class="fas fa-info-circle"></i>结算状态 </h1>
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="">
+    <div fxFlex="32">
+      应结金额：<ejs-numerictextbox  min="0"  showSpinButton="false" [value]="model.FinaceStatued.TotalGatheringAmount" [enabled]="false" ></ejs-numerictextbox>
+    </div>
+    <div fxFlex="32">
+      已结金额：<ejs-numerictextbox  min="0"  showSpinButton="false"  [value]="model.FinaceStatued.FinishGatheringAmount" [enabled]="false"></ejs-numerictextbox>
+    </div>
+    <div fxFlex="32">
+      未结金额：<ejs-numerictextbox  min="0" showSpinButton="false"  [value]="model.FinaceStatued.UnGatheringAmount" [enabled]="false" ></ejs-numerictextbox>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="margin-t10">
+    <div fxFlex="16">
+      是否清账：<ejs-checkbox label="清账" [checked]="model.FinaceStatued.IsClear" [disabled] = "true"></ejs-checkbox>
+    </div>
+    <div fxFlex="16">
+      是否结算：<ejs-checkbox label="不结算" [checked]="model.FinaceStatued.NoPayFlag" [disabled] = "true"></ejs-checkbox>
+    </div>
+    <div fxFlex="66">
+      不结算原因：<ejs-textbox  [value]="model.FinaceStatued.NoPayReason"  readonly></ejs-textbox>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="margin-t10">
+    <div fxFlex="49.5">
+      结算编号：<ejs-textbox  [value]="model.FinaceStatued.FianceId"  readonly></ejs-textbox>
+    </div>
+    <div fxFlex="49.5">
+      结算日期：<ejs-textbox  [value]="model.FinaceStatued.FinanceFinishDateTime"  readonly></ejs-textbox>
+    </div>
+  </div>
+
+</div>
+</div>

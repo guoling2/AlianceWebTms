@@ -198,7 +198,7 @@ export class NavigationModel {
         // },
         {
           'id': 'kefu',
-          'title': '客服',
+          'title': '过程跟踪',
           'type': 'collapse',
           'icon': 'supervisor_account',
           'children': [
@@ -260,6 +260,90 @@ export class NavigationModel {
             //   'type': 'item',
             //   'url': '/biz/materials/lists'
             // }
+          ]
+        },
+        {
+          'id': 'fa-calculator',
+          'title': '计费与对账',
+          'type': 'collapse',
+          'icon': 'person_pin',
+          'children': [
+            {
+              'id': 'OrderCharge',
+              'title': '运单收入',
+              'type': 'item',
+              'url': '/biz/logisticprice-management/price-template-list'
+            },
+            {
+              'id': 'TripCharge',
+              'title': '运输支出',
+              'type': 'item',
+              'url': '/biz/logisticprice-management/price-template-list'
+            },
+            {
+              'id': 'XieCheCharge',
+              'title': '装卸支出',
+              'type': 'item',
+              'url': '/biz/logisticprice-management/price-template-list'
+            },
+            {
+              'id': 'OrderBill',
+              'title': '客户对账',
+              'type': 'item',
+              'url': '/biz/logisticprice-management/price-template-list'
+            },
+            {
+              'id': 'XieCheBill',
+              'title': '装卸对账',
+              'type': 'item',
+              'url': '/biz/logisticprice-management/price-template-list'
+            },
+            {
+              'id': 'CarrierBill',
+              'title': '服务商对账',
+              'type': 'item',
+              'url': '/biz/logisticprice-management/price-template-list'
+            },
+            {
+              'id': 'DriverBill',
+              'title': '司机对账',
+              'type': 'item',
+              'url': '/biz/logisticprice-management/price-template-list'
+            },
+
+          ]
+        },
+
+        {
+          'id': 'fa-pay',
+          'title': '结算与交账',
+          'type': 'collapse',
+          'icon': 'person_pin',
+          'children': [
+            {
+              'id': 'CustSettle',
+              'title': '客户结算',
+              'type': 'item',
+              'url': '/biz/logisticprice-management/price-template-list'
+            },
+            {
+              'id': 'TransportSettle',
+              'title': '运输结算',
+              'type': 'item',
+              'url': '/biz/logisticprice-management/price-template-list'
+            },
+            {
+              'id': 'XiecheSettle',
+              'title': '装卸结算',
+              'type': 'item',
+              'url': '/biz/logisticprice-management/price-template-list'
+            },
+            {
+              'id': 'FnAccountTransAudit',
+              'title': '交款审核',
+              'type': 'item',
+              'url': '/biz/logisticprice-management/price-template-list'
+            },
           ]
         },
         {

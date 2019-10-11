@@ -25,12 +25,12 @@ export class CallBackComponent implements OnInit, OnDestroy {
         });
       }
 
-    this.oidcSecurityService.onCheckSessionChanged.subscribe(
-      (checksession: boolean) => {
-        console.log('...recieved a check session event');
-        this.checksession = checksession;
-        this.refreshSession();
-      });
+    // this.oidcSecurityService.onCheckSessionChanged.subscribe(
+    //   (checksession: boolean) => {
+    //     console.log('...recieved a check session event');
+    //     this.checksession = checksession;
+    //     this.refreshSession();
+    //   });
 
     this.oidcSecurityService.onAuthorizationResult.subscribe(
       (authorizationResult: AuthorizationResult) => {

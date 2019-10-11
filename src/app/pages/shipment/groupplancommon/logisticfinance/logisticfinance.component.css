@@ -1,0 +1,18 @@
+.bendbox {margin:0px 0px 0px 0px;width:auto;padding:10px 0px 5px 0px;background:#fff;}
+.listfrom button {margin-right:15px}
+.mat-form-field {margin-right:15px}
+.titboxs {border-bottom:1px #e1e1e1 solid;padding:2px 0 8px 0;margin-bottom:10px}
+.h1s {border-bottom:1px #e1e1e1 solid;padding:2px 0 8px 0;margin-bottom:10px;font-size:16px;}
+.titboxs h1 {font-size:16px;margin:10px 0 0 0;}
+.bendbox h1 i {margin-right:5px;}
+.hrline {height:1px;display: inline;background:#e21641;margin:10px 0;overflow: auto;width:100%;clear: both}
+.margin_t_101 {margin-top:8px;border-top:1px #ccc dashed;padding-top:10px}
+.margin_t_2 {text-align: center;margin-top:10px}
+.margin_t_2 button {width:auto;}
+.bendbox table {border-collapse:collapse;border-spacing:0;font-size:13px;font-weight: normal;text-align:left;width:100%}
+.bendbox table td {border:1px #eee solid;padding:8px 10px}
+.bendbox table th {border:1px #eee solid;padding:8px 10px}
+.bendbox table tr:hover {background:#f5f5f5;cursor: pointer}
+.bendbox table thead tr {background:#f5f5f5;}
+.bendbox table tbody span {margin:0 3px;}
+.margin-t10 {margin-top:5px}

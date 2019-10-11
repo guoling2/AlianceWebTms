@@ -29,6 +29,8 @@ export class AbstractShipmentGroupModel {
 
   public  TransportContractFee: number; // 合同运费
 
+  public TotalLogisticFee: number;// inside部分添加 Out部分未确认
+
   public Mark: string; // 运输备注
 
 
@@ -40,6 +42,9 @@ export class AbstractShipmentGroupModel {
 
   public SendTrincId: string;
 
+  public  SendOrderCount: number;
+public  SendOrderWeight: number;
+public  SendOrderVol: number;
   /**
    * 总费用合计
    */

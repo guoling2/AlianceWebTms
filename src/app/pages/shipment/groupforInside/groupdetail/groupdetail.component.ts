@@ -10,12 +10,14 @@ import {DialogservicesService} from '../../../../help/dialogservices.service';
 import {EmitService} from '../../../../help/emit-service';
 import {AlertMessageType, EmitAlertMessage, MessageShowType} from '../../../../help/emit-alert-message';
 import {TmsresponseStatusCode} from '../../../../models/tms-response.module';
-
+import {DataGridWeightConvert} from '../../../../SyncfusionHelp/data-grid-weight-convert';
+import { AggregateService, GroupService, GridComponent } from '@syncfusion/ej2-angular-grids';
 @Component({
 
   selector: 'app-groupdetail',
   templateUrl: './groupdetail.component.html',
-  styleUrls: ['./groupdetail.component.css']
+  styleUrls: ['./groupdetail.component.css'],
+  providers: [AggregateService, GroupService]
 })
 export class GroupdetailComponent implements OnInit {
 
@@ -26,6 +28,8 @@ export class GroupdetailComponent implements OnInit {
 
   public editSettings: EditSettingsModel;
 
+
+  public dataGridWeightConvert: DataGridWeightConvert;
   constructor(
     private emitService: EmitService,
     private logisticItemService: LogisticItemService,

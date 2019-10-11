@@ -11,6 +11,7 @@ import { filter, map, mergeMap } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
 import { NavigationService } from './navigation/navigation.service';
 import { ToastCloseArgs } from '@syncfusion/ej2-angular-notifications';
+import {AuthorizationResult, OidcSecurityService} from 'angular-auth-oidc-client';
 
 @Component({
   selector: 'app-admin',
@@ -49,7 +50,7 @@ export class AdminComponent implements OnInit {
 
   constructor(public emitService: EmitService, private router: Router,
     private activatedRoute: ActivatedRoute,
-    private titleService: Title, public navigationService: NavigationService) {
+    private titleService: Title, public navigationService: NavigationService,private oidcSecurityService: OidcSecurityService) {
 
 
     // 初始化的时候把首页添加进来
@@ -144,6 +145,20 @@ export class AdminComponent implements OnInit {
       }
     });
 
+    this.oidcSecurityService.onCheckSessionChanged.subscribe(
+      (checksession: boolean) => {
+        console.log('...recieved a check session event');
+      //  this.checksession = checksession;
+        this.refreshSession();
+      });
+
+  }
+  refreshSession(): void {
+   // this.tmsAuthServiceService.revokeToken();
+    // Stores the attempted URL for redirecting.
+   // this.tmsAuthServiceService.setRedirectUrl(this.router.url);
+   // this.oidcSecurityService.refreshSession();
+    this.oidcSecurityService.authorize();
   }
 
   /**

@@ -56,6 +56,7 @@ import { WaibaosendlistComponent } from './groupforoutside/after/waibaoaftersend
 import { OutsidePlanGroupDetailComponent } from './groupforoutside/waibaodetail/outside-plan-group-detail.component';
 import { LogisticitemdetailComponent } from './groupplancommon/logisticitemdetail/logisticitemdetail.component';
 import {PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
+import { LogisticfinanceComponent } from './groupplancommon/logisticfinance/logisticfinance.component';
 
 
 
@@ -230,7 +231,8 @@ const routes: Routes = [
     LogisticpricecaclComponent,
     WaibaosendlistComponent,
     OutsidePlanGroupDetailComponent,
-    LogisticitemdetailComponent],
+    LogisticitemdetailComponent,
+    LogisticfinanceComponent],
   entryComponents: [CreateShipmentPlanComponent, AddComponent, DetailComponent, NoselectedComponent, ShipplangroudattchlistComponent,
     SelectdriverComponent, SelectorderComponent, SelectvehicelComponent,
     XiechetransfercodeComponent, ChoselogistictrincComponent, LogisticpricecaclComponent]

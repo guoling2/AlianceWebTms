@@ -12,5 +12,5 @@ export class InsideShipmentGroupModel  extends AbstractShipmentGroupModel {
 
   public ShipmentUserDesc: string;
 
-  public SendShipmentIds: [];
+  public SendShipmentIds: string[];
 }
