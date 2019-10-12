@@ -22,8 +22,8 @@
     <button ejs-button cssClass="e-info mat-width"  style="width:auto!important;" (click)="opentihuo()" >新增派车单</button>
   </ng-container>
   <ng-container *ngIf="GroupSubItemType=='localtihuo'">
-    <button ejs-button cssClass="e-info mat-width"  (click)="opentihuo2('localtihuo')" [disabled]="grid.getSelectedRecords().length<=0">提货返仓</button>
-    <button ejs-button cssClass="e-info mat-width" (click)="opentihuo2('sendnoreturn')"  [disabled]="grid.getSelectedRecords().length<=0">直提直发</button>
+    <button ejs-button cssClass="e-info mat-width"  (click)="opentihuo2('localtihuo')" [disabled]="grid.getSelectedRecords().length<=0">新增提货单</button>
+<!--    <button ejs-button cssClass="e-info mat-width" (click)="opentihuo2('sendnoreturn')"  [disabled]="grid.getSelectedRecords().length<=0">直提直发</button>-->
   </ng-container>
 
 

@@ -86,13 +86,13 @@ export class NavigationModel {
 
             {
               'id': 'wuliu11',
-              'title': '网点送货',
+              'title': '同城配送',
               'type': 'item',
               'url': '/biz/shipment/songhuo'
             },
             {
               'id': 'wuliu22',
-              'title': '网点转运',
+              'title': '干线运输',
               'type': 'item',
               'url': '/biz/shipment/transfer'
             },
