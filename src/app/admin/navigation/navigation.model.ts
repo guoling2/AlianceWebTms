@@ -34,6 +34,13 @@ export class NavigationModel {
               'url': '/biz/myorder/list'
             },
             {
+              'id': 'date-order',
+              'title': '企业订单',
+              'type': 'item',
+              'url': '/biz/myorder/enterprise-order-list'
+            },
+
+            {
               'id': 'wuliu24',
               'title': '订单签收',
               'type': 'item',

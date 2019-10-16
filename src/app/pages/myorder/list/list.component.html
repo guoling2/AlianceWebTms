@@ -51,8 +51,16 @@
     <e-column  headerText='始发区域' field="Originarea" textAlign="left"  width=150></e-column>
     <e-column field='Destarea' headerText='到货区域' textAlign="left"  width=150></e-column>
     <e-column field='TotalCount' headerText='订单件数'  width=120></e-column>
-    <e-column field='TotalWeight' headerText='订单重量'  width=120></e-column>
-    <e-column field='TotalVolume' headerText='订单体积'  width=130></e-column>
+    <e-column field='TotalWeight' headerText='订单重量'  width=120>
+      <ng-template #template let-data>
+        {{data.TotalWeight | tmsweightconvert :'g'}}
+      </ng-template>
+    </e-column>
+    <e-column field='TotalVolume' headerText='订单体积'  width=130>
+      <ng-template #template let-data>
+        {{data.TotalVolume | tmsvolumeconvert :'cm'}}
+      </ng-template>
+    </e-column>
     <e-column field='TotalRealAmount' headerText='实付运费'  width=120></e-column>
     <e-column field='PaymentStatusId' headerText='财务状态'  width=120></e-column>
     <e-column field='CustomePaymentMethod' headerText='结算方式'  width=120></e-column>

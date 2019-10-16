@@ -1,0 +1,34 @@
+
+<ejs-grid #grid  allowResizing= 'true' height="{{gridheight}}"
+          (dataStateChange)="dataStateChange($event)"
+          [allowExcelExport]='true'  allowSorting='false'
+          [allowSelection]="true"
+          [enableHover]="false"
+          allowPaging='true'  class="contlistbox">
+  <e-columns >
+
+    <e-column type='checkbox' width='50'></e-column>
+    <e-column   headerText='客户单号'  width='165'>
+      <ng-template #template let-data>
+        <a [routerLink]="['/biz/myorder/enterprise-order-detail', data.OrderSystemOrderId]">{{data.CustomerOrderId }} </a>
+      </ng-template>
+    </e-column>
+    <e-column field='OrigincustomPhysicalDeotName' headerText='提货仓库'  width=170></e-column>
+    <e-column field='DestCity' headerText='到货城市'  width=110></e-column>
+    <e-column field='Destarea' headerText='到货区域'  width=120></e-column>
+    <e-column field='TotalCount' headerText='件数' textAlign="left"  width='150'></e-column>
+    <e-column field='OrderZhWeight' headerText='重货吨' textAlign="left"  width='130'>
+      <ng-template #template let-data>
+        {{data.OrderZhWeight | tmsweightconvert :'g'}}
+      </ng-template>
+    </e-column>
+    <e-column field='OrderPhVol' headerText='泡货方'  textAlign="left" width='150'>
+      <ng-template #template let-data>
+        {{data.OrderPhVol | tmsvolumeconvert :'cm'}}
+      </ng-template>
+    </e-column>
+    <e-column field='StoreName' headerText='预分配网点' textAlign="left"  width=130></e-column>
+    <e-column field='CreateDateTime' headerText='通知时间' textAlign="left"  width=150></e-column>
+    <e-column field='ConfirmDateTime' headerText='接单时间'  width=120></e-column>
+  </e-columns>
+</ejs-grid>

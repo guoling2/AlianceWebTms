@@ -101,3 +101,13 @@ export class Basereportconfig {
    */
   public  static  Report_outsendlistafterlist = 'outsendlistafter';
 }
+
+/**
+ * 企业客户报表
+ */
+export  class EnterpriseCustomer {
+  /**
+   * 运输商查询配分给他的订单数据
+   */
+  public  static  Report_EnterpriseOrderList = 'EnterpriseOrderList';
+}

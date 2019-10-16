@@ -17,11 +17,19 @@ import { PriceanalysisComponent } from './_sub/priceanalysis/priceanalysis.compo
 import { DetailComponent } from './detail/detail.component';
 import { OrderitemtagprintComponent } from './_sub/orderitemtagprint/orderitemtagprint.component';
 import { SimpleorderdetailComponent } from './simpleorderdetail/simpleorderdetail.component';
+import { EnterpriseOrderListComponent } from './enterprise-order-list/enterprise-order-list.component';
+import { OrderDataListComponent } from './enterprise-order-list/sub/order-data-list/order-data-list.component';
+import { EnterpriseOrderDetailComponent } from './enterprise-order-detail/enterprise-order-detail.component';
+
 
 const routes: Routes = [
   {
     'path': 'list',
     component: MyOrderListComponent
+  },
+  {
+    'path': 'enterprise-order-list',
+    component: EnterpriseOrderListComponent
   },
   {
     'path': 'create',
@@ -30,6 +38,10 @@ const routes: Routes = [
   {
     'path': 'detail/:id',
     component: DetailComponent
+  },
+  {
+    'path': 'enterprise-order-detail/:id',
+    component: EnterpriseOrderDetailComponent
   }
 ];
 
@@ -53,7 +65,9 @@ const routes: Routes = [
     RouterModule
   ],
   declarations: [MyOrderListComponent, OpenMyorderComponent, OrdercustomerComponent,
-    OrderrouteplanComponent, PriceanalysisComponent, DetailComponent, OrderitemtagprintComponent],
+    OrderrouteplanComponent, PriceanalysisComponent, DetailComponent, OrderitemtagprintComponent,
+    OrderDataListComponent,
+    EnterpriseOrderListComponent, EnterpriseOrderDetailComponent],
   entryComponents: [OrdercustomerComponent, OrderrouteplanComponent, PriceanalysisComponent, OrderitemtagprintComponent]
 })
 export class LogistcimyorderModule { }

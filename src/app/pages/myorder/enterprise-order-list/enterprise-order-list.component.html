@@ -1,0 +1,36 @@
+<div class="contentbox">
+  <div class="contentit-l">
+    <mat-card-title>企业订单列表</mat-card-title>
+    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
+  </div>
+  <div class="contenttex-r">
+
+    <button ejs-button cssClass="e-info mat-width"   [disabled]="true" >客户退单</button>
+    <button ejs-button cssClass="e-info mat-width"   [disabled]="true" >订单签收</button>
+    <button ejs-button cssClass="e-info mat-width"   [disabled]="true">流程追踪</button>
+    <button ejs-button cssClass="e-info mat-width mat-reject"
+            appTmssaveconfirm
+            comfirmMessage="确认接单吗?"
+            (onSuggest)="getorder($event)"
+            >客户接单</button>
+  </div>
+</div>
+<form class="listfrom" [formGroup]="searchp" >
+  <mat-form-field class="col-md-3">
+    <input matInput  formControlName="CustomerOrderId" />
+    <span  matPrefix style="color: #888">客户单号：&nbsp;</span>
+  </mat-form-field>
+  <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+</form>
+<div class="contlistbox">
+  <mat-tab-group dynamicHeight="false" disableRipple="true" (selectedTabChange)="tabchanged($event)">
+    <mat-tab label="未接单">
+      <app-order-data-list #outdatagrid searchindex=0   [gridheight]="gridheight" [outer]="outernosend"></app-order-data-list>
+    </mat-tab>
+    <mat-tab label="全部">
+      <app-order-data-list searchindex=1 [gridheight]="gridheight" [outer]="alldata"></app-order-data-list>
+    </mat-tab>
+  <!--  <mat-tab label="未签收"></mat-tab>-->
+
+  </mat-tab-group>
+</div>

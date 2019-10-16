@@ -17,7 +17,7 @@ import { TooltipModule } from '@syncfusion/ej2-angular-popups';
 import { SelectionSettingsModel } from '@syncfusion/ej2-dropdowns';
 import { SidebarModule, MenuAllModule, TreeViewAllModule} from '@syncfusion/ej2-angular-navigations';
 // loadCldr(enNumberData, entimeZoneData);
-
+import {DialogModule} from '@syncfusion/ej2-angular-popups';
 
 @NgModule({
   imports: [
@@ -31,7 +31,7 @@ import { SidebarModule, MenuAllModule, TreeViewAllModule} from '@syncfusion/ej2-
     ToastModule, DropDownButtonModule, RadioButtonModule, TooltipModule, SplitButtonModule, ProgressButtonModule,
     ListBoxAllModule,
     SidebarModule, MenuAllModule, TreeViewAllModule,
-    ComboBoxModule
+    ComboBoxModule, DialogModule
   ],
 
   exports: [
@@ -44,7 +44,7 @@ import { SidebarModule, MenuAllModule, TreeViewAllModule} from '@syncfusion/ej2-
     RichTextEditorAllModule,
     ToastModule, DropDownButtonModule, RadioButtonModule, TooltipModule, SplitButtonModule, ProgressButtonModule,
     SidebarModule, MenuAllModule, TreeViewAllModule,
-    ComboBoxModule
+    ComboBoxModule, DialogModule
   ],
    providers: [
     DetailRowService, PageService

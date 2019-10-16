@@ -49,7 +49,8 @@ export class MyOrderListComponent implements OnInit {
 
       this.grid.dataSource = result;
 
-    }); }
+    });
+  }
 
   /**
    * 创建自有订单后续操作

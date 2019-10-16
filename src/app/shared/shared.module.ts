@@ -13,7 +13,7 @@ import {SimpleorderdetailComponent} from '../pages/myorder/simpleorderdetail/sim
 import {TmssaveconfirmDirective} from '../directive/tmssaveconfirm.directive';
 import {PricetemplateinsertComponent} from '../pages/logisticpricemanagement/pricetemplateinsert/pricetemplateinsert.component';
 import {TmsnumberDirective} from '../directive/tmsnumber.directive';
-import {TmsweightconvertPipe} from '../pipes/tmsweightconvert.pipe';
+import {TmsVolumeconvertPipe, TmsweightconvertPipe} from '../pipes/tmsweightconvert.pipe';
 
 @NgModule({
   declarations: [
@@ -22,8 +22,8 @@ import {TmsweightconvertPipe} from '../pipes/tmsweightconvert.pipe';
     HighlightDirective,
     TmssaveconfirmDirective,
     TmsnumberDirective,
-    TmsweightconvertPipe
-  ],
+    TmsweightconvertPipe,
+    TmsVolumeconvertPipe],
   imports: [
     CommonModule,
     FormsModule,
@@ -44,7 +44,8 @@ import {TmsweightconvertPipe} from '../pipes/tmsweightconvert.pipe';
     HighlightDirective,
     ModalPageDirective,
     TmssaveconfirmDirective,
-    TmsweightconvertPipe
+    TmsweightconvertPipe,
+    TmsVolumeconvertPipe
   ],
   entryComponents: [DialogAlertComponent, SimpleorderdetailComponent ],
 })

@@ -58,13 +58,13 @@ export class HeaditemComponent implements OnInit  {
         this.saveform.addControl('TaskTypeDesc' , new FormControl({value: '小车提货', disabled: false}));
         break;
       case 'transfer':
-        this.saveform.addControl('TaskTypeDesc' , new FormControl({value: '网点转运', disabled: false}));
+        this.saveform.addControl('TaskTypeDesc' , new FormControl({value: '干线运输', disabled: false}));
         break;
-      case 'sendnoreturn':
-        this.saveform.addControl('TaskTypeDesc' , new FormControl({value: '直提直送', disabled: false}));
-        break;
+      // case 'sendnoreturn':
+      //   this.saveform.addControl('TaskTypeDesc' , new FormControl({value: '直提直送', disabled: false}));
+      //   break;
       case 'songhuo':
-        this.saveform.addControl('TaskTypeDesc' , new FormControl({value: '网点送货', disabled: false}));
+        this.saveform.addControl('TaskTypeDesc' , new FormControl({value: '同城配送', disabled: false}));
         break;
       default:
         this.saveform.addControl('TaskTypeDesc' , new FormControl({value: '未知', disabled: false}));
