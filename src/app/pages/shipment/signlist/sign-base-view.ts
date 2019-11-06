@@ -8,4 +8,5 @@ export interface SignBaseView {
 
    OrderLogisticDetailId: string;
 
+
 }

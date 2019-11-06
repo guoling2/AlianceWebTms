@@ -179,12 +179,12 @@
             <div fxLayout="row" class="margin_t_10">
               <div fxFlex="1 3">保险声明价值：<ejs-numerictextbox step='1' formControlName="DeclaredValue"></ejs-numerictextbox></div>
               <div fxFlex="1 3" class="margin_015">保价费率：<ejs-numerictextbox></ejs-numerictextbox></div>
-              <div fxFlex="1 3">保价费：<ejs-numerictextbox value="0"></ejs-numerictextbox></div>
+              <div fxFlex="1 3">保价费：<ejs-numerictextbox value="0" formControlName="DeliveryFee"></ejs-numerictextbox></div>
             </div>
             <div fxLayout="row" class="margin_t_10">
               <div fxFlex="1 3">代收货款 ：<ejs-numerictextbox step='1' formControlName="CollectionOnDeliveryAmount"></ejs-numerictextbox></div>
               <div fxFlex="1 3" class="margin_015">手续费率：<ejs-numerictextbox></ejs-numerictextbox></div>
-              <div fxFlex="1 3">手续费：<ejs-numerictextbox value="0"></ejs-numerictextbox></div>
+              <div fxFlex="1 3">手续费：<ejs-numerictextbox value="0" formControlName="CollectionOnDeliveryAmountFee"></ejs-numerictextbox></div>
             </div>
             <div fxLayout="row" class="margin_t_10">
               <div fxFlex="1 2">收款账号：<ejs-textbox formControlName="CollectionOnDeliveryBankNumber"></ejs-textbox></div>
@@ -250,7 +250,7 @@
     </mat-card>
   </form>
   <div class="pagebtnbox">
-    <button [disabled]="issave" ejs-button cssClass="e-info pagebtn" type="button" (click)="SaveOrder()" class="mat-green"><i class="fas fa-save"></i>
+    <button [disabled]="issave" ejs-button cssClass="mat-green pagebtn" type="button" (click)="SaveOrder()"><i class="fas fa-save"></i>
     保存</button>
     <button ejs-button cssClass="e-info pagebtn" type="button" (click)="ResetForm()" class="mat-reject"><i class="fas fa-undo-alt"></i>
       重置表单</button>

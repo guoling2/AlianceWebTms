@@ -8,17 +8,30 @@
     <button ejs-button cssClass="e-info mat-width"   [disabled]="true" >客户退单</button>
     <button ejs-button cssClass="e-info mat-width"   [disabled]="true" >订单签收</button>
     <button ejs-button cssClass="e-info mat-width"   [disabled]="true">流程追踪</button>
+    <button ejs-button cssClass="e-info mat-width"  (click)="opensettingdepot(160,500)" >默认网点</button>
     <button ejs-button cssClass="e-info mat-width mat-reject"
-            appTmssaveconfirm
-            comfirmMessage="确认接单吗?"
-            (onSuggest)="getorder($event)"
+            (click)="getorder('200','200')"
             >客户接单</button>
   </div>
 </div>
 <form class="listfrom" [formGroup]="searchp" >
-  <mat-form-field class="col-md-3">
-    <input matInput  formControlName="CustomerOrderId" />
+  <mat-form-field>
+    <label>
+      <input matInput  formControlName="CustomerOrderId" />
+    </label>
     <span  matPrefix style="color: #888">客户单号：&nbsp;</span>
+  </mat-form-field>
+  <mat-form-field>
+    <label>
+      <input matInput  formControlName="OrigincustomPhysicalDeotName" />
+    </label>
+    <span  matPrefix style="color: #888">提货仓库: </span>
+  </mat-form-field>
+  <mat-form-field>
+    <label>
+      <input matInput  formControlName="DestCity" />
+    </label>
+    <span  matPrefix style="color: #888">到货城市: </span>
   </mat-form-field>
   <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
 </form>
@@ -27,7 +40,7 @@
     <mat-tab label="未接单">
       <app-order-data-list #outdatagrid searchindex=0   [gridheight]="gridheight" [outer]="outernosend"></app-order-data-list>
     </mat-tab>
-    <mat-tab label="全部">
+    <mat-tab label="已接单">
       <app-order-data-list searchindex=1 [gridheight]="gridheight" [outer]="alldata"></app-order-data-list>
     </mat-tab>
   <!--  <mat-tab label="未签收"></mat-tab>-->

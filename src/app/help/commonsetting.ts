@@ -18,6 +18,10 @@ export class Commonsetting{
 
     return document.documentElement.clientHeight - 370;
   }
+  public static GridHeight5(): number {
+
+    return document.documentElement.clientHeight - 380;
+  }
   public static GridHeightshort(): number {
 
     return document.documentElement.clientHeight - 520;
@@ -29,4 +33,16 @@ export class Commonsetting{
   public  static HttpJsonHead(): HttpHeaders {
     return  new HttpHeaders({'Content-Type': 'application/json'});
   }
+
+  public static  GetScrollHeight(): number {
+
+   return (document.documentElement.scrollHeight || document.body.scrollHeight);
+
+}
+public static  GetScrollWidth(): number {
+
+  return ( document.documentElement.scrollWidth || document.body.scrollWidth);
+
+
+}
 }

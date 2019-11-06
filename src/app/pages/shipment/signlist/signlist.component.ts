@@ -34,7 +34,7 @@ export class SignlistComponent implements OnInit {
 
   ngOnInit() {
     this.searchp = this.fb.group(
-      { OrderTrackServerId: '', IsSign: '-1'},
+      { OrderTrackServerId: '', IsSign: '-1', ChargeForOrderSignDeportmentId: ''},
 
       );
     this.gridheight = Commonsetting.GridHeight2();
@@ -86,7 +86,6 @@ export class SignlistComponent implements OnInit {
     }
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(signViewItem);
     const viewContainerRef = this.signview.viewContainerRef;
-    console.log(viewContainerRef);
 
     viewContainerRef.clear();
 

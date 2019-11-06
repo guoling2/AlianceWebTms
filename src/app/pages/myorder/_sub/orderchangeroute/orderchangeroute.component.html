@@ -1,0 +1,33 @@
+<h1>运输线路调整</h1>
+<div class="noti"><span>注意：请区分不同发货网点的订单</span></div>
+<form [formGroup]="saveform">
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+  <div fxFlex="100">
+    交货方式 ：<app--bin-tihuotype  placeholder='选择交货方式' formControlName="DestserviceId"></app--bin-tihuotype>
+  </div>
+</div>
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+    <div fxFlex="100">
+      发货网点：<app-bin-mylogisticstore formControlName="BeginLogisticStoreId">loading...</app-bin-mylogisticstore>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+    <div fxFlex="100">
+      落货自提网点：<app-bin-logisticstoreall  formControlName="EndLogisticStoreId"  placeholder="下拉选择网点" ></app-bin-logisticstoreall>
+    </div>
+  </div>
+</form>
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+    <div fxFlex="76">
+      中转方案：<ejs-textbox #planroutetxt disabled="true"  placeholder='直达线路' ngModel="{{PlanTxt}}"></ejs-textbox>
+    </div>
+    <div fxFlex="20">
+      <button ejs-button cssClass="e-success" style="margin-top:17px"  (click)="backuproute()" >备选线路</button>
+    </div>
+  </div>
+  <div class="btnbox">
+    <button ejs-button cssClass="mat-blue mat-width" (click)="changedestsrvice()">调整</button>
+    <button ejs-button cssClass="mat-reject mat-width" (click)="dialogRef.close()">关闭</button>
+  </div>
+
+

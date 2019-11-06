@@ -74,9 +74,9 @@ export class Basereportconfig {
   public  static  Report_senditemfterlist = 'senditemlist';
 
   /**
-   * 转运查询
+   * 转运&大车直送查询
    */
-  public  static  Report_logistictransferlist = 'logistictransfer';
+  public  static  Report_logistictransferlist = 'transferafterlist';
 
   /**
    * 承运商资料查询
@@ -110,4 +110,6 @@ export  class EnterpriseCustomer {
    * 运输商查询配分给他的订单数据
    */
   public  static  Report_EnterpriseOrderList = 'EnterpriseOrderList';
+
+  public  static  Report_EnterpriseAcceptDepotList = 'AcceptDepotList';
 }

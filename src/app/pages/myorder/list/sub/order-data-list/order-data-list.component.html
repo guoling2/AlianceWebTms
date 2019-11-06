@@ -1,0 +1,58 @@
+<ejs-grid #grid  allowResizing= 'true' height="{{gridheight}}"
+          (dataStateChange)="dataStateChange($event)"
+          [allowExcelExport]='true'
+          [allowSorting]='true'
+          [allowSelection]="true"
+          [enableHover]="false"
+          [sortSettings]='initialSort'
+          [pageSettings]="pageSettings"
+          allowPaging='true'  class="contlistbox">
+  <e-columns >
+
+    <e-column type='checkbox' width='50'></e-column>
+    <e-column   headerText='物流单号' isPrimaryKey='true' width='165'>
+      <ng-template #template let-data>
+        <a [routerLink]="['/biz/myorder/detail', data.OrderLogisticDetailId]">{{data.OrderTrackServerId }} </a>
+      </ng-template>
+    </e-column>
+    <e-column field='OrderDestserviceId' headerText='交货方式'  width=120></e-column>
+    <e-column field='IfCargoFromOrigin' headerText='上门提货'  width=110></e-column>
+    <e-column field='LogisticOrderStatuedId' headerText='物流状态'  width=120></e-column>
+    <e-column field="Originarea"  headerText='始发区域'  textAlign="left"  width=150></e-column>
+    <e-column field='DestCity' headerText='到货城市' textAlign="left"  width=150></e-column>
+    <e-column field='Destarea' headerText='到货区域' textAlign="left"  width=150></e-column>
+    <e-column field='TotalCount' headerText='订单件数'  width=120></e-column>
+    <e-column field='TotalWeight' headerText='订单重量'  width=120>
+      <ng-template #template let-data>
+        {{data.TotalWeight | tmsweightconvert :'g'}}
+      </ng-template>
+    </e-column>
+    <e-column field='TotalVolume' headerText='订单体积'  width=130>
+      <ng-template #template let-data>
+        {{data.TotalVolume | tmsvolumeconvert :'cm'}}
+      </ng-template>
+    </e-column>
+    <e-column field='OrigincustomLinkman' headerText='发货联系人' textAlign="left"  width='150'></e-column>
+    <e-column field='Origintel' headerText='发货联系电话' textAlign="left"  width='130'></e-column>
+    <e-column field='DestLinkman' headerText='到货联系人'  textAlign="left" width='150'></e-column>
+    <e-column field='Desttel' headerText='到货联系电话' textAlign="left"  width=130></e-column>
+
+
+    <e-column field='CustomePaymentMethod' headerText='结算方式'  width=120></e-column>
+    <e-column field='PaymentStatusId' headerText='财务状态'  width=120></e-column>
+    <e-column field='TotalRealAmount' headerText='实付运费'  width=120></e-column>
+
+    <e-column field='TihuoFeeAmount' headerText='提货费'  width=120></e-column>
+    <e-column field='BaseAmount' headerText='运输费'  width=120></e-column>
+    <e-column field='SonhuoFeeAmount' headerText='送货费'  width=120></e-column>
+    <e-column field='AddValueFeeAmount' headerText='增值服务费'  width=120></e-column>
+    <e-column field='OtherFeeAmount' headerText='其他费用'  width=120></e-column>
+
+
+    <e-column field='BeginLogisticStoreName' headerText='发货网点'  width=180></e-column>
+    <e-column field='EndLogisticStoreName' headerText='落货/自提网点'  width=180></e-column>
+    <e-column field='AcceptUser' headerText='创建人'  width=120></e-column>
+    <e-column field='AcceptDateTime' headerText='创建时间' format='yMd' width="170"></e-column>
+    <e-column field='InnerMark' headerText='对内备注' width=150></e-column>
+  </e-columns>
+</ejs-grid>

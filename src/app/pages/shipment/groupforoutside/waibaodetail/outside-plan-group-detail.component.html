@@ -11,10 +11,10 @@
     </ng-container>
   </div>
 </div>
-
+<div  class="bendbox">
 <ng-container *ngIf="outsideShipmentGroup">
-  <mat-card class="userbox">
-    <mat-card-content>
+  <mat-tab-group>
+   <mat-tab label="运输信息">
         <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
           <div fxFlex="24">
             派车单号：<ejs-textbox  placeholder="派车单号" ngModel="{{outsideShipmentGroup.ShipmentGroupId}}" readonly></ejs-textbox>
@@ -48,69 +48,20 @@
             备注：<ejs-textbox  multiline="true" rows="2" ngModel="{{outsideShipmentGroup.Mark}}" readonly></ejs-textbox>
           </div>
         </div>
-    </mat-card-content>
-  </mat-card>
-  <mat-card class="userbox">
-    <mat-card-content>
-<!--  //运费信息-->
-      <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
-        <div fxFlex="24">
-          运费分摊：<app-biz-groupfeeblance  ReadOnly="true"  [InputValue]="outsideShipmentGroup.LogisticFeeBlanceMethod?.toString()"></app-biz-groupfeeblance>
-        </div>
-        <div fxFlex="24">
-          合同费用：<ejs-numerictextbox  min="0" showSpinButton="false"  [value]="outsideShipmentGroup.TransportContractFee" readonly="readonly" ></ejs-numerictextbox>
-        </div>
-        <div fxFlex="24">
-          手工费用：<ejs-numerictextbox  min="0"  [value]="outsideShipmentGroup.TransportHandlerFee" readonly="readonly" ></ejs-numerictextbox>
-        </div>
-        <div fxFlex="24">
-          运费合计：<ejs-numerictextbox  min="0"  showSpinButton="false"  [value]="(outsideShipmentGroup.TransportContractFee+outsideShipmentGroup.TransportHandlerFee).toFixed(2)" readonly="readonly" ></ejs-numerictextbox>
-        </div>
-      </div>
-      <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
-        <div fxFlex="15.5">
-          预付费：<ejs-numerictextbox  min="0" showSpinButton="false"   [value]="outsideShipmentGroup.SubClassFee.Prepaidamt" readonly="readonly" ></ejs-numerictextbox>
-        </div>
-        <div fxFlex="15.5">
-          油卡费：<ejs-numerictextbox  min="0"  showSpinButton="false" [value]="outsideShipmentGroup.SubClassFee.Cardamt" readonly="readonly" ></ejs-numerictextbox>
-        </div>
-        <div fxFlex="15.5">
-          押金：<ejs-numerictextbox  min="0" showSpinButton="false"  [value]="outsideShipmentGroup.SubClassFee.Depositamt" readonly="readonly" ></ejs-numerictextbox>
-        </div>
-        <div fxFlex="15.5">
-          到付：<ejs-numerictextbox  min="0" showSpinButton="false"  [value]="outsideShipmentGroup.SubClassFee.Arrivalamt" readonly="readonly" ></ejs-numerictextbox>
-        </div>
-        <div fxFlex="15.5">
-          回付：<ejs-numerictextbox  min="0"  showSpinButton="false"  [value]="outsideShipmentGroup.SubClassFee.Returnamt" readonly="readonly" ></ejs-numerictextbox>
-        </div>
-        <div fxFlex="15.5">
-          月结：<ejs-numerictextbox  min="0"  showSpinButton="false"  [value]="outsideShipmentGroup.SubClassFee.Monthlyamt" readonly="readonly" ></ejs-numerictextbox>
-        </div>
-      </div>
-      <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
-        <div fxFlex="24">
-          应结金额：<ejs-numerictextbox  min="0"  showSpinButton="false" [value]="outsideShipmentGroup.FinaceStatued.TotalGatheringAmount" [enabled]="false" ></ejs-numerictextbox>
-        </div>
-        <div fxFlex="24">
-          已结金额：<ejs-numerictextbox  min="0"  showSpinButton="false"  [value]="outsideShipmentGroup.FinaceStatued.FinishGatheringAmount" [enabled]="false"></ejs-numerictextbox>
-        </div>
-        <div fxFlex="24">
-          未结金额：<ejs-numerictextbox  min="0" showSpinButton="false"  [value]="outsideShipmentGroup.FinaceStatued.UnGatheringAmount" [enabled]="false" ></ejs-numerictextbox>
-        </div>
-        <div fxFlex="24">
-          <ejs-checkbox label="清账" [checked]="outsideShipmentGroup.FinaceStatued.IsClear" [disabled] = "true"></ejs-checkbox>
-        </div>
-      </div>
-    </mat-card-content>
-  </mat-card>
-  <div class="userbox2">
+  <div>
   <!--运输品相-->
-  <app-biz-logisticitemdetail IputDataGridCss="margin_t_10" ShipmentGroupId="{{outsideShipmentGroup.ShipmentGroupId}}"></app-biz-logisticitemdetail>
+  <app-biz-logisticitemdetail #logisticitemcom IputDataGridCss="margin_t_10" ShipmentGroupId="{{outsideShipmentGroup.ShipmentGroupId}}"></app-biz-logisticitemdetail>
   </div>
 
-  <div class="botbox">
+  <div class="totalbox">
     <span>创建人：{{outsideShipmentGroup.CreateUserName}}</span>
     <span>创建时间：{{outsideShipmentGroup.CreateDateTime}}</span>
     <span>发车时间：{{outsideShipmentGroup.SendCarTime}}</span>
   </div>
+    </mat-tab>
+    <mat-tab label="财务信息">
+      <app-biz-logisticfinance [ShipmentGroupId]="outsideShipmentGroup.ShipmentGroupId"></app-biz-logisticfinance>
+    </mat-tab>
+  </mat-tab-group>
 </ng-container>
+</div>

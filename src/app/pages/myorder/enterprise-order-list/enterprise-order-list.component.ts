@@ -12,6 +12,9 @@ import {OrderDataListComponent} from './sub/order-data-list/order-data-list.comp
 import {EnterpriseOrderServiceService} from '../../../services/CustomerOrder/enterprise-order-service.service';
 import {EmitService} from '../../../help/emit-service';
 import {AlertMessageType, EmitAlertMessage, MessageShowType} from '../../../help/emit-alert-message';
+import {OrderAcceptComponent} from './sub/order-accept/order-accept.component';
+import {MatDialog} from '@angular/material/dialog';
+import {DefaultdepotsettingComponent} from './sub/defaultdepotsetting/defaultdepotsetting.component';
 
 @Component({
   selector: 'app-enterprise-order-list',
@@ -31,12 +34,12 @@ export class EnterpriseOrderListComponent implements OnInit {
   @ViewChild('outdatagrid', {static: false})
   public outdatagrid: OrderDataListComponent;
 
-  constructor(  private emitService: EmitService, private fb: FormBuilder, private service: Basereportservice, private enterpriseOrderServiceService: EnterpriseOrderServiceService) { }
+  constructor( public dialog: MatDialog, private emitService: EmitService, private fb: FormBuilder, private service: Basereportservice, private enterpriseOrderServiceService: EnterpriseOrderServiceService) { }
 
   ngOnInit() {
 
     this.searchp = this.fb.group(
-      { CustomerOrderId: ''});
+      { CustomerOrderId: '', OrigincustomPhysicalDeotName: '', DestCity: ''});
     this.gridheight = Commonsetting.GridHeight4();
   }
 
@@ -46,9 +49,10 @@ export class EnterpriseOrderListComponent implements OnInit {
 
     searchable.searchindex = this.selectindex;
     if (this.selectindex === 0) {
-      searchable.OrderStatued = 10;
+      searchable.ConfirmOrder = 0;
       this.outernosend.emit(searchable);
     } else if (this.selectindex === 1) {
+      searchable.ConfirmOrder = 1;
       this.alldata.emit(searchable);
     }
 
@@ -58,33 +62,43 @@ export class EnterpriseOrderListComponent implements OnInit {
    this.selectindex = $event.index;
   }
 
-  getorder($event: boolean) {
+  getorder(height: string, width: string) {
 
-
-    if ($event === false) {
-      this.emitService.eventEmit.emit(
-        new EmitAlertMessage(AlertMessageType.Error,
-          '系统信息', '没有可以操作的订单！', MessageShowType.Toast));
-      return; }
 
     const selectrows = this.outdatagrid.grid.getSelectedRecords();
 
-    selectrows.forEach((a, index) => {
-      this.enterpriseOrderServiceService.AcceptOrder({
-        OrderPreparedLogisticId: a['OrderPreparedLogisticId'],
-        BeginLogisticStoreId: ''
 
-      }).subscribe(result => {
-        this.emitService.eventEmit.emit(
-          new EmitAlertMessage(AlertMessageType.Info,
-            '系统信息', result.Info, MessageShowType.Toast));
+    if (selectrows.length < 1) {
+      return;
+    }
 
-        if (index === selectrows.length - 1) {
-          this.searching();
-        }
+      const dialogRef = this.dialog.open(OrderAcceptComponent, {
+        height: height,
+        width: width,
+        disableClose: false,
+        data: selectrows
       });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+      if (result === true) {
+
+        this.emitService.eventEmit.emit(
+          new EmitAlertMessage(AlertMessageType.Succeed, '系统信息', '接单成功！', MessageShowType.Toast));
+        this.searching();
+      }
+
     });
    // OrderSystemOrderId
     console.log(selectrows);
+  }
+
+  opensettingdepot(s: number, s2: number) {
+
+    const dialogRef = this.dialog.open(DefaultdepotsettingComponent, {
+      minHeight: Commonsetting.GetScrollHeight() - s,//160
+      minWidth: Commonsetting.GetScrollWidth() - s2, //500
+      disableClose: false
+    });
   }
 }

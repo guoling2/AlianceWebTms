@@ -20,7 +20,7 @@ export class TransferComponent implements OnInit {
 
   ngOnInit() {
     this.searchp = this.fb.group(
-      { OrderTrackServerId: '', PlanStatuedId: '10'});
+      { OrderTrackServerId: '', PlanStatuedId: '10', ActionStoreId: ''});
     this.gridheight = Commonsetting.GridHeight();
   }
 
@@ -30,6 +30,7 @@ export class TransferComponent implements OnInit {
     const searchable = this.searchp.getRawValue ();
     searchable.pageindex = pagesetting.currentPage;
     searchable.pagesize = pagesetting.pageSize;
+    console.log(searchable);
     this.service.SearchReport(Basereportconfig.Report_logistictransferlist, searchable).subscribe(result => {
 
       this.grid.dataSource = result;

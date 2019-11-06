@@ -1,17 +1,52 @@
 
 <ng-container *ngIf="logisticItemDataSource">
 
-
+<div style="height: 30px;">
+  <button ejs-button cssClass="e-info mat-width" class="mat-reject" (click)="spliterorder()" >拆单</button>
+<!--  <button ejs-button cssClass="e-info mat-width" class="mat-reject"  (click)="delorder()" >取消发运</button>-->
+</div>
 <ejs-grid height="{{gridheight}}" #logitsticitemgrid  [editSettings]='editSettings' [dataSource]="logisticItemDataSource"  allowPaging="true"  class="{{IputDataGridCss}}">
   <e-columns>
+<!--    <e-column  headerText='操作' width='170'>-->
+<!--      <ng-template #template let-data>-->
+<!--        <div>-->
+
+<!--          <button-->
+<!--            mat-icon-button-->
+<!--            type="button"-->
+<!--            appModalPage [modal]="'SimpleorderdetailComponent'"-->
+<!--            [modal-data]="data.OrderLogisticDetailId"-->
+<!--            matTooltip="明细"> <mat-icon>delete</mat-icon></button>-->
+
+<!--&lt;!&ndash;          <a  href="javascript:" appModalPage [modal]="'SimpleorderdetailComponent'"  [modal-data]="data.OrderLogisticDetailId">&ndash;&gt;-->
+<!--&lt;!&ndash;            明细</a>&ndash;&gt;-->
+<!--          <span *ngIf="data.PlanStatuedDesc==='未开始'">-->
+
+<!--            <button-->
+<!--              mat-icon-button-->
+<!--              type="button"-->
+<!--              (click)="spliterorder(data)"-->
+<!--              matTooltip="拆单"> <mat-icon>delete</mat-icon></button>-->
+
+<!--              <button-->
+<!--                mat-icon-button-->
+<!--                type="button"-->
+<!--                (click)="spliterorder(data)"-->
+<!--                matTooltip="移除"> <mat-icon>delete</mat-icon></button>-->
+<!--          </span>-->
+<!--        </div>-->
+
+<!--      </ng-template>-->
+<!--    </e-column>-->
     <e-column field='SquenceId' headerText='序号' width='70'></e-column>
-    <e-column  headerText='物流单号' width='160'>
+    <e-column   headerText='物流单号' width='160'>
       <ng-template #template let-data>
-        <a  appModalPage [modal]="'SimpleorderdetailComponent'"  [modal-data]="data.OrderLogisticDetailId">{{data.TrackServerId}}</a>
+        <a  href="javascript:" appModalPage [modal]="'SimpleorderdetailComponent'"  [modal-data]="data.OrderLogisticDetailId">
+                {{data.TrackServerId}}</a>
       </ng-template>
     </e-column>
-    <e-column field='PlanStatuedDesc' headerText='任务状态' width='120'></e-column>
-    <!--    <e-column field='PlanTaskType' headerText='任务类型' width='160'></e-column>-->
+    <e-column field='PlanStatuedDesc' headerText='任务状态' width='120'></e-column>-
+    <e-column field='PlanTaskType' headerText='任务类型' width='160'></e-column>
     <e-column  field='OrigincustomLinkman' headerText='发货联系人' width='120' textAlign='Right'></e-column>
     <e-column field='DestLinkman' headerText=' 收货联系人' width='120' textAlign='Right'></e-column>
     <e-column field='ActionStoreName' headerText='当前站点' width='150' textAlign='Right'></e-column>

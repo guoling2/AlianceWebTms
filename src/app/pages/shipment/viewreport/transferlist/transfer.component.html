@@ -16,6 +16,8 @@
     <span  matPrefix style="color: #888">物流单号：&nbsp;</span>
   </mat-form-field>
 
+  <app-biz-mylogistiscstore2   displaylabel="操作网点" mat-form-field-class="col-md-2" formControlName="ActionStoreId" ></app-biz-mylogistiscstore2>
+
   <mat-form-field class="col-md-3">
     <label>
       <select matNativeControl  formControlName="PlanStatuedId">
@@ -59,7 +61,7 @@
     <e-column field='PlanStatuedId'  headerText='名称' [visible]="false"  width='165'></e-column>
 
 
-    <e-column field='CreateDateTime'  headerText='委派时间'  width='165'></e-column>
+    <e-column field='CreateDatetime'  headerText='委派时间'  width='165'></e-column>
 
 
     <e-column field='FinishDatetime'  headerText='完成时间'  width='165'></e-column>

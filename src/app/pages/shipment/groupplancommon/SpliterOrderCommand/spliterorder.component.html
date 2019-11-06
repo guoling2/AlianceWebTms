@@ -1,0 +1,51 @@
+<div class="titboxs">
+  <h3>拆单发货</h3>
+  <button ejs-button class="closebtn"(click)="close()">关闭</button>
+</div>
+<table mat-table [dataSource]="senditems">
+  <ng-container matColumnDef="ShipmentStockId">
+    <th mat-header-cell *matHeaderCellDef> 库存编号 </th>
+    <td mat-cell *matCellDef="let element"> {{element.ShipmentStockId}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Package">
+    <th mat-header-cell *matHeaderCellDef> 运输品相 </th>
+    <td mat-cell *matCellDef="let element"> {{element.Package}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="PackageCount">
+    <th mat-header-cell *matHeaderCellDef> 库存件数 </th>
+    <td mat-cell *matCellDef="let element"> {{element.PackageCount.toFixed(0)}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="SendCount">
+    <th mat-header-cell *matHeaderCellDef> 配载件数 </th>
+    <td mat-cell *matCellDef="let element">
+      <ejs-numerictextbox style="width:100px!important;" [max]='element.PackageCount' [min]="1" value="{{element.SendCount}}" (change)="changesendcount($event,element.ShipmentStockId)"></ejs-numerictextbox>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="SendWeight">
+    <th mat-header-cell *matHeaderCellDef> 配载重量 </th>
+    <td mat-cell *matCellDef="let element"> {{element.SendWeight | tmsweightconvert:'g'}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="SendVol">
+    <th mat-header-cell *matHeaderCellDef> 配载体积 </th>
+    <td mat-cell *matCellDef="let element"> {{element.SendVol | tmsvolumeconvert:'cm'}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Action">
+    <th mat-header-cell *matHeaderCellDef> 操作 </th>
+    <td mat-cell *matCellDef="let element">
+      <button ejs-button cssClass="e-info" (click)="savetrin(element.ShipmentStockId)" >调整</button>
+
+    </td>
+  </ng-container>
+
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>

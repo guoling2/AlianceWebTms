@@ -21,7 +21,7 @@ export class PickupComponent implements OnInit {
 
   ngOnInit() {
     this.searchp = this.fb.group(
-      { OrderTrackServerId: '', PlanStatuedId: '10'});
+      { OrderTrackServerId: '', PlanStatuedId: '10', ActionStoreId: ''});
     this.gridheight = Commonsetting.GridHeight();
   }
 

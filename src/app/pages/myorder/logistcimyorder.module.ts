@@ -20,6 +20,11 @@ import { SimpleorderdetailComponent } from './simpleorderdetail/simpleorderdetai
 import { EnterpriseOrderListComponent } from './enterprise-order-list/enterprise-order-list.component';
 import { OrderDataListComponent } from './enterprise-order-list/sub/order-data-list/order-data-list.component';
 import { EnterpriseOrderDetailComponent } from './enterprise-order-detail/enterprise-order-detail.component';
+import { OrderAcceptComponent } from './enterprise-order-list/sub/order-accept/order-accept.component';
+import {LogisticOrderDataListComponent} from './list/sub/order-data-list/order-data-list.component';
+import { LogistictrackComponent } from './detail/sub/logistictrack/logistictrack.component';
+import { OrderchangerouteComponent } from './_sub/orderchangeroute/orderchangeroute.component';
+import { DefaultdepotsettingComponent } from './enterprise-order-list/sub/defaultdepotsetting/defaultdepotsetting.component';
 
 
 const routes: Routes = [
@@ -67,7 +72,10 @@ const routes: Routes = [
   declarations: [MyOrderListComponent, OpenMyorderComponent, OrdercustomerComponent,
     OrderrouteplanComponent, PriceanalysisComponent, DetailComponent, OrderitemtagprintComponent,
     OrderDataListComponent,
-    EnterpriseOrderListComponent, EnterpriseOrderDetailComponent],
-  entryComponents: [OrdercustomerComponent, OrderrouteplanComponent, PriceanalysisComponent, OrderitemtagprintComponent]
+    EnterpriseOrderListComponent, EnterpriseOrderDetailComponent,
+    OrderAcceptComponent, LogisticOrderDataListComponent, LogistictrackComponent, OrderchangerouteComponent, DefaultdepotsettingComponent],
+  entryComponents: [
+    OrdercustomerComponent, OrderrouteplanComponent, PriceanalysisComponent,
+    OrderitemtagprintComponent, OrderAcceptComponent, OrderchangerouteComponent, DefaultdepotsettingComponent]
 })
 export class LogistcimyorderModule { }

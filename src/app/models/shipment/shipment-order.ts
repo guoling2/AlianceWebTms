@@ -3,7 +3,7 @@
  */
 import {ShipmentOrderItemModelEntity} from './ShipmentOrderItemModelEntity';
 
-export class  ShipmentOrderModelEntity {
+export class  ShipmentOrder {
 
   /**
    * 客户单号

@@ -1,6 +1,8 @@
 <div class="contentbox">
   <div class="contentit-l">
-    <div><i class="fas fa-compass"></i> 当前位置：<a [routerLink]="['/biz/myorder/list']" >订单列表</a> / <b>订单信息</b></div>
+    <div><i class="fas fa-compass"></i> 当前位置：
+      <a [routerLink]="['/biz/myorder/list']" >订单列表</a>/运单信息/<b>{{ordermodel.TrackOrderNumber}}</b>
+    </div>
   </div>
   <div class="contenttex-r">
   </div>
@@ -15,19 +17,19 @@
                 <div class="infotext margin_t_10">
                   <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
                     <div fxFlex="18">
-                      物流单号：<ejs-textbox  placeholder="派车单号" ngModel="80838783279847328749" readonly></ejs-textbox>
+                      系统单号：<ejs-textbox  placeholder="系统单号" ngModel="{{ordermodel.SystemOrderId}}" readonly></ejs-textbox>
                     </div>
                     <div fxFlex="18">
-                      发站：<ejs-textbox  placeholder="发站" ngModel="222222" readonly></ejs-textbox>
+                      物流单号：<ejs-textbox  placeholder="物流单号" ngModel="{{ordermodel.TrackOrderNumber}}" readonly></ejs-textbox>
                     </div>
                     <div fxFlex="18">
-                      到站：<ejs-textbox  placeholder="到站" ngModel="222222" readonly></ejs-textbox>
+                      委托单号：<ejs-textbox  placeholder="委托单号" ngModel="{{ordermodel.CustomerOrderId}}" readonly></ejs-textbox>
                     </div>
                     <div fxFlex="18">
-                      目的网点：<ejs-textbox  placeholder="目的网点" ngModel="222222" readonly></ejs-textbox>
+                      始发站：<ejs-textbox  placeholder="始发站" ngModel="{{ordermodel.BeginLogisticStoreName}}" readonly></ejs-textbox>
                     </div>
                     <div fxFlex="18">
-                      委托单号：<ejs-textbox  placeholder="委托单号" ngModel="222222" readonly></ejs-textbox>
+                      目的站：<ejs-textbox  placeholder="目的站" ngModel="{{ordermodel.EndLogisticStoreName}}" readonly></ejs-textbox>
                     </div>
                   </div>
 
@@ -46,13 +48,14 @@
                </div>
                <div fxFlex="85">
                    <div class="textbox">
-                     收货人：<ejs-textbox  placeholder="派车单号" ngModel="80838783279847328749" readonly></ejs-textbox>
+                     发货人：<ejs-textbox  placeholder="发货联系人" ngModel="{{ordermodel.Origincustomname}}" readonly></ejs-textbox>
                    </div>
                    <div class="textbox">
-                     发站：<ejs-textbox  placeholder="发站" ngModel="222222" readonly></ejs-textbox>
+                     发货联系：
+                     <ejs-textbox  placeholder="发货联系人" ngModel="{{ordermodel.OrigincustomLinkman}}/{{ordermodel.Origintel}}" readonly></ejs-textbox>
                    </div>
                    <div class="textbox">
-                     到站：<ejs-textbox  placeholder="到站" ngModel="山东省烟台市开发区广州路深圳大街111111号内物流园区 3楼111号" readonly></ejs-textbox>
+                     发货/提货地址：<ejs-textbox  placeholder="到站" ngModel="{{ordermodel.OriginAddress}}" readonly></ejs-textbox>
                    </div>
                  </div>
              </div>
@@ -62,18 +65,20 @@
               <div fxFlex="15" class="userico">
                 <div class="icobox">
                   <i class="fas fa-dolly-flatbed"></i>
-                  <h3>发货方</h3>
+                  <h3>收货方</h3>
                 </div>
               </div>
               <div fxFlex="85">
                 <div class="textbox">
-                  收货人：<ejs-textbox  placeholder="派车单号" ngModel="80838783279847328749" readonly></ejs-textbox>
+                  收货人：<ejs-textbox  placeholder="收货人" ngModel="{{ordermodel.Destcustomname}}" readonly></ejs-textbox>
                 </div>
                 <div class="textbox">
-                  发站：<ejs-textbox  placeholder="发站" ngModel="222222" readonly></ejs-textbox>
+                  收货联系：
+                  <ejs-textbox  placeholder="联系人" ngModel="{{ordermodel.DestcustomLinkman}}/{{ordermodel.Desttel}}" readonly></ejs-textbox>
                 </div>
                 <div class="textbox">
-                  到站：<ejs-textbox  placeholder="到站" ngModel="山东省烟台市开发区广州路深圳大街111111号内物流园区 3楼111号" readonly></ejs-textbox>
+                  送货/自提地址：
+                  <ejs-textbox  placeholder="送货/自提地址" ngModel="{{ordermodel.DestAddress}}" readonly></ejs-textbox>
                 </div>
               </div>
             </div>
@@ -83,25 +88,79 @@
           <div fxFlex="100">
             <div class="orderinfo">
               <div class="infotext margin_t_10">
-                <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
-                  <div fxFlex="15">
-                    货物名称：<ejs-textbox  placeholder="派车单号" ngModel="80838783279847328749" readonly></ejs-textbox>
+                <ng-container *ngIf="ordermodel.ShipmentOrderItems.length>1; then truthyTemplate else falsyTemplate"></ng-container>
+
+                <ng-template #truthyTemplate >
+
+                <div class="tabstx">
+                    <table mat-table [dataSource]="ordermodel.ShipmentOrderItems">
+
+                      <!-- Position Column -->
+                      <ng-container matColumnDef="Package">
+                        <th mat-header-cell *matHeaderCellDef> 货物名称 </th>
+                        <td mat-cell *matCellDef="let element"> {{element.Package}} </td>
+                      </ng-container>
+
+                      <!-- Name Column -->
+                      <ng-container matColumnDef="PackingType">
+                        <th mat-header-cell *matHeaderCellDef> 包装 </th>
+                        <td mat-cell *matCellDef="let element"> {{element.PackingType}} </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="PackageCount">
+                        <th mat-header-cell *matHeaderCellDef> 数量 </th>
+                        <td mat-cell *matCellDef="let element"> {{element.PackageCount}} </td>
+                      </ng-container>
+
+                      <!-- Weight Column -->
+                      <ng-container matColumnDef="PackageWeightKg">
+                        <th mat-header-cell *matHeaderCellDef> 重量(Kg) </th>
+                        <td mat-cell *matCellDef="let element"> {{element.PackageWeightKg}} </td>
+                      </ng-container>
+
+                      <!-- Symbol Column -->
+                      <ng-container matColumnDef="PackageVolM">
+                        <th mat-header-cell *matHeaderCellDef> 体积(M3) </th>
+                        <td mat-cell *matCellDef="let element"> {{element.PackageVolM}} </td>
+                      </ng-container>
+
+                      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                </div>
+
+                </ng-template>
+
+                <ng-template #falsyTemplate>
+                  <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+                    <div fxFlex="15">
+                      货物名称：<ejs-textbox  placeholder="货物名称" ngModel="{{ordermodel.ShipmentOrderItems[0].Package}}" readonly></ejs-textbox>
+                    </div>
+                    <div fxFlex="15">
+                      包装：<ejs-textbox  placeholder="包装" ngModel="{{ordermodel.ShipmentOrderItems[0].PackingType}}" readonly></ejs-textbox>
+                    </div>
+                    <div fxFlex="15">
+                      件数：<ejs-textbox  placeholder="到站" ngModel="{{ordermodel.ShipmentOrderItems[0].PackageCount}}" readonly></ejs-textbox>
+                    </div>
+                    <div fxFlex="15">
+                      重量(Kg)：<ejs-textbox  placeholder="重量(Kg)" ngModel="{{ordermodel.ShipmentOrderItems[0].PackageWeightKg}}" readonly></ejs-textbox>
+                    </div>
+                    <div fxFlex="15">
+                      体积(M3)：<ejs-textbox  placeholder="体积(M3)" ngModel="{{ordermodel.ShipmentOrderItems[0].PackageVolM}}" readonly></ejs-textbox>
+                    </div>
+                    <div fxFlex="15">
+                      物流属性：<ejs-textbox  placeholder="委托单号" ngModel="{{ordermodel.ShipmentOrderItems[0].LogisticAttribute}}" readonly></ejs-textbox>
+                    </div>
                   </div>
-                  <div fxFlex="15">
-                    包装：<ejs-textbox  placeholder="发站" ngModel="222222" readonly></ejs-textbox>
-                  </div>
-                  <div fxFlex="15">
-                    件数：<ejs-textbox  placeholder="到站" ngModel="222222" readonly></ejs-textbox>
-                  </div>
-                  <div fxFlex="15">
-                    重量：<ejs-textbox  placeholder="目的网点" ngModel="222222" readonly></ejs-textbox>
-                  </div>
-                  <div fxFlex="15">
-                    体积：<ejs-textbox  placeholder="委托单号" ngModel="222222" readonly></ejs-textbox>
-                  </div>
-                  <div fxFlex="15">
-                    单价：<ejs-textbox  placeholder="委托单号" ngModel="222222" readonly></ejs-textbox>
-                  </div>
+                </ng-template>
+                <div class="totalbox2">
+                <span>合计：总件数{{ordermodel.TotalCount.toFixed(0)}}(件)</span>
+                <span>总体积{{ordermodel.TotalVolume| tmsvolumeconvert :'cm'}}(方)</span>
+                <span>总重量{{ordermodel.TotalWeight| tmsweightconvert :'g'}}(吨)</span>
+                <span>抛货  {{ordermodel.OrderPhVol| tmsvolumeconvert :'cm'}}(方)</span>
+                <span>{{ordermodel.OrderPhWeight| tmsweightconvert :'g'}}(吨)</span>
+                <span>重货 ：{{ordermodel.OrderZhVol| tmsvolumeconvert :'cm'}}(方)</span>
+                <span>{{ordermodel.OrderZhWeight| tmsweightconvert :'g'}}(吨)</span>
                 </div>
               </div>
             </div>
@@ -112,39 +171,41 @@
             <div class="infotext margin_t_10">
                 <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
                   <div fxFlex="49.5" class="userbox2">
-                    <div class="totalbox"><i class="fas fa-coins"></i>合计运费：<b>1800 元</b></div>
+                    <div class="totalbox"><i class="fas fa-coins"></i>合计运费：<b>{{ordermodel.RealInputLogisticFee.toFixed(2)}} 元</b></div>
                     <div fxLayout="row" fxLayoutAlign="space-between center" class="margints_10">
                       <div fxFlex="18.5">
-                        运费：<ejs-textbox  placeholder="派车单号" ngModel="11" readonly></ejs-textbox>
+                        运费：<ejs-textbox  placeholder="运费" ngModel="{{ordermodel.BaseTransportFee.toFixed(2)}}" readonly></ejs-textbox>
                       </div>
                       <div fxFlex="18.5">
-                        现返：<ejs-textbox  placeholder="派车单号" ngModel="24" readonly></ejs-textbox>
+                        现返：<ejs-textbox  placeholder="现返" ngModel="0.00" readonly></ejs-textbox>
                       </div>
                       <div fxFlex="18.5">
-                        欠返：<ejs-textbox  placeholder="派车单号" ngModel="234" readonly></ejs-textbox>
+                        欠返：<ejs-textbox  placeholder="欠返" ngModel="0.00" readonly></ejs-textbox>
                       </div>
                       <div fxFlex="18.5">
-                        送货费：<ejs-textbox  placeholder="派车单号" ngModel="54" readonly></ejs-textbox>
+                        送货费：<ejs-textbox  placeholder="送货费" ngModel="{{ordermodel.SonhuoFee.toFixed(2)}}" readonly></ejs-textbox>
                       </div>
                       <div fxFlex="18.5">
-                        提货费：<ejs-textbox  placeholder="派车单号" ngModel="12432" readonly></ejs-textbox>
+                        提货费：<ejs-textbox  placeholder="提货费" ngModel="{{ordermodel.TihuoFee.toFixed(2)}}" readonly></ejs-textbox>
                       </div>
                     </div>
                     <div fxLayout="row" fxLayoutAlign="space-between center" class="margints_10">
                       <div fxFlex="18.5">
-                        装卸费：<ejs-textbox  placeholder="派车单号" ngModel="11" readonly></ejs-textbox>
+                        装卸费：<ejs-textbox  placeholder="装卸费" value="0.00" readonly></ejs-textbox>
                       </div>
                       <div fxFlex="18.5">
-                        声明价值：<ejs-textbox  placeholder="派车单号" ngModel="24" readonly></ejs-textbox>
+                        声明价值：<ejs-textbox  placeholder="声明价值" ngModel="{{ordermodel.DeclaredValue?.toFixed(2)}}" readonly></ejs-textbox>
                       </div>
                       <div fxFlex="18.5">
-                        保送费：<ejs-textbox  placeholder="派车单号" ngModel="234" readonly></ejs-textbox>
+                        保价费：<ejs-textbox  placeholder="保价费" ngModel="{{ordermodel.DeliveryFee?.toFixed(2)}}" readonly></ejs-textbox>
                       </div>
                       <div fxFlex="18.5">
-                        包装费：<ejs-textbox  placeholder="派车单号" ngModel="54" readonly></ejs-textbox>
+                        包装费：<ejs-textbox  placeholder="包装费" value="0.00" readonly></ejs-textbox>
                       </div>
                       <div fxFlex="18.5">
-                        其他费用：<ejs-textbox  placeholder="派车单号" ngModel="12432" readonly></ejs-textbox>
+                        其他费用：
+                        <ejs-textbox  placeholder="其他费用" value="{{ordermodel.ExtendOtherFee}}" readonly></ejs-textbox>
+
                       </div>
                     </div>
                   </div>
@@ -152,40 +213,42 @@
                     <div class="totalbox"><i class="fas fa-yen-sign"></i>付款方式</div>
                     <div fxLayout="row" fxLayoutAlign="space-between center" class="margints_10">
                       <div fxFlex="23.5">
-                        付款方式：<ejs-textbox  placeholder="派车单号" ngModel="11" readonly></ejs-textbox>
+                        付款方式：<ejs-textbox  placeholder="付款方式" ngModel="{{ordermodel.PaymentMethodDesc}}" readonly></ejs-textbox>
                       </div>
                       <div fxFlex="24">
-                        现付：<ejs-textbox  placeholder="派车单号" ngModel="24" readonly></ejs-textbox>
+                        现付：<ejs-textbox  placeholder="现付" ngModel="{{ordermodel.PayNow}}" readonly></ejs-textbox>
                       </div>
                       <div fxFlex="23.5">
-                        到付：<ejs-textbox  placeholder="派车单号" ngModel="234" readonly></ejs-textbox>
+                        到付：<ejs-textbox  placeholder="到付" ngModel="{{ordermodel.PayArrived}}" readonly></ejs-textbox>
                       </div>
                       <div fxFlex="23.5">
-                        货到打卡：<ejs-textbox  placeholder="派车单号" ngModel="54" readonly></ejs-textbox>
+                        提付：<ejs-textbox  placeholder="提付" ngModel="{{ordermodel.Tifu}}" readonly></ejs-textbox>
                       </div>
                     </div>
                     <div fxLayout="row" fxLayoutAlign="space-between center" class="margints_10">
                       <div fxFlex="23.5">
-                        月结：<ejs-textbox  placeholder="派车单号" ngModel="11" readonly></ejs-textbox>
+                        月结：<ejs-textbox  placeholder="月结" ngModel="{{ordermodel.PayOnMonthly.toFixed(2)}}" readonly></ejs-textbox>
                       </div>
                       <div fxFlex="23.5">
-                        回付：<ejs-textbox  placeholder="派车单号" ngModel="24" readonly></ejs-textbox>
+                        回付：<ejs-textbox  placeholder="回付" ngModel="{{ordermodel.PayReceipt.toFixed(2)}}" readonly></ejs-textbox>
                       </div>
                       <div fxFlex="23.5">
-                        贷款扣：<ejs-textbox  placeholder="派车单号" ngModel="234" readonly></ejs-textbox>
+                        贷款扣：<ejs-textbox  placeholder="贷款扣" ngModel="{{ordermodel.PayByCollectionOnDelivery.toFixed(2)}}" readonly></ejs-textbox>
                       </div>
                       <div fxFlex="23.5">
-                        欠付：<ejs-textbox  placeholder="派车单号" ngModel="54" readonly></ejs-textbox>
+                        欠付：<ejs-textbox  placeholder="欠付" ngModel="0.00" readonly></ejs-textbox>
                       </div>
                     </div>
                   </div>
                   <div fxFlex="15" class="userbox2">
                     <div class="totalbox"><i class="fas fa-money-bill"></i>代收款</div>
                     <div class="textbox">
-                      代收货款：<ejs-textbox  placeholder="到站" ngModel="222222" readonly></ejs-textbox>
+                      代收货款：<ejs-textbox  placeholder="代收货款"
+                                         ngModel="{{ordermodel.CollectionOnDeliveryAmount?.toFixed(2)}}" readonly></ejs-textbox>
                     </div>
                     <div class="textbox">
-                      手续费：<ejs-textbox  placeholder="到站" ngModel="222222" readonly></ejs-textbox>
+                      手续费：<ejs-textbox  placeholder="手续费"
+                                        ngModel="{{ordermodel.CollectionOnDeliveryAmountFee?.toFixed(2)}}" readonly></ejs-textbox>
                     </div>
                   </div>
                 </div>
@@ -194,135 +257,116 @@
           </div>
         </div>
         <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
-          <div fxFlex="100">
-            <div class="orderinfo">
-              <div class="infotext margin_t_10">
-                <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
-                  <div fxFlex="15">
-                    经办人：<ejs-textbox  placeholder="派车单号" ngModel="80838783279847328749" readonly></ejs-textbox>
-                  </div>
-                  <div fxFlex="15">
-                    送货方式：<ejs-textbox  placeholder="发站" ngModel="222222" readonly></ejs-textbox>
-                  </div>
-                  <div fxFlex="15">
-                    <ejs-checkbox label="控货"></ejs-checkbox>
-                  </div>
-                  <div fxFlex="15">
-                    回单（份）：<ejs-textbox  placeholder="到站" ngModel="222222" readonly></ejs-textbox>
-                  </div>
-                  <div fxFlex="15">
-                    回单要求：<ejs-textbox  placeholder="目的网点" ngModel="222222" readonly></ejs-textbox>
-                  </div>
-                  <div fxFlex="15">
-                    备注：<ejs-textbox  placeholder="委托单号" ngModel="222222" readonly></ejs-textbox>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div fxFlex="15">
+            经办人：<ejs-textbox  placeholder="经办人" ngModel="{{ordermodel.AcceptUser}}" readonly></ejs-textbox>
+            经办时间：<ejs-textbox  placeholder="经办时间" ngModel="{{ordermodel.AcceptDateTime}}" readonly></ejs-textbox>
+          </div>
+          <div fxFlex="15">
+            <mat-checkbox  [(ngModel)]="ordermodel.IfCargoFromOrigin" disabled="true">上门提货</mat-checkbox>
+
+            <mat-checkbox  [(ngModel)]="ordermodel.IfDesctPickUpMySelf" disabled="true">送货上门</mat-checkbox>
+
+
+          </div>
+          <div fxFlex="15">
+            送货方式：<ejs-textbox  placeholder="发站" ngModel="{{ordermodel.OrderDestserviceDesc}}" readonly></ejs-textbox>
+          </div>
+
+          <div fxFlex="15">
+            回单（份）：<ejs-textbox  placeholder="回单" ngModel="{{ordermodel.CargoReceiptPaperCount}}" readonly></ejs-textbox>
+          </div>
+          <div fxFlex="15">
+            回单要求：<ejs-textbox  placeholder="回单要求" ngModel="{{ordermodel.CargoReceiptPaperShowType}}" readonly></ejs-textbox>
+          </div>
+          <div fxFlex="15">
+            备注：<ejs-textbox  placeholder="备注" ngModel="{{ordermodel.TransportMark}}" readonly></ejs-textbox>
           </div>
         </div>
-        <mat-card class="userbox">
-          <mat-card-content>
-            <mat-tab-group dynamicHeight="true" >
-              <mat-tab label="支出费用">
-                <ejs-grid #grid  allowResizing= 'true'
-                          [allowExcelExport]='true'  allowSorting='false'
-                          [allowSelection]="true"
-                          [enableHover]="false"
-                          allowPaging='true'  class="contlistbox">
-                  <e-columns >
+<!--        <mat-card class="userbox">-->
+<!--          <mat-card-content>-->
+<!--            <mat-tab-group dynamicHeight="true" >-->
+<!--              <mat-tab label="支出费用">-->
+<!--                <ejs-grid #grid  allowResizing= 'true'-->
+<!--                          [allowExcelExport]='true'  allowSorting='false'-->
+<!--                          [allowSelection]="true"-->
+<!--                          [enableHover]="false"-->
+<!--                          allowPaging='true'  class="contlistbox">-->
+<!--                  <e-columns >-->
 
-                    <e-column type='checkbox' width='50'></e-column>
-                    <e-column   headerText='物流单号' isPrimaryKey='true' width='165'>
-                      <ng-template #template let-data>
-                      </ng-template>
-                    </e-column>
-                    <e-column field='' headerText='节点名称'  width=120></e-column>
-                    <e-column field='' headerText='网点简称'  width=110></e-column>
-                    <e-column field='' headerText='物流状态'  width=120></e-column>
-                    <e-column field='' headerText='发货联系人' textAlign="left"  width='150'></e-column>
-                    <e-column field='' headerText='发货联系电话' textAlign="left"  width='130'></e-column>
-                    <e-column field='' headerText='到货联系人'  textAlign="left" width='150'></e-column>
-                    <e-column field='' headerText='到货联系电话' textAlign="left"  width=130></e-column>
-                    <e-column  headerText='始发区域' field="" textAlign="left"  width=150></e-column>
-                    <e-column field='' headerText='到货区域' textAlign="left"  width=150></e-column>
-                    <e-column field='' headerText='订单件数'  width=120></e-column>
-                    <e-column field='' headerText='订单重量'  width=120></e-column>
-                    <e-column field='' headerText='订单体积'  width=130></e-column>
-                    <e-column field='' headerText='实付运费'  width=120></e-column>
-                    <e-column field='' headerText='财务状态'  width=120></e-column>
-                    <e-column field='' headerText='结算方式'  width=120></e-column>
-                    <e-column field='' headerText='发货网点'  width=180></e-column>
-                    <e-column field='' headerText='落货/自提网点'  width=180></e-column>
-                    <e-column field='' headerText='创建人'  width=120></e-column>
-                    <e-column field='' headerText='创建时间' format='yMd' width=150></e-column>
-                    <e-column field='' headerText='对内备注' width=150></e-column>
-                  </e-columns>
-                </ejs-grid>
-              </mat-tab>
-              <mat-tab label="配载信息">
+<!--                    <e-column type='checkbox' width='50'></e-column>-->
+<!--                    <e-column   headerText='物流单号' isPrimaryKey='true' width='165'>-->
+<!--                      <ng-template #template let-data>-->
+<!--                      </ng-template>-->
+<!--                    </e-column>-->
+<!--                    <e-column field='' headerText='节点名称'  width=120></e-column>-->
+<!--                    <e-column field='' headerText='网点简称'  width=110></e-column>-->
+<!--                    <e-column field='' headerText='物流状态'  width=120></e-column>-->
+<!--                    <e-column field='' headerText='发货联系人' textAlign="left"  width='150'></e-column>-->
+<!--                    <e-column field='' headerText='发货联系电话' textAlign="left"  width='130'></e-column>-->
+<!--                    <e-column field='' headerText='到货联系人'  textAlign="left" width='150'></e-column>-->
+<!--                    <e-column field='' headerText='到货联系电话' textAlign="left"  width=130></e-column>-->
+<!--                    <e-column  headerText='始发区域' field="" textAlign="left"  width=150></e-column>-->
+<!--                    <e-column field='' headerText='到货区域' textAlign="left"  width=150></e-column>-->
+<!--                    <e-column field='' headerText='订单件数'  width=120></e-column>-->
+<!--                    <e-column field='' headerText='订单重量'  width=120></e-column>-->
+<!--                    <e-column field='' headerText='订单体积'  width=130></e-column>-->
+<!--                    <e-column field='' headerText='实付运费'  width=120></e-column>-->
+<!--                    <e-column field='' headerText='财务状态'  width=120></e-column>-->
+<!--                    <e-column field='' headerText='结算方式'  width=120></e-column>-->
+<!--                    <e-column field='' headerText='发货网点'  width=180></e-column>-->
+<!--                    <e-column field='' headerText='落货/自提网点'  width=180></e-column>-->
+<!--                    <e-column field='' headerText='创建人'  width=120></e-column>-->
+<!--                    <e-column field='' headerText='创建时间' format='yMd' width=150></e-column>-->
+<!--                    <e-column field='' headerText='对内备注' width=150></e-column>-->
+<!--                  </e-columns>-->
+<!--                </ejs-grid>-->
+<!--              </mat-tab>-->
+<!--              <mat-tab label="配载信息">-->
 
-              </mat-tab>
-              <mat-tab label="签收信息">
+<!--              </mat-tab>-->
+<!--              <mat-tab label="签收信息">-->
 
-              </mat-tab>
-              <mat-tab label="中转信息">
+<!--              </mat-tab>-->
+<!--              <mat-tab label="中转信息">-->
 
-              </mat-tab>
-              <mat-tab label="送货信息">
+<!--              </mat-tab>-->
+<!--              <mat-tab label="送货信息">-->
 
-              </mat-tab>
-              <mat-tab label="提货信息">
+<!--              </mat-tab>-->
+<!--              <mat-tab label="提货信息">-->
 
-              </mat-tab>
-            </mat-tab-group>
+<!--              </mat-tab>-->
+<!--            </mat-tab-group>-->
 
-          </mat-card-content>
-        </mat-card>
+<!--          </mat-card-content>-->
+<!--        </mat-card>-->
         <div class="btnbox">
-          <button ejs-button cssClass="e-info pagebtn" type="button"><i class="fas fa-print"></i>打印</button>
-          <button ejs-button cssClass="e-info pagebtn" type="button"  class="mat-reject"><i class="fas fa-shield-alt"></i>
-            投保</button>
-          <a  ejs-button cssClass="e-info pagebtn" ><i class="fas fa-envelope"></i> 短信通知</a>
-          <a  ejs-button cssClass="e-info pagebtn"  class="mat-blue" ><i class="fas fa-plus-square"></i> 新增配载</a>
-          <a  ejs-button cssClass="e-info pagebtn"  class="mat-blue" ><i class="fas fa-sync"></i> 中转</a>
-          <a  ejs-button cssClass="e-info pagebtn"  class="mat-blue" ><i class="fas fa-clipboard-list"></i> 运单提货</a>
-          <a  ejs-button cssClass="e-info pagebtn"  class="mat-blue" ><i class="fas fa-clipboard-list"></i> 送货</a>
-          <a  ejs-button cssClass="e-info pagebtn"  class="mat-blue" ><i class="fas fa-clipboard-list"></i> 签收</a>
-          <a  ejs-button cssClass="e-info pagebtn"  class="mat-blue" ><i class="fas fa-clipboard-list"></i> 回单</a>
-          <a  ejs-button cssClass="e-info pagebtn"  class="mat-blue" ><i class="fas fa-exclamation-circle"></i> 添加异动</a>
-          <a  ejs-button cssClass="e-info pagebtn"  class="mat-blue" ><i class="fas fa-folder-plus"></i> 运单挂失</a>
+          <button ejs-button cssClass="mat-reject pagebtn" type="button"
+                  appTmssaveconfirm  comfirmMessage="确认删除运单吗，你可以继续使用这个物流单号?" (onSuggest)="delorder($event)" ><i class="fas fa-print"></i>运单删除</button>
+<!--          <button ejs-button cssClass="e-info pagebtn" type="button"><i class="fas fa-print"></i>打印</button>-->
+<!--          <button ejs-button cssClass="mat-reject pagebtn" type="button"><i class="fas fa-shield-alt"></i>投保</button>-->
+<!--          <a  ejs-button cssClass="e-info pagebtn" ><i class="fas fa-envelope"></i> 短信通知</a>-->
+<!--          <a  ejs-button cssClass="e-info pagebtn"  class="mat-blue" ><i class="fas fa-plus-square"></i> 新增配载</a>-->
+<!--          <a  ejs-button cssClass="e-info pagebtn"  class="mat-blue" ><i class="fas fa-sync"></i> 中转</a>-->
+<!--          <a  ejs-button cssClass="e-info pagebtn"  class="mat-blue" ><i class="fas fa-clipboard-list"></i> 运单提货</a>-->
+<!--          <a  ejs-button cssClass="e-info pagebtn"  class="mat-blue" ><i class="fas fa-clipboard-list"></i> 送货</a>-->
+<!--          <a  ejs-button cssClass="e-info pagebtn"  class="mat-blue" ><i class="fas fa-clipboard-list"></i> 签收</a>-->
+<!--          <a  ejs-button cssClass="e-info pagebtn"  class="mat-blue" ><i class="fas fa-clipboard-list"></i> 回单</a>-->
+<!--          <a  ejs-button cssClass="e-info pagebtn"  class="mat-blue" ><i class="fas fa-exclamation-circle"></i> 添加异动</a>-->
+<!--          <a  ejs-button cssClass="e-info pagebtn"  class="mat-blue" ><i class="fas fa-folder-plus"></i> 运单挂失</a>-->
           <a  ejs-button cssClass="e-info pagebtn"  class="mat-cancel"  [routerLink]="['/biz/myorder/list']" ><i class="fas fa-angle-double-left"></i>返回</a>
         </div>
       </mat-tab>
       <mat-tab label="运单跟踪">
-        <div class="wrapper">
-          <ul class="StepProgress">
-            <li class="StepProgress-item current"><strong>签收</strong>
-              <p>操作时间：2019-08-13 16:00:32 签收经办人:娄建华 签收人:盛世医药</p>
-              签收 (11/11件,0/0吨,0.4/0.4方), 签收时间:2019-08-13 16:00:31, 签收经办人:娄建华 签收人:盛世医药
-            </li>
-            <li class="StepProgress-item is-done"><strong>干线卸车</strong>
-              <p>操作时间：2019-08-13 16:00:32 签收经办人:娄建华 签收人:盛世医药</p>
-              签收 (11/11件,0/0吨,0.4/0.4方), 签收时间:2019-08-13 16:00:31, 签收经办人:娄建华 签收人:盛世医药
-            </li>
-            <li class="StepProgress-item is-done"><strong>干线到达</strong>
-              <p>操作时间：2019-08-13 16:00:32 签收经办人:娄建华 签收人:盛世医药</p>
-              签收 (11/11件,0/0吨,0.4/0.4方), 签收时间:2019-08-13 16:00:31, 签收经办人:娄建华 签收人:盛世医药
-            </li>
-            <li class="StepProgress-item is-done"><strong>干线发车</strong>
-              <p>操作时间：2019-08-13 16:00:32 签收经办人:娄建华 签收人:盛世医药</p>
-              签收 (11/11件,0/0吨,0.4/0.4方), 签收时间:2019-08-13 16:00:31, 签收经办人:娄建华 签收人:盛世医药
-            </li>
-            <li class="StepProgress-item is-done"><strong>创建运单</strong>
-              <p>操作时间：2019-08-13 16:00:32 签收经办人:娄建华 签收人:盛世医药</p>
-              签收 (11/11件,0/0吨,0.4/0.4方), 签收时间:2019-08-13 16:00:31, 签收经办人:娄建华 签收人:盛世医药
-            </li>
-          </ul>
-        </div>
+
+        <app-biz-orderdetail-logistictrack [OrderTrackServerId]="ordermodel.TrackOrderNumber"></app-biz-orderdetail-logistictrack>
 
       </mat-tab>
 
+<!--      <mat-tab label="走货路径">-->
+
+<!--      </mat-tab>-->
+<!--      <mat-tab label="财务结算"></mat-tab>-->
     </mat-tab-group>
 
   </mat-card-content>

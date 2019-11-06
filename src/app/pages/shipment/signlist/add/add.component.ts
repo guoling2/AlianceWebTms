@@ -10,6 +10,9 @@ import {TmsresponseStatusCode} from '../../../../models/tms-response.module';
 import {EmitService} from '../../../../help/emit-service';
 import {laneCollection} from '@syncfusion/ej2-diagrams/src/diagram/utility/swim-lane-util';
 import {SignBaseView} from '../sign-base-view';
+import {ShipmentOrderService} from '../../../../services/logistic/order/shipment-order.service';
+import {ViewHelper} from '@syncfusion/ej2-schedule';
+import getDate = ViewHelper.getDate;
 
 @Component({
   selector: 'app-sign-add',
@@ -17,7 +20,7 @@ import {SignBaseView} from '../sign-base-view';
   styleUrls: ['./add.component.css']
 })
 export class AddComponent implements OnInit, SignBaseView {
-  constructor(private elementRef: ElementRef, private emitService: EmitService, private formBuilder: FormBuilder, private shipmentSignatureService: ShipmentSignatureService) {
+  constructor(private shipmentOrderService: ShipmentOrderService, private elementRef: ElementRef, private emitService: EmitService, private formBuilder: FormBuilder, private shipmentSignatureService: ShipmentSignatureService) {
 
   }
 
@@ -47,7 +50,7 @@ export class AddComponent implements OnInit, SignBaseView {
   // public dlgBtnClick: EmitType<object> = () => {this.dialogObj.hide(); };
   public dlgButtons: Object[] = [{  buttonModel: { content: 'Ok', isPrimary: true } }];
   public uploadInput = '';
-  public  SignTypeDataSource = ['本人签收', '网点签收'];
+  public  SignTypeDataSource = ['本人签收', '网点代签'];
   selectfile: File;
 
   height: number;
@@ -64,44 +67,56 @@ export class AddComponent implements OnInit, SignBaseView {
     this.selectfile = args.filesData[0].rawFile;
     // const file = args.filesData[0];
    // this.form.get('OrderBackFile').setValue(file);
-  }
+  };
 
   public onFormSubmit(): void {
     this.formSumitAttempt = true;
     if (this.form.valid) {
 
-      this.form.get('OrderBackFile').setValue(this.selectfile);
+      // this.form.get('OrderBackFile').setValue(this.selectfile);
 
       this.shipmentSignatureService.add(this.form.getRawValue()).subscribe((a) => {
-        this.emitService.eventEmit.emit(
-          new EmitAlertMessage(AlertMessageType.Info, '系统信息', a.Info, MessageShowType.Toast));
-        if ( a.StatusCode !== TmsresponseStatusCode.Succeed() ) {
-        } else {
 
-          this.OrderTrackServerId = '';
-          this.form.reset();
+        if ( a.StatusCode !== TmsresponseStatusCode.Succeed() ) {
+          this.emitService.eventEmit.emit(
+            new EmitAlertMessage(AlertMessageType.Error, '系统信息', '签收成功', MessageShowType.Toast));
+        } else {
+          this.emitService.eventEmit.emit(
+            new EmitAlertMessage(AlertMessageType.Succeed, '系统信息', '签收成功', MessageShowType.Toast));
+        //  this.OrderTrackServerId = '';
+        //  this.form.reset();
 
         }
        // this.form.get('OrderBackFile').setValue('');
-        alert('上传成功');
+       // alert('上传成功');
       });
 
     } else {
       Formextension.validateAllFormFields(this.form);
     }
   }
+
   ngOnInit() {
 
-
-
+    const today = new Date ();
 
     this.form = this.formBuilder.group({
       OrderLogisticDetailId: [this.OrderLogisticDetailId, [Validators.required]],
-      SignUserName: [null, [Validators.required]],
-      SingaMemberType: [null, [Validators.required]],
-      SignDateTime: ['2019-6-13 12:30'],
-      OrderBackFile: [null, Validators.required],
+      SignUserName: '读取中',
+      SignUserLinkTel: '读取中',
+      SingaMemberType: [this.SignTypeDataSource[1], [Validators.required]],
+      SignDateTime: [today],
+      // OrderBackFile: [null, Validators.required],
     });
+
+    this.shipmentOrderService.simpledetail(this.OrderLogisticDetailId).subscribe(a => {
+
+       this.form.patchValue({'SignUserName': a.DestLinkman});
+      this.form.patchValue({'SignUserLinkTel': a.Desttel});
+    });
+
+
+
   }
 
   isFieldValid(field: string) {

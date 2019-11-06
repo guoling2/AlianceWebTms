@@ -8,8 +8,14 @@
 <div class="bendbox">
 
 
-  <app-biz-groupinsdecommomlist [orderStoreSubject]="orderStoreSubject"
-                                [GroupSubItemType]="GroupSubItemType"></app-biz-groupinsdecommomlist>
+  <ng-container *ngIf="GroupSubItemType!='localtihuo'">
+    <app-biz-groupinsdecommomlist [orderStoreSubject]="orderStoreSubject"
+                                  [GroupSubItemType]="GroupSubItemType"></app-biz-groupinsdecommomlist>
+  </ng-container>
+  <ng-container *ngIf="GroupSubItemType =='localtihuo'">
+    <app-biz-groupinsdetihuogridlist [orderStoreSubject]="orderStoreSubject"
+                                  [GroupSubItemType]="GroupSubItemType"></app-biz-groupinsdetihuogridlist>
+  </ng-container>
 <!--  <mat-tab-group >-->
 <!--    <mat-tab label="待派车列表">-->
 

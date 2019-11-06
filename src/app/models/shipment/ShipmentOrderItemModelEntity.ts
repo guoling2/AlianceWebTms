@@ -43,5 +43,7 @@ export class ShipmentOrderItemModelEntity {
   */
   public PackageHigh ?: number;
 
+  public LogisticAttribute: string;
+
 
 }

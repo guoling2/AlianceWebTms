@@ -8,5 +8,5 @@
       <mat-option value="{{store.StoreId}}" *ngFor="let store of logistticstores;">{{store.StoreName}}</mat-option>
     </mat-select>
   </label>
-  <span  matPrefix style="color: #888">物流网点：&nbsp;</span>
+  <span  matPrefix style="color: #888">{{displaylabel}}：&nbsp;</span>
 </mat-form-field>

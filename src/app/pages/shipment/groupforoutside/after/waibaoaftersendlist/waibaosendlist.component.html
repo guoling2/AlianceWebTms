@@ -8,9 +8,6 @@
   </div>
 </div>
 <form class="listfrom" [formGroup]="searchp" >
-
-
-
   <mat-form-field class="col-md-3">
     <label>
       <input matInput  formControlName="OrderTrackServerId" />
@@ -36,11 +33,7 @@
     <span  matPrefix style="color: #888">任务状态：&nbsp;</span>
   </mat-form-field>
 
-
-
-
-
-  <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+  <button ejs-button cssClass="e-info mat-width" (click)="searching()" style="width:90px!important;">查询</button>
 </form>
 
 <ejs-grid #grid  allowResizing= 'true' height="{{gridheight}}"

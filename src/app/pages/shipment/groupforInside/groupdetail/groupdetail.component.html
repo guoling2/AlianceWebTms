@@ -41,29 +41,32 @@
           <div fxFlex="66">运输备注：<ejs-textbox  placeholder="运输备注" ngModel="{{insideShipmentGroup.Mark}}" readonly></ejs-textbox></div>
         </div>
         <div>
-          <ejs-grid height="{{gridheight}}" #logitsticitemgrid  [editSettings]='editSettings' [dataSource]="logisticItemDataSource"
-                    allowPaging="true"  class="margin_t_10">
-            <e-columns>
-              <e-column field='SquenceId' headerText='序号' width='70'></e-column>
-              <e-column  headerText='物流单号' width='160'>
-                <ng-template #template let-data>
-                  <a  appModalPage [modal]="'SimpleorderdetailComponent'"  [modal-data]="data.OrderLogisticDetailId">{{data.TrackServerId}}</a>
-                </ng-template>
-              </e-column>
-              <e-column field='PlanStatuedDesc' headerText='任务状态' width='120'></e-column>
-              <!--    <e-column field='PlanTaskType' headerText='任务类型' width='160'></e-column>-->
-              <e-column  field='OrigincustomLinkman' headerText='发货联系人' width='120' textAlign='Right'></e-column>
-              <e-column field='DestLinkman' headerText=' 收货联系人' width='120' textAlign='Right'></e-column>
-              <e-column field='ActionStoreName' headerText='当前站点' width='150' textAlign='Right'></e-column>
-              <e-column field='NextStoreName' headerText='下一站' width='150' textAlign='Right'></e-column>
-              <e-column field='NextArea' headerText='到货城区' width='150' textAlign='Right'></e-column>
-              <e-column field='LogisticFee' format="N3" headerText='费用' width='120' textAlign='Right'></e-column>
-              <e-column field='PlanOrderItemCount' format="N1" headerText='装车件数' width='120' textAlign='Right'></e-column>
-              <e-column field='PlanOrderItemWeightForTon'  format="N3"  headerText='装车重量(T)' width='120' textAlign='Right'></e-column>
-              <e-column field='PlanOrderItemVolForcubicmeter'  format="N3"  headerText='装车体积(M3)' width='120' textAlign='Right'></e-column>
-              <e-column field='FinishDatetime'   headerText='任务完成时间' width='120' textAlign='Right'></e-column>
-            </e-columns>
-          </ejs-grid>
+
+
+          <app-biz-logisticitemdetail IputDataGridCss="margin_t_10" ShipmentGroupId="{{insideShipmentGroup.ShipmentGroupId}}"></app-biz-logisticitemdetail>
+<!--          <ejs-grid height="{{gridheight}}" #logitsticitemgrid  [editSettings]='editSettings' [dataSource]="logisticItemDataSource"-->
+<!--                    allowPaging="true"  class="margin_t_10">-->
+<!--            <e-columns>-->
+<!--              <e-column field='SquenceId' headerText='序号' width='70'></e-column>-->
+<!--              <e-column  headerText='物流单号' width='160'>-->
+<!--                <ng-template #template let-data>-->
+<!--                  <a  appModalPage [modal]="'SimpleorderdetailComponent'"  [modal-data]="data.OrderLogisticDetailId">{{data.TrackServerId}}</a>-->
+<!--                </ng-template>-->
+<!--              </e-column>-->
+<!--              <e-column field='PlanStatuedDesc' headerText='任务状态' width='120'></e-column>-->
+<!--              &lt;!&ndash;    <e-column field='PlanTaskType' headerText='任务类型' width='160'></e-column>&ndash;&gt;-->
+<!--              <e-column  field='OrigincustomLinkman' headerText='发货联系人' width='120' textAlign='Right'></e-column>-->
+<!--              <e-column field='DestLinkman' headerText=' 收货联系人' width='120' textAlign='Right'></e-column>-->
+<!--              <e-column field='ActionStoreName' headerText='当前站点' width='150' textAlign='Right'></e-column>-->
+<!--              <e-column field='NextStoreName' headerText='下一站' width='150' textAlign='Right'></e-column>-->
+<!--              <e-column field='NextArea' headerText='到货城区' width='150' textAlign='Right'></e-column>-->
+<!--              <e-column field='LogisticFee' format="N3" headerText='费用' width='120' textAlign='Right'></e-column>-->
+<!--              <e-column field='PlanOrderItemCount' format="N1" headerText='装车件数' width='120' textAlign='Right'></e-column>-->
+<!--              <e-column field='PlanOrderItemWeightForTon'  format="N3"  headerText='装车重量(T)' width='120' textAlign='Right'></e-column>-->
+<!--              <e-column field='PlanOrderItemVolForcubicmeter'  format="N3"  headerText='装车体积(M3)' width='120' textAlign='Right'></e-column>-->
+<!--              <e-column field='FinishDatetime'   headerText='任务完成时间' width='120' textAlign='Right'></e-column>-->
+<!--            </e-columns>-->
+<!--          </ejs-grid>-->
         </div>
         <div class="totalbox">
           <span>总件数：<b>{{insideShipmentGroup.SendOrderCount.toFixed(1)}}(件)</b> </span>

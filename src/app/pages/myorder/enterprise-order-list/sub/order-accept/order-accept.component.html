@@ -1,0 +1,22 @@
+<div class="matfullheight">
+<mat-dialog-content class="mat-typography">
+  <div *ngIf="ErrorMsg">{{ErrorMsg}}</div>
+  <div>
+  接单网点:
+  <ejs-dropdownlist
+    id='games' #sample
+    placeholder='请选择接单网点' [dataSource]='logistticstores'
+    [popupHeight]='200'
+    [fields]='logisticstorefiled' ></ejs-dropdownlist>
+  </div>
+  <div style="margin-top:10px">
+   提货车牌号:
+  <ejs-textbox #tihuonumbertxt placeholder='' ></ejs-textbox>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close color="cancel" style="padding:8px 8px!important;" (click)="close()">取消</button>
+  <button mat-button mat-raised-button color="green"  style="padding:8px 8px!important;" (click)="SaveData($event)" >确认接单</button>
+</mat-dialog-actions>
+</div>
+

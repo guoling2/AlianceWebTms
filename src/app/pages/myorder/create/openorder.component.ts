@@ -164,11 +164,17 @@ export class OpenMyorderComponent implements OnInit {
       TransportMark: '', // 运输备注
       // 增值业务
       DeclaredValue: '', // 声明货物价值
-      CollectionOnDeliveryAmount: '', // 声明代收货款
+      DeliveryFee: '', // 保价费
+
+      CollectionOnDeliveryAmount: '', // 代收货款
+      CollectionOnDeliveryAmountFee: '', // 代收货款手续费
+
       CollectionOnDeliveryBankPeopleName: '', // 代收货款人姓名
       CollectionOnDeliveryBankNumber: '', // 代收货款银行账号
+
+
       InvoiceTitle: {value: '', disabled: true}, // 发票抬头
-      IsOpenInvoice: { value: 'false' }, // 是否开票
+      IsOpenInvoice: false, // 是否开票
       // CargoReceiptNumber:'',//回单
       Needreturntrackingno: false, // 是否回单
       CargoReceiptPaperShowType: '', // 回单返回方式

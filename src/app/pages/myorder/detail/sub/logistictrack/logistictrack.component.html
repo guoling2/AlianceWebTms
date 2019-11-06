@@ -1,0 +1,9 @@
+<div class="wrapper">
+  <ul class="StepProgress">
+
+    <li class="StepProgress-item current" *ngFor="let a of messresult"><strong>{{a.TaskStatuedDesv}}</strong>
+      <p>{{a.TrackMessage}}</p>
+      {{a.CreateUserName}} {{a.CreateTime}}
+    </li>
+  </ul>
+</div>

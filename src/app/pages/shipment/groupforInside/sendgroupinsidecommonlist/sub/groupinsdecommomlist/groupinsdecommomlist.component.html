@@ -5,7 +5,17 @@
     </label>
     <span  matPrefix style="color: #888">物流单号：&nbsp;</span>
   </mat-form-field>
-<!--  <mat-form-field class="col-md-3 col-lefty" [hidden]="true">-->
+
+  <mat-form-field class="col-md-3">
+    <label>
+      <input matInput  formControlName="DestCity" />
+    </label>
+    <span  matPrefix style="color: #888">到货城市：&nbsp;</span>
+  </mat-form-field>
+
+  <app-biz-mylogistiscstore2   displaylabel="配载网点" mat-form-field-class="col-md-2" formControlName="BeginLogisticStoreId" ></app-biz-mylogistiscstore2>
+
+  <!--  <mat-form-field class="col-md-3 col-lefty" [hidden]="true">-->
 <!--    <label>-->
 <!--      <select matNativeControl  formControlName="PlanStatuedId" readonly="readonly">-->
 <!--        <option label="未安排"></option>-->
@@ -29,7 +39,7 @@
 
 <!--  <button ejs-button cssClass="e-info" (click)="attchitem('400px','600px')">添加运单</button>-->
 
-  <span class="sourcelength">已选择 <b>{{alreadyloadshipmentdatasource.length}}</b> 条数据</span>
+  <span class="sourcelength">已选择 <b>{{grid.getSelectedRecords().length}}</b> 条数据</span>
 </form>
 
 <ejs-grid #grid
@@ -74,26 +84,34 @@
 
 <!--    <e-column field='OriginAddress'  headerText='发货地址'  width='165'></e-column>-->
 
+    <e-column field='DestCity'  headerText='到货城市'  width='165'></e-column>
+
+
+    <e-column field='EndStoreName'  headerText='到货网点'  width='165'></e-column>
+
+    <e-column field='StoreOrderCount'  headerText='运单件数'  width='165'></e-column>
+    <e-column field='AlreadySendOrderCount'  headerText='已发运(件)'  width='165'></e-column>
+
+    <e-column field='StoreOrderZhWeight'  headerText='重货(吨)'  width='165'>
+      <ng-template #template let-data>
+        {{data.StoreOrderZhWeight | tmsweightconvert :'g'}}
+      </ng-template>
+    </e-column>
+    <e-column field='StoreOrderPhVolume'  headerText='抛货(方)'  width='165'>
+      <ng-template #template let-data>
+        {{data.StoreOrderPhVolume | tmsvolumeconvert :'cm'}}
+      </ng-template>
+    </e-column>
+
+
 
     <e-column field='DesctcustomName'  headerText='到货客户'  width='165'></e-column>
 
     <e-column field='DestLinkman'  headerText='到货联系'  width='165'></e-column>
 
-    <e-column field='DestCity'  headerText='到货城市'  width='165'></e-column>
 
-    <e-column field='EndStoreName'  headerText='到货网点'  width='165'></e-column>
 
     <e-column field='DestAddress'  headerText='到货地址'  width='165'></e-column>
-
-
-    <e-column field='TotalCount'  headerText='总件数'  width='165'></e-column>
-
-
-    <e-column field='TotalVolume'  headerText='体积'  width='165'></e-column>
-
-
-    <e-column field='TotalWeight'  headerText='重量'  width='165'></e-column>
-
 
     <e-column field='BeginLogisticStoreId' [visible]='false' headerText='接单网点编号'  width='165'></e-column>
 
@@ -104,7 +122,7 @@
 
 
 
-    <e-column field='PlanStatuedId'  headerText='提货状态'  width='165'></e-column>
+<!--    <e-column field='PlanStatuedId'  headerText='提货状态'  width='165'></e-column>-->
 
 
     <e-column field='CreateDateTime'  headerText='下达时间'  width='165'></e-column>

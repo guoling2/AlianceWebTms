@@ -24,4 +24,10 @@ export class TmsResponseModle {
      public  StatusCode: number;
      public  Info: string;
      public  Data ?: any;
+
+  public  Error: TmsResponseError;
+}
+export  class TmsResponseError {
+  public ErrorMsg: string;
+  public Code: string;
 }

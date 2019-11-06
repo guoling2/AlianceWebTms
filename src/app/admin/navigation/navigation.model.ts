@@ -109,12 +109,12 @@ export class NavigationModel {
             //   'type': 'item',
             //   'url': '/biz/shipment/circletriptrip'
             // },
-            {
-              'id': 'wuliu10-1',
-              'title': '提货外包',
-              'type': 'item',
-              'url': '/biz/shipment/outer-tihuo'
-            },
+            // {
+            //   'id': 'wuliu10-1',
+            //   'title': '提货外包',
+            //   'type': 'item',
+            //   'url': '/biz/shipment/outer-tihuo'
+            // },
             {
               'id': 'wuliu22-2',
               'title': '转运外包',
@@ -128,16 +128,16 @@ export class NavigationModel {
               'url': '/biz/shipment/pickuplist'
             },
             {
-              'id': 'wuliu22-4',
-              'title': '转运汇总',
-              'type': 'item',
-              'url': '/biz/shipment/transferlist'
-            },
-            {
               'id': 'wuliu22-5',
               'title': '配送汇总',
               'type': 'item',
               'url': '/biz/shipment/senditemlist'
+            },
+            {
+              'id': 'wuliu22-4',
+              'title': '干线汇总',
+              'type': 'item',
+              'url': '/biz/shipment/transferlist'
             },
             {
               'id': 'wuliu22-6',
@@ -177,32 +177,44 @@ export class NavigationModel {
             // }
           ]
         },
-        // {
-        //   'id': 'ui',
-        //   'title': '回单',
-        //   'type': 'collapse',
-        //   'icon': 'assignment_late',
-        //   'children': [
-        //     {
-        //       'id': 'date-picker',
-        //       'title': '回单收回',
-        //       'type': 'item',
-        //       'url': '/biz/orders6'
-        //     },
-        //     {
-        //       'id': 'pagination',
-        //       'title': '回单返厂',
-        //       'type': 'item',
-        //       'url': '/biz/orders7'
-        //     },
-        //     {
-        //       'id': 'modal',
-        //       'title': '回单查询',
-        //       'type': 'item',
-        //       'url': '/biz/orders8'
-        //     }
-        //   ]
-        // },
+        {
+          'id': 'ui',
+          'title': '回单管理',
+          'type': 'collapse',
+          'icon': 'assignment_late',
+          'children': [
+            {
+              'id': 'date-picker',
+              'title': '回单收回',
+              'type': 'item',
+              'url': '/biz/orders6'
+            },
+            {
+              'id': 'date-picker',
+              'title': '回单寄出',
+              'type': 'item',
+              'url': '/biz/orders6'
+            },
+            {
+              'id': 'date-picker',
+              'title': '回单接收',
+              'type': 'item',
+              'url': '/biz/orders6'
+            },
+            {
+              'id': 'pagination',
+              'title': '回单返厂',
+              'type': 'item',
+              'url': '/biz/orders7'
+            },
+            {
+              'id': 'modal',
+              'title': '回单查询',
+              'type': 'item',
+              'url': '/biz/orders8'
+            }
+          ]
+        },
         {
           'id': 'kefu',
           'title': '过程跟踪',
@@ -273,7 +285,7 @@ export class NavigationModel {
           'id': 'fa-calculator',
           'title': '计费与对账',
           'type': 'collapse',
-          'icon': 'person_pin',
+          'icon': 'assignment',
           'children': [
             {
               'id': 'OrderCharge',
@@ -325,7 +337,7 @@ export class NavigationModel {
           'id': 'fa-pay',
           'title': '结算与交账',
           'type': 'collapse',
-          'icon': 'person_pin',
+          'icon': 'assessment',
           'children': [
             {
               'id': 'CustSettle',
@@ -357,7 +369,7 @@ export class NavigationModel {
           'id': 'fnmanager',
           'title': '报价管理',
           'type': 'collapse',
-          'icon': 'storage',
+          'icon': 'work',
           'children': [
             {
               'id': 'fnmanager01',

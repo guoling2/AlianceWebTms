@@ -10,4 +10,5 @@ export class OrderFlowMessageEntity {
   public TrackMessage: string;
   public TaskStatuedDesv: string;
   public CreateTime ?: Date;
+  public CreateUserName: string;
 }

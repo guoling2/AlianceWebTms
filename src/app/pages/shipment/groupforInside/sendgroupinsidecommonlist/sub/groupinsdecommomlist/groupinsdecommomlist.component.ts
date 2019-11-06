@@ -68,7 +68,7 @@ export class GroupinsdecommomlistComponent implements OnInit {
     this.pageSettings = {pageSize: 100};
     // this.grid.pageSettings.pageSize = 100;
     this.searchp = this.fb.group(
-      { OrderTrackServerId: '', PlanStatuedId: ''});
+      { OrderTrackServerId: '', PlanStatuedId: '', DestCity: '', BeginLogisticStoreId: ''});
     this.gridheight = Commonsetting.GridHeight2();
 
     this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Normal', newRowPosition: 'Top' };

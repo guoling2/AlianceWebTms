@@ -84,6 +84,9 @@ export class ShipOutHeaditemComponent implements OnInit  {
     this.saveform.addControl('TrincId', new FormControl({value: ''}, Validators.required));
     this.saveform.addControl('TrincName', new FormControl({value: '请选择', readonly: true}, Validators.required));
 
+    this.saveform.addControl('SendTrincId', new FormControl({value: ''}, Validators.required));
+    this.saveform.addControl('SendTrincName', new FormControl({value: '请选择', readonly: true}, Validators.required));
+
     this.saveform.addControl('TrincLinkMan', new FormControl({value: '', disabled: false}, Validators.required));
 
     this.saveform.addControl('TrincLinkTel', new FormControl());
@@ -135,6 +138,9 @@ export class ShipOutHeaditemComponent implements OnInit  {
         this.saveform.patchValue({TrincName: result.RName});
         this.saveform.patchValue({TrincLinkMan: result.LinkMan});
         this.saveform.patchValue({TrincLinkTel: result.LinkTel});
+
+        this.saveform.patchValue({SendTrincId: result.ResourceId});
+        this.saveform.patchValue({SendTrincName: result.RName});
 
         console.log('CarriersTransportationpoolDetailModel');
         console.log(result);

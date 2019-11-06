@@ -2,6 +2,8 @@ import {TmsDataEntity} from '../tms-data-entity';
 
 export class LogisticItemModel extends TmsDataEntity {
 
+    SystemOrderId: string;
+
   ShipmentId: string;
 
   ShipmentPlanId: string;

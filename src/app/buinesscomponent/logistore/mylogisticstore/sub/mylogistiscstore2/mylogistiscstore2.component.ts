@@ -27,8 +27,10 @@ export class Mylogistiscstore2Component implements OnInit , ControlValueAccessor
   @Input('mat-form-field-class')
   matformclass: string;
 
+  @Input()
+  displaylabel = '物流网点';
 
-  @ViewChild('mystore', {static: true})
+  @ViewChild('mystore', {static: false})
   mystoredownlist: MatSelect;
 
   onChange;

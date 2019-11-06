@@ -78,6 +78,7 @@ export class OutsidePlanGroupCreateComponent implements OnInit {
         this.emitService.eventEmit.emit(
           new EmitAlertMessage(AlertMessageType.Info, '系统信息', a.Info, MessageShowType.Toast));
 
+        //biz/shipment/outside-shipment-detail/PG10000420191022000003
         this.router.navigateByUrl('biz/shipment/outside-shipment-detail/' + a.Data);
 
       } else {
