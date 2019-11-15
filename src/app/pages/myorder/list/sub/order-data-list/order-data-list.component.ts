@@ -3,7 +3,7 @@ import {DataStateChangeEventArgs, GridComponent, SortDescriptorModel, SortServic
 import {Commonsetting} from '../../../../../help/commonsetting';
 import {Basereportconfig} from '../../../../../services/base/basereportconfig';
 import {Basereportservice} from '../../../../../services/base/basereportservice';
-import {LogistciOrderInterface} from '../logistci-order-interface';
+import {LogistciOrderInterface} from '../../../../../pageservices/logistci-order-interface';
 import {$e} from 'codelyzer/angular/styles/chars';
 import {DataGridHelp} from '../../../../../SyncfusionHelp/data-grid-help';
 
@@ -33,7 +33,7 @@ export class LogisticOrderDataListComponent implements OnInit, LogistciOrderInte
   }
 
   ngOnInit() {
-    this.gridheight = Commonsetting.GridHeight5();
+    this.gridheight = Commonsetting.GridHeight3s();
   }
 
   public get CurrentDataGrid() {
@@ -50,7 +50,7 @@ export class LogisticOrderDataListComponent implements OnInit, LogistciOrderInte
     this.inputfromgroup = a;
 
     const  pagesetting = this.grid.pageSettings;
-    a.pageindex = pagesetting.currentPage;
+    a.pageindex = pagesetting.currentPage - 1;
     a.pagesize = pagesetting.pageSize;
 
     //this.grid.sortModule.onActionComplete();

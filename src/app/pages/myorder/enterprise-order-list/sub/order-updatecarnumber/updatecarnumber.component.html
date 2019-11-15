@@ -1,0 +1,12 @@
+<div mat-dialog-content class="opendivs">
+  <h3><i class="fas fa-dolly-flatbed"></i> 提货车辆信息修改</h3>
+  <div class="inputbo">
+    车牌号码:
+    <ejs-textbox [(ngModel)]="carnumber" placeholder='' ></ejs-textbox>
+  </div>
+</div>
+<div mat-dialog-actions  align="end">
+  <button mat-button (click)="dialogRef.close()" color="cancel" style="padding:8px 8px!important;">关闭</button>
+  <button mat-button (click)="save()"  cdkFocusInitial color="reject"  style="padding:8px 8px!important;">退回</button>
+  <!--  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>退回</button>-->
+</div>

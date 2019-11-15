@@ -1,7 +1,7 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {LogisticStoreAuthorizeServiceService} from '../../../../../services/logisticstore/logistic-store-authorize-service.service';
 import {LogisticStore} from '../../../../../models/LogisticStore/logistic-store';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {DropDownListComponent} from '@syncfusion/ej2-angular-dropdowns';
 import {MatSelect} from '@angular/material';
 
@@ -9,29 +9,27 @@ import {MatSelect} from '@angular/material';
   selector: 'app-biz-mylogistiscstore2',
   templateUrl: './mylogistiscstore2.component.html',
   styleUrls: ['./mylogistiscstore2.component.css'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      multi: true,
-      useExisting: Mylogistiscstore2Component
-    }
-  ]
 })
-export class Mylogistiscstore2Component implements OnInit , ControlValueAccessor {
+export class Mylogistiscstore2Component implements OnInit {
 
   logistticstores: LogisticStore[];
 
   @Input()
   placeholder: string;
 
-  @Input('mat-form-field-class')
-  matformclass: string;
+  // tslint:disable-next-line: no-input-rename
+  @Input('mat-form-field-class') matformclass: string;
 
   @Input()
   displaylabel = '物流网点';
 
-  @ViewChild('mystore', {static: false})
-  mystoredownlist: MatSelect;
+  @ViewChild('mystorexx', { static: false}) mystoredownlist: MatSelect;
+
+  @Input()
+  public saveform: FormGroup;
+  @Input()
+  public SettingFormControlName: string;
+
 
   onChange;
 
@@ -40,31 +38,21 @@ export class Mylogistiscstore2Component implements OnInit , ControlValueAccessor
   ngOnInit() {
 
 
+    const firstNameControl = new FormControl();
+
     this.logisticStoreAuthorizeServiceService.MyStores().subscribe( (value: LogisticStore[]) => {
 
       this.logistticstores = value;
 
+      console.log(this.mystoredownlist);
+
+
     });
 
-  }
-
-  writeValue(value: any) {
-
-    this.mystoredownlist.writeValue(value);
-
-  }
-
-  registerOnTouched(fn: any): void {
-    if (fn != null) {
-      this.mystoredownlist.registerOnTouched(fn);
-      this.onChange = fn;
+    if (this.saveform != null) {
+      this.saveform.addControl(this.SettingFormControlName, new FormControl());
     }
+
   }
-  registerOnChange(fn) {
-    console.log('registerOnChange');
-    if (fn != null) {
-      this.mystoredownlist.registerOnChange(fn);
-      this.onChange = fn;
-    }
-  }
+
 }

@@ -329,6 +329,12 @@ export class NavigationModel {
               'type': 'item',
               'url': '/biz/logisticprice-management/price-template-list'
             },
+            {
+              'id': 'FnAccountTrans',
+              'title': '网点交账',
+              'type': 'item',
+              'url': '/biz/logisticprice-management/price-template-list'
+            },
 
           ]
         },
@@ -357,6 +363,7 @@ export class NavigationModel {
               'type': 'item',
               'url': '/biz/logisticprice-management/price-template-list'
             },
+
             {
               'id': 'FnAccountTransAudit',
               'title': '交款审核',

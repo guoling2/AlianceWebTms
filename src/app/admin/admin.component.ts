@@ -50,7 +50,7 @@ export class AdminComponent implements OnInit {
 
   constructor(public emitService: EmitService, private router: Router,
     private activatedRoute: ActivatedRoute,
-    private titleService: Title, public navigationService: NavigationService,private oidcSecurityService: OidcSecurityService) {
+    private titleService: Title, public navigationService: NavigationService, private oidcSecurityService: OidcSecurityService) {
 
 
     // 初始化的时候把首页添加进来

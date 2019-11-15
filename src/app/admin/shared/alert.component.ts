@@ -1,7 +1,5 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {AlertMessageType, EmitAlertMessage} from '../../help/emit-alert-message';
-import {addMonths} from '../../component/date-picker/dateUtils';
-import {GridComponent} from '@syncfusion/ej2-angular-grids';
 import {MessageComponent} from '../../component/message';
 
 @Component({

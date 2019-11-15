@@ -25,6 +25,8 @@ import {LogisticOrderDataListComponent} from './list/sub/order-data-list/order-d
 import { LogistictrackComponent } from './detail/sub/logistictrack/logistictrack.component';
 import { OrderchangerouteComponent } from './_sub/orderchangeroute/orderchangeroute.component';
 import { DefaultdepotsettingComponent } from './enterprise-order-list/sub/defaultdepotsetting/defaultdepotsetting.component';
+import { OrderUnAcceptComponent } from './enterprise-order-list/sub/order-unaccept/order-un-accept.component';
+import { UpdatecarnumberComponent } from './enterprise-order-list/sub/order-updatecarnumber/updatecarnumber.component';
 
 
 const routes: Routes = [
@@ -73,9 +75,9 @@ const routes: Routes = [
     OrderrouteplanComponent, PriceanalysisComponent, DetailComponent, OrderitemtagprintComponent,
     OrderDataListComponent,
     EnterpriseOrderListComponent, EnterpriseOrderDetailComponent,
-    OrderAcceptComponent, LogisticOrderDataListComponent, LogistictrackComponent, OrderchangerouteComponent, DefaultdepotsettingComponent],
+    OrderAcceptComponent, LogisticOrderDataListComponent, LogistictrackComponent, OrderchangerouteComponent, DefaultdepotsettingComponent, OrderUnAcceptComponent, UpdatecarnumberComponent],
   entryComponents: [
     OrdercustomerComponent, OrderrouteplanComponent, PriceanalysisComponent,
-    OrderitemtagprintComponent, OrderAcceptComponent, OrderchangerouteComponent, DefaultdepotsettingComponent]
+    OrderitemtagprintComponent, OrderAcceptComponent, OrderchangerouteComponent, DefaultdepotsettingComponent, OrderUnAcceptComponent, UpdatecarnumberComponent]
 })
 export class LogistcimyorderModule { }

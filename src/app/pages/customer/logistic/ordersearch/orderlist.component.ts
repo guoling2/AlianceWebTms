@@ -35,7 +35,7 @@ export class OrderlistComponent implements OnInit {
 
     const  pagesetting = this.grid.pageSettings;
     const searchable = this.searchp.getRawValue ();
-    searchable.pageindex = pagesetting.currentPage;
+    searchable.pageindex = pagesetting.currentPage - 1;
     searchable.pagesize = pagesetting.pageSize;
 
     console.log(pagesetting);

@@ -51,7 +51,7 @@ export class SendwaibaolistComponent implements OnInit {
     this.pageSettings = {pageSize: 100};
     // this.grid.pageSettings.pageSize = 100;
     this.searchp = this.fb.group(
-      { OrderTrackServerId: '', PlanStatuedId: '', ActionStoreId: ''});
+      { OrderTrackServerId: '', PlanStatuedId: '', ActionStoreId: '', DestCity: ''});
     this.gridheight = Commonsetting.GridHeight2();
 
     this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Normal', newRowPosition: 'Top' };
@@ -100,7 +100,7 @@ export class SendwaibaolistComponent implements OnInit {
 
     const  pagesetting = this.grid.pageSettings;
     const searchable = this.searchp.getRawValue ();
-    searchable.pageindex = pagesetting.currentPage;
+    searchable.pageindex = pagesetting.currentPage - 1;
     searchable.pagesize = pagesetting.pageSize;
     //  alert(this.GroupSubItemType);
     this.service.SearchReport(Basereportconfig.Report_logisticoutsendlist, searchable).subscribe(result => {

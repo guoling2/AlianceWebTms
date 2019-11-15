@@ -33,7 +33,7 @@ export class XiecheComponent implements OnInit {
   searching () {
     const  pagesetting = this.grid.pageSettings;
     const searchable = this.searchp.getRawValue ();
-    searchable.pageindex = pagesetting.currentPage;
+    searchable.pageindex = pagesetting.currentPage - 1;
     searchable.pagesize = pagesetting.pageSize;
 
     // <option value="1">本地卸车</option>

@@ -1,31 +1,40 @@
-<div class="contentbox">
-  <div class="contentit-l">
-    <mat-card-title>订单列表</mat-card-title>
-    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
-  </div>
-  <div class="contenttex-r">
-<!--    <button ejs-button cssClass="mat-green mat-width" [routerLink]="['/biz/myorder/create']" >新增</button>-->
-    <button ejs-button cssClass="mat-reject mat-width" (click)="motifychangeroute(400,400)">送货调整</button>
-    <button ejs-button cssClass="mat-green mat-width"  (click)="createmyshipmentorder()">下达</button>
-    <button ejs-button cssClass="mat-blue mat-width"   (click)="printordertag(500,1120)">货签打印</button>
+<div class="contentbox-new">
+  <div class="contentit-l-new">
+    <div class="contennews">
+      <b>订单列表</b>
+      <span><i class="fas fa-home"></i><a [routerLink]="['/biz/home']" > 主页</a></span> ·
+      <span><a [routerLink]="['/biz/myorder/list']" >订单列表</a></span> ·
+      <span>当前订单</span></div>
+    </div>
+  <div class="contenttex-r-new">
+    <button ejs-button cssClass="e-outline mat-auto" (click)="motifychangeroute(400,400)"><i class="fas fa-pencil-alt"></i> 送货调整</button>
+    <button ejs-button cssClass="e-outline mat-auto"  (click)="createmyshipmentorder()"><i class="fas fa-plus"></i> 下达</button>
+    <button ejs-button cssClass="e-outline mat-auto"   (click)="printordertag(500,1120)"><i class="fas fa-print"></i> 货签打印</button>
   </div>
 </div>
-<form class="listfrom" [formGroup]="searchp" >
+
+
+<form  [formGroup]="searchp" class="listfrom-new">
   <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
     <div fxFlex="22">
       <mat-form-field>
-        <input matInput  formControlName="OrderTrackServerId" />
+        <label>
+          <input matInput  formControlName="OrderTrackServerId" />
+        </label>
         <span  matPrefix style="color: #888">物流单号：&nbsp;</span>
       </mat-form-field>
     </div>
     <div fxFlex="22">
       <mat-form-field>
-        <input matInput  formControlName="DestCity" />
+        <label>
+          <input matInput  formControlName="DestCity" />
+        </label>
         <span  matPrefix style="color: #888">到货城市：&nbsp;</span>
       </mat-form-field>
     </div>
+<!--    <app-biz-mylogistiscstore2   mat-form-field-class="col-md-2" formControlName="BeginLogisticStoreId" ></app-biz-mylogistiscstore2>-->
     <div fxFlex="22">
-      <app-biz-mylogistiscstore2   mat-form-field-class="col-md-2" formControlName="BeginLogisticStoreId" ></app-biz-mylogistiscstore2>
+      <app-biz-mylogistiscstore2  [saveform]="searchp"   SettingFormControlName="BeginLogisticStoreId"  ></app-biz-mylogistiscstore2>
     </div>
     <div fxFlex="22">
       <mat-form-field>
@@ -44,8 +53,8 @@
     </div>
   </div>
 </form>
-<mat-tab-group #tabgroup  color="warn" backgroundColor="primary" dynamicHeight="false" disableRipple="true"  (selectedTabChange)="tabchanged($event)" style="margin:0 15px">
-  <mat-tab label="同城订单" a tabindex="0">
+<mat-tab-group #tabgroup  color="warn" dynamicHeight="false" disableRipple="true"  (selectedTabChange)="tabchanged($event)"  class="tabbox-new">
+  <mat-tab label="同城订单">
     <app-logistic-order-data-list #gdi1></app-logistic-order-data-list>
   </mat-tab>
   <mat-tab label="长途订单">

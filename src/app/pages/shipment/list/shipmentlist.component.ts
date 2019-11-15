@@ -171,7 +171,7 @@ export class ShipmentlistComponent implements OnInit {
 
 
     const searchable = this.searchp.getRawValue ();
-    searchable.pageindex = pagesetting.currentPage;
+    searchable.pageindex = pagesetting.currentPage - 1;
     searchable.pagesize = pagesetting.pageSize;
 
     this.shipplanService.searchplan(searchable).subscribe(result => {
@@ -197,7 +197,7 @@ export class ShipmentlistComponent implements OnInit {
 
 
     const searchable = this.searchp.getRawValue ();
-    searchable.pageindex = pagesetting.currentPage;
+    searchable.pageindex = pagesetting.currentPage - 1;
     searchable.pagesize = pagesetting.pageSize;
 
     this.shipService.searchReceiveOrder(searchable).subscribe(result => {this.grid1.dataSource = result; });

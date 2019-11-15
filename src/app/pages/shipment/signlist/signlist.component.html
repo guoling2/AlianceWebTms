@@ -8,24 +8,31 @@
 <div fxLayout="row" fxLayoutAlign="none">
   <div [fxFlex]="isselect?65:100" >
     <form class="listfrom" [formGroup]="searchp" >
-      <mat-form-field class="col-md-2">
-        <label>
-          <input matInput formControlName="OrderTrackServerId" />
-        </label>
-        <span  matPrefix style="color: #888">物流单号：&nbsp;</span>
-      </mat-form-field>
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+        <div fxFlex="26">
+          <mat-form-field style="width:100%">
+            <label>
+              <input matInput formControlName="OrderTrackServerId" />
+            </label>
+            <span  matPrefix style="color: #888">物流单号：&nbsp;</span>
+          </mat-form-field>
+        </div>
+        <div fxFlex="26">
+          <mat-form-field style="width:100%">
+            <select matNativeControl  formControlName="IsSign">
+              <option value="-1">全部</option>
+              <option value="0">未签收</option>
+              <option value="1">已签收</option>
+            </select>
+            <span  matPrefix style="color: #888">签收状态：&nbsp;</span>
+          </mat-form-field>
+        </div>
+        <div fxFlex="26">
+          <app-biz-mylogistiscstore2  displaylabel="签收网点" mat-form-field-class="col-md-2"  [saveform]="searchp"   SettingFormControlName="ChargeForOrderSignDeportmentId"   ></app-biz-mylogistiscstore2>
+        </div>
+        <div fxFlex="12" style="text-align: left;"><button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button></div>
+      </div>
 
-      <mat-form-field class="col-md-2">
-        <select matNativeControl  formControlName="IsSign">
-          <option value="-1">全部</option>
-          <option value="0">未签收</option>
-          <option value="1">已签收</option>
-        </select>
-        <span  matPrefix style="color: #888">签收状态：&nbsp;</span>
-      </mat-form-field>
-
-      <app-biz-mylogistiscstore2  displaylabel="签收网点" mat-form-field-class="col-md-2" formControlName="ChargeForOrderSignDeportmentId" ></app-biz-mylogistiscstore2>
-      <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
     </form>
     <ejs-grid #grid  allowResizing= 'true' height="{{gridheight}}"
               (dataStateChange)="dataStateChange($event)"
@@ -35,7 +42,7 @@
               [enableHover]="true"
               allowPaging='true'  class="contlistbox">
       <e-columns >
-        <e-column field='OrderTrackServerId' headerText='物流单号'  width=120></e-column>
+        <e-column field='OrderTrackServerId' headerText='物流单号'  width=150></e-column>
         <e-column field='DestLinkman' headerText='到货联系'  width=110></e-column>
         <e-column field='Desttel' headerText='联系电话' textAlign="left"  width='110'></e-column>
         <e-column field='IsSign' headerText='签收状态' textAlign="left"  width='100'></e-column>

@@ -1,29 +1,35 @@
 <form class="listfrom" [formGroup]="searchp" >
-  <mat-form-field class="col-md-3">
-    <label>
-      <input matInput  formControlName="OrderTrackServerId" />
-    </label>
-    <span  matPrefix style="color: #888">物流单号：&nbsp;</span>
-  </mat-form-field>
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+    <div fxFlex="20">
+      <mat-form-field  style="width:100%">
+        <label>
+          <input matInput  formControlName="OrderTrackServerId" />
+        </label>
+        <span  matPrefix style="color: #888">物流单号：&nbsp;</span>
+      </mat-form-field>
+    </div>
+    <div fxFlex="20">
+      <mat-form-field style="width:100%">
+        <label>
+          <select matNativeControl  formControlName="OrderGoWay">
+            <option label="--全部订单 --"></option>
+            <option value="1" selected>同城返仓</option>
+            <option value="2">长途返仓</option>
+          </select>
+        </label>
+        <span  matPrefix style="color: #888">提货单类型：&nbsp;</span>
+      </mat-form-field>
+    </div>
+    <div fxFlex="20">
+      <app-biz-mylogistiscstore2  [saveform]="searchp"   SettingFormControlName="BeginLogisticStoreId" style="width:100%"  displaylabel="提货网点" style="margin-bottom:-5px" ></app-biz-mylogistiscstore2>
+    </div>
+    <div fxFlex="32">
+      <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+      <button ejs-button cssClass="e-info mat-auto"  (click)="opentihuo2('localtihuo')" [disabled]="grid.getSelectedRecords().length<=0">新增提货单</button>
+      <span class="sourcelength">已选择 <b>{{grid.getSelectedRecords().length}}</b> 条数据</span>
+    </div>
+  </div>
 
-  <mat-form-field>
-    <label>
-      <select matNativeControl  formControlName="OrderGoWay">
-        <option label="--全部订单 --"></option>
-        <option value="1" selected>同城返仓</option>
-        <option value="2">长途返仓</option>
-      </select>
-    </label>
-    <span  matPrefix style="color: #888">提货单类型：&nbsp;</span>
-  </mat-form-field>
-
-  <app-biz-mylogistiscstore2   displaylabel="提货网点" mat-form-field-class="col-md-2" formControlName="BeginLogisticStoreId" ></app-biz-mylogistiscstore2>
-
-  <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
-
-  <button ejs-button cssClass="e-info mat-width"  (click)="opentihuo2('localtihuo')" [disabled]="grid.getSelectedRecords().length<=0">新增提货单</button>
-
-  <span class="sourcelength">已选择 <b>{{grid.getSelectedRecords().length}}</b> 条数据</span>
 </form>
 
 <ejs-grid #grid

@@ -25,7 +25,7 @@ export class DefaultdepotsettingComponent implements OnInit {
   logistticstores: LogisticStore[];
   public logisticstorefiled: Object = { text: 'StoreName', value: 'StoreId' };
 
-  public pageSettings = {currentPage: 1, pageSize: 20};
+  public pageSettings = {currentPage: 0, pageSize: 20};
 
   savemodel: FormGroup;
 
@@ -57,7 +57,7 @@ export class DefaultdepotsettingComponent implements OnInit {
 
     console.log(this.searchcontent);
     this.service.SearchReport(EnterpriseCustomer.Report_EnterpriseAcceptDepotList, {
-      pageindex: 1, pagesize: 200, DepotName: contenxt
+      pageindex: 0, pagesize: 200, DepotName: contenxt
     }).subscribe(result => {
 
       this.grid.dataSource = result;

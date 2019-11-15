@@ -45,7 +45,7 @@ export class SignlistComponent implements OnInit {
   searching() {
     const  pagesetting = this.grid.pageSettings;
     const searchable = this.searchp.getRawValue ();
-    searchable.pageindex = pagesetting.currentPage;
+    searchable.pageindex = pagesetting.currentPage - 1;
     searchable.pagesize = pagesetting.pageSize;
 
     this.service.SearchReport(Basereportconfig.Report_logisticordersignlist, searchable).subscribe(result => {

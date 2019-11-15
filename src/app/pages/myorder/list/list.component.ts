@@ -11,15 +11,16 @@ import {DialogservicesService} from '../../../help/dialogservices.service';
 import {OrderitemtagprintComponent} from '../_sub/orderitemtagprint/orderitemtagprint.component';
 import {MatTabChangeEvent, MatTabGroup} from '@angular/material/tabs';
 import {LogisticOrderDataListComponent} from './sub/order-data-list/order-data-list.component';
-import {LogistciOrderInterface} from './sub/logistci-order-interface';
+import {LogistciOrderInterface} from '../../../pageservices/logistci-order-interface';
 import {TemplatePortal} from '@angular/cdk/portal';
 import {OrderchangerouteComponent} from '../_sub/orderchangeroute/orderchangeroute.component';
 import {OrderChangeRequestModel} from '../_sub/order-change-request-model';
-
+import {ViewEncapsulation} from '@angular/core';
 @Component({
   selector: 'app-myorderlist',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  styleUrls: ['./list.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class MyOrderListComponent implements OnInit {
   constructor(private factoryResolver: ComponentFactoryResolver,
@@ -47,7 +48,7 @@ export class MyOrderListComponent implements OnInit {
   ngOnInit() {
     this.searchp = this.fb.group(
       {BeginLogisticStoreId: '', DestCity: '', OrderTrackServerId: '', LosigticTrackStatued: '1', PrimaryDestservicedType: ''});
-    this.gridheight = Commonsetting.GridHeight();
+    this.gridheight = Commonsetting.GridHeight2();
 
   //  this.currenttab.selectedIndex = 1;
 
@@ -95,6 +96,8 @@ export class MyOrderListComponent implements OnInit {
         break;
     }
     const searchable = this.searchp.getRawValue ();
+    console.log(searchable);
+
     letgrid.SearchData(searchable);
   //  let factory=this.factoryResolver.resolveComponentFactory(LogisticOrderDataListComponent);//factory是一个如何创建组件的实例
     // this.conRef.createComponent(factory)

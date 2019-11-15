@@ -1,0 +1,15 @@
+<div class="opendivs">
+  <h3 mat-dialog-title>{{data.CustomerOrderId}}</h3>
+  <div mat-dialog-content>
+    <span class="alerts">请确认是否退单，该操作不可逆。</span>
+    <div class="inputbo">
+      请填写退单原因:
+      <ejs-textbox  [(ngModel)]="data.ClosedReason"  placeholder='' ></ejs-textbox>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="dialogRef.close()" color="cancel" style="padding:8px 8px!important;">关闭</button>
+  <button mat-button (click)="save()"  cdkFocusInitial color="reject"  style="padding:8px 8px!important;">退回</button>
+<!--  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>退回</button>-->
+</div>

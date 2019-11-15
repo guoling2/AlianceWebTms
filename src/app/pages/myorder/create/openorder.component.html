@@ -6,6 +6,7 @@
 
 
 <!--</perfect-scrollbar>-->
+
 <div class="contentbox">
   <div class="contentit-l">
     <div><i class="fas fa-compass"></i> 当前位置：<a [routerLink]="['/biz/myorder/list']" >订单列表</a> \ <b>订单录入</b></div>
@@ -39,7 +40,8 @@
             <span class="margin_dis">预约提货:<ejs-datetimepicker format='yyyy-MM-dd HH:mm' formControlName="AskTihuoTime"></ejs-datetimepicker></span>
             <span class="margin_dis">业务员编号:<ejs-textbox formControlName="BuinessManCode"></ejs-textbox></span>
             <div style="margin-top:10px;overflow-y:auto;overflow-x: hidden">
-              <div style="float:left;width:73%">佣金:<ejs-numerictextbox step='1' formControlName="BuinessMancommission"></ejs-numerictextbox></div>
+              <div style="float:left;width:73%">佣金:
+                <ejs-numerictextbox step='1' formControlName="BuinessMancommission"></ejs-numerictextbox></div>
               <div style="float:right;width:24%;"><ejs-checkbox label="已返" formControlName="BuinessMancommissionIsReturn" style="margin-top:20px" indeterminate="true"></ejs-checkbox></div>
             </div>
 

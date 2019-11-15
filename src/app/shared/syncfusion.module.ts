@@ -18,6 +18,7 @@ import { SelectionSettingsModel } from '@syncfusion/ej2-dropdowns';
 import { SidebarModule, MenuAllModule, TreeViewAllModule} from '@syncfusion/ej2-angular-navigations';
 // loadCldr(enNumberData, entimeZoneData);
 import {DialogModule} from '@syncfusion/ej2-angular-popups';
+import {EJAngular2Module} from 'ej-angular2';
 
 @NgModule({
   imports: [

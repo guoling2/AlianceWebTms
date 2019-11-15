@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {AppConfiguration} from '../../auth/config/app-configuration';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {TmshttpclientService} from '../tmshttpclient.service';
 import {Observable} from 'rxjs';
 import {CustomerProfileModle} from '../../models/customers/customer-profile-modle';
@@ -48,6 +48,32 @@ export class EnterpriseOrderServiceService {
 
     return this.tmshttpclientService.PostAsJson(enterpriseOrderRequest,
        '/api/EnterpriseOrder/AcceptOrder');
+
+  }
+  /**
+   * 修改车号
+   */
+  public MotifyCarNumber(enterpriseOrderRequest: any): Observable<TmsResponseModle> {
+
+    return this.tmshttpclientService.PostAsJson(enterpriseOrderRequest,
+      '/api/EnterpriseOrder/MotifyCarNumber');
+
+  }
+  /**
+   * 退单
+   */
+  public UnAcceptOrder(orderPreparedLogisticId: string, orderBackReason: string): Observable<TmsResponseModle> {
+
+  //  const jsonhead = new HttpHeaders({'Content-Type': 'text'});
+
+  //  const jsonhead = new HttpHeaders({'Content-Type': 'text'});
+  //   return  this.httpclient.put<TmsResponseModle>(this.appConfiguration.Server + '/api/EnterpriseOrder/UnAcceptOrder/' + orderPreparedLogisticId
+  //     , orderBackReason, {headers: jsonhead} )
+  //     .pipe(
+  //       tap(heroes => console.log(heroes)));
+
+    return this.httpclient.put<TmsResponseModle>(this.appConfiguration.Server + '/api/EnterpriseOrder/UnAcceptOrder/' + orderPreparedLogisticId,
+      orderBackReason);
 
   }
 }

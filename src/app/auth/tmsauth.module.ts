@@ -1,13 +1,22 @@
 import {APP_INITIALIZER, NgModule} from '@angular/core';
-import {OidcConfigService, OidcSecurityService, OpenIDImplicitFlowConfiguration, AuthWellKnownEndpoints} from 'angular-auth-oidc-client';
+
 import {AuthModule } from 'angular-auth-oidc-client';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {AuthRoutingModule} from './auth-routing.module';
 import {AppConfiguration} from './config/app-configuration';
+import { ForbiddenComponent } from './component/forbidden/forbidden.component';
 
+import {LoginComponent} from './component/login/login.component';
+import {CallBackComponent} from './component/callBack/call-back.component';
+import {UnauthorizedComponent} from './component/unauthorized/unauthorized.component';
+import {Routes} from '@angular/router';
 
-/** Http interceptor providers in outside-in shipment */
+const routes: Routes = [
+  { path: '', component: LoginComponent },
+  { path: 'callback', component: CallBackComponent},
+  { path: 'unauthorized', component: UnauthorizedComponent}
+];
 
 
 
@@ -22,7 +31,8 @@ import {AppConfiguration} from './config/app-configuration';
   providers: [
 
     AppConfiguration
-  ]
+  ],
+  declarations: [LoginComponent, CallBackComponent, ForbiddenComponent, UnauthorizedComponent]
 })
 export class TmsAuthModule {
 }

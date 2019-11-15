@@ -1,20 +1,22 @@
-<div class="contentbox">
-  <div class="contentit-l">
-    <mat-card-title>企业订单列表</mat-card-title>
-    <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
+<div class="contentbox-new">
+  <div class="contentit-l-new">
+    <div class="contennews">
+      <b>企业订单列表</b>
+      <span><i class="fas fa-home"></i><a [routerLink]="['/biz/home']" > 主页</a></span> ·
+      <span><a [routerLink]="['/biz/myorder/enterprise-order-list']" >企业订单列表</a></span> ·
+      <span>当前订单</span>
+    </div>
   </div>
-  <div class="contenttex-r">
-
-    <button ejs-button cssClass="e-info mat-width"   [disabled]="true" >客户退单</button>
-    <button ejs-button cssClass="e-info mat-width"   [disabled]="true" >订单签收</button>
-    <button ejs-button cssClass="e-info mat-width"   [disabled]="true">流程追踪</button>
-    <button ejs-button cssClass="e-info mat-width"  (click)="opensettingdepot(160,500)" >默认网点</button>
-    <button ejs-button cssClass="e-info mat-width mat-reject"
-            (click)="getorder('200','200')"
-            >客户接单</button>
+  <div class="contenttex-r-new">
+    <button ejs-button cssClass="e-outline mat-auto"   [disabled]="true" ><i class="fas fa-user-edit"></i> 订单签收</button>
+    <button ejs-button cssClass="e-outline mat-auto"   [disabled]="true"><i class="fas fa-clipboard-list"></i> 流程追踪</button>
+    <button ejs-button cssClass="e-outline mat-auto"  (click)="opensettingdepot(160,500)" ><i class="fas fa-warehouse"></i> 接单网点</button>
+    <button ejs-button cssClass="e-outline mat-auto"  (click)="ungetorder(200,200)" ><i class="fas fa-times"></i> 客户退单</button>
+    <button ejs-button cssClass="e-outline mat-auto"  (click)="updatesendcar(200,200)" ><i class="fas fa-dolly-flatbed"></i> 提货调整</button>
+    <button ejs-button cssClass="e-outline mat-auto" (click)="getorder('200','200')"><i class="fas fa-clipboard-check"></i> 客户接单</button>
   </div>
 </div>
-<form class="listfrom" [formGroup]="searchp" >
+<form class="listfrom-new" [formGroup]="searchp" >
   <mat-form-field>
     <label>
       <input matInput  formControlName="CustomerOrderId" />
@@ -33,17 +35,23 @@
     </label>
     <span  matPrefix style="color: #888">到货城市: </span>
   </mat-form-field>
+  <mat-form-field>
+    <label>
+      <input matInput  formControlName="NotifyCarNumber" />
+    </label>
+    <span  matPrefix style="color: #888">提货车牌号: </span>
+  </mat-form-field>
   <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
 </form>
-<div class="contlistbox">
-  <mat-tab-group dynamicHeight="false" disableRipple="true" (selectedTabChange)="tabchanged($event)">
-    <mat-tab label="未接单">
-      <app-order-data-list #outdatagrid searchindex=0   [gridheight]="gridheight" [outer]="outernosend"></app-order-data-list>
-    </mat-tab>
-    <mat-tab label="已接单">
-      <app-order-data-list searchindex=1 [gridheight]="gridheight" [outer]="alldata"></app-order-data-list>
-    </mat-tab>
-  <!--  <mat-tab label="未签收"></mat-tab>-->
 
-  </mat-tab-group>
-</div>
+<mat-tab-group  #tabgroup dynamicHeight="false" color="warn" class="bg-white-blue" disableRipple="true">
+    <mat-tab label="未接订单">
+      <app-order-data-list #gdi1 [gridheight]="gridheight" ></app-order-data-list>
+    </mat-tab>
+    <mat-tab label="信息反馈">
+      <app-order-data-list #gdi2 [gridheight]="gridheight" ></app-order-data-list>
+    </mat-tab>
+    <mat-tab label="反馈截止" [hidden]="true">
+      <app-order-data-list #gdi3 [gridheight]="gridheight" ></app-order-data-list>
+    </mat-tab>
+</mat-tab-group>

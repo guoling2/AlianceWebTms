@@ -4,9 +4,9 @@
     <mat-card-subtitle><b>| 当前位置</b></mat-card-subtitle>
   </div>
   <div class="contenttex-r">
-    <button ejs-button cssClass="e-info mat-width" (click)="settingroutexie('500px','600px')" class="mat-pur">中转到车</button>
-    <button ejs-button cssClass="e-info mat-width" [routerLink]="['/biz/shipment/xieche-scan']" class="mat-green">扫描卸车</button>
-    <button ejs-button cssClass="e-info mat-width" (click)="excelout()" class="mat-blue">导出Excel</button>
+    <button ejs-button cssClass="e-outline mat-auto" (click)="settingroutexie('500px','600px')" ><i class="fas fa-shipping-fast"></i> 中转到车</button>
+    <button ejs-button cssClass="e-outline mat-auto" [routerLink]="['/biz/shipment/xieche-scan']"><i class="fas fa-dolly-flatbed"></i> 扫描卸车</button>
+    <button ejs-button cssClass="e-outline mat-auto" (click)="excelout()"><i class="fas fa-file-excel"></i> 导出Excel</button>
   </div>
 </div>
 <form class="listfrom" [formGroup]="searchp" >

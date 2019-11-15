@@ -1,20 +1,38 @@
 <form class="listfrom" [formGroup]="searchp" >
-  <mat-form-field class="col-md-3">
-    <label>
-      <input matInput  formControlName="OrderTrackServerId" />
-    </label>
-    <span  matPrefix style="color: #888">物流单号：&nbsp;</span>
-  </mat-form-field>
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+    <div fxFlex="20">
+      <mat-form-field class="col-md-3">
+        <label>
+          <input matInput  formControlName="OrderTrackServerId" />
+        </label>
+        <span  matPrefix style="color: #888">物流单号：&nbsp;</span>
+      </mat-form-field>
+    </div>
+    <div fxFlex="20">
+      <mat-form-field class="col-md-3">
+        <label>
+          <input matInput  formControlName="DestCity" />
+        </label>
+        <span  matPrefix style="color: #888">到货城市：&nbsp;</span>
+      </mat-form-field>
+    </div>
+    <div fxFlex="20">
 
-  <mat-form-field class="col-md-3">
-    <label>
-      <input matInput  formControlName="DestCity" />
-    </label>
-    <span  matPrefix style="color: #888">到货城市：&nbsp;</span>
-  </mat-form-field>
+      <app-biz-mylogistiscstore2  [saveform]="searchp"   SettingFormControlName="BeginLogisticStoreId" displaylabel="配载网点" mat-form-field-class="col-md-2"  ></app-biz-mylogistiscstore2>
+    </div>
+    <div fxFlex="35">
+      <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
 
-  <app-biz-mylogistiscstore2   displaylabel="配载网点" mat-form-field-class="col-md-2" formControlName="BeginLogisticStoreId" ></app-biz-mylogistiscstore2>
-
+      <ng-container *ngIf="GroupSubItemType!='localtihuo'">
+        <button ejs-button cssClass="e-info mat-width"  style="width:auto!important;" (click)="opentihuo()" >新增派车单</button>
+      </ng-container>
+      <ng-container *ngIf="GroupSubItemType=='localtihuo'">
+        <button ejs-button cssClass="e-info mat-width"  (click)="opentihuo2('localtihuo')" [disabled]="grid.getSelectedRecords().length<=0">新增提货单</button>
+        <!--    <button ejs-button cssClass="e-info mat-width" (click)="opentihuo2('sendnoreturn')"  [disabled]="grid.getSelectedRecords().length<=0">直提直发</button>-->
+      </ng-container>
+      <span class="sourcelength">已选择 <b>{{grid.getSelectedRecords().length}}</b> 条数据</span>
+    </div>
+  </div>
   <!--  <mat-form-field class="col-md-3 col-lefty" [hidden]="true">-->
 <!--    <label>-->
 <!--      <select matNativeControl  formControlName="PlanStatuedId" readonly="readonly">-->
@@ -26,20 +44,9 @@
 <!--    </label>-->
 <!--    <span  matPrefix style="color: #888">任务状态：&nbsp;</span>-->
 <!--  </mat-form-field>-->
-  <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
-
-  <ng-container *ngIf="GroupSubItemType!='localtihuo'">
-    <button ejs-button cssClass="e-info mat-width"  style="width:auto!important;" (click)="opentihuo()" >新增派车单</button>
-  </ng-container>
-  <ng-container *ngIf="GroupSubItemType=='localtihuo'">
-    <button ejs-button cssClass="e-info mat-width"  (click)="opentihuo2('localtihuo')" [disabled]="grid.getSelectedRecords().length<=0">新增提货单</button>
-<!--    <button ejs-button cssClass="e-info mat-width" (click)="opentihuo2('sendnoreturn')"  [disabled]="grid.getSelectedRecords().length<=0">直提直发</button>-->
-  </ng-container>
-
-
 <!--  <button ejs-button cssClass="e-info" (click)="attchitem('400px','600px')">添加运单</button>-->
 
-  <span class="sourcelength">已选择 <b>{{grid.getSelectedRecords().length}}</b> 条数据</span>
+
 </form>
 
 <ejs-grid #grid

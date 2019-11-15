@@ -12,5 +12,5 @@
 .bendbox {margin:10px 10px 0px 10px;width:auto;padding:0 10px 10px 10px;background:#fff}
 .listfrom button {margin-right:15px}
 .mat-form-field {margin-right:15px}
-.sourcelength {height:32px;line-height:32px;float:right;border:1px #e1e1e1 solid;margin-top:13px;width:auto;display:block;padding:0 10px;font-size:14px;color:#666}
+.sourcelength {height:32px;line-height:32px;float:right;border:1px #e1e1e1 solid;margin-top:0!important;width:auto;display:block;padding:0 10px;font-size:14px;color:#666}
 .sourcelength b {color:#e21641}

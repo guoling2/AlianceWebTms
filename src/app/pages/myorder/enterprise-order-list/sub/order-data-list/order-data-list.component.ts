@@ -2,9 +2,11 @@ import {Component, EventEmitter, HostListener, Input, OnInit, Output, ViewChild}
 import {DataStateChangeEventArgs, PageSettingsModel, SortDescriptorModel, Sorts, SortSettingsModel} from '@syncfusion/ej2-grids';
 import {GridComponent, SortService} from '@syncfusion/ej2-angular-grids';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {EnterpriseCustomer} from '../../../../../services/base/basereportconfig';
+import {Basereportconfig, EnterpriseCustomer} from '../../../../../services/base/basereportconfig';
 import {Basereportservice} from '../../../../../services/base/basereportservice';
 import {DataGridHelp} from '../../../../../SyncfusionHelp/data-grid-help';
+import {LogistciOrderInterface} from '../../../../../pageservices/logistci-order-interface';
+import {Commonsetting} from '../../../../../help/commonsetting';
 
 @Component({
   selector: 'app-order-data-list',
@@ -12,17 +14,12 @@ import {DataGridHelp} from '../../../../../SyncfusionHelp/data-grid-help';
   styleUrls: ['./order-data-list.component.css'],
   providers: [SortService]
 })
-export class OrderDataListComponent implements OnInit {
+export class OrderDataListComponent implements OnInit , LogistciOrderInterface {
+
 
   @Input()
   gridheight: number;
 
-
-  @Input()  outer: EventEmitter<any>;
-
-  @Input() searchindex: number;
-
-  @Output()
   @ViewChild('grid', {static: false})
   public grid: GridComponent;
 
@@ -37,38 +34,43 @@ export class OrderDataListComponent implements OnInit {
 
 
   ngOnInit() {
-
-    this.outer.subscribe(a => {
-
-      this.inputfromgroup = a;
-
-      this.searching(this.inputfromgroup);
-
-    });
-
+    this.gridheight = Commonsetting.GridHeight3s();
   }
 
-  searching(a: any) {
+
+  public get CurrentDataGrid() {
+    return this.grid;
+  }
+
+  public SearchData(a: any) {
+    this.inputfromgroup = a;
+
     const  pagesetting = this.grid.pageSettings;
-    a.pageindex = pagesetting.currentPage;
+    a.pageindex = pagesetting.currentPage - 1;
     a.pagesize = pagesetting.pageSize;
+
 
     console.log(a);
     this.service.SearchReport(EnterpriseCustomer.Report_EnterpriseOrderList, a).subscribe(result => {
 
+      console.log(result);
       this.grid.dataSource = result;
 
     });
   }
+  public Alert() {
+    throw new Error("Method not implemented.");
+  }
+
+
   dataStateChange($event: DataStateChangeEventArgs) {
 
 
-    console.log(DataGridHelp.GetSortColumn($event));
+    console.log($event.action);
 
     this.inputfromgroup = DataGridHelp.GetSortObject($event, this.inputfromgroup);
 
-    // tslint:disable-next-line:no-unused-expression
-
-    this.searching( this.inputfromgroup);
+    this.SearchData( this.inputfromgroup);
   }
+
 }

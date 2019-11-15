@@ -10,7 +10,7 @@
 <div class="bendbox">
   <form class="listfrom" [formGroup]="searchp" >
     <div fxLayout="row" fxLayoutAlign="space-between top" class="margin_t_101" style="margin-top:-10px!important">
-      <div fxFlex="22" style="padding-top:3px">
+      <div fxFlex="20" style="padding-top:3px">
         <mat-form-field class="col-md-3" style="width:100%">
           <label>
             <input matInput  formControlName="OrderTrackServerId" />
@@ -18,7 +18,7 @@
           <span  matPrefix style="color: #888">物流单号：&nbsp;</span>
         </mat-form-field>
       </div>
-      <div fxFlex="22" style="padding-top:3px">
+      <div fxFlex="20" style="padding-top:3px">
         <mat-form-field class="col-md-3" style="width:100%">
           <label>
             <input matInput  formControlName="DestCity" />
@@ -26,18 +26,14 @@
           <span  matPrefix style="color: #888">到货城市：&nbsp;</span>
         </mat-form-field>
       </div>
-      <div fxFlex="22">
-        <app-biz-mylogistiscstore2  mat-form-field-class="col-md-2" formControlName="ActionStoreId" ></app-biz-mylogistiscstore2>
+      <div fxFlex="20">
+        <app-biz-mylogistiscstore2 [saveform]="searchp"   SettingFormControlName="ActionStoreId" mat-form-field-class="col-md-2"  ></app-biz-mylogistiscstore2>
       </div>
-      <div fxFlex="8" style="padding-top:16px">
+      <div fxFlex="35" style="padding-top:16px">
         <ejs-tooltip #tooltip content='如果需要安排不同的车辆提货请在提货外包或者小车提货中进行操作'  position='TopCenter'>
           <button ejs-button cssClass="e-info mat-width" (click)="searching()" style="margin-right:15px">查询</button>
         </ejs-tooltip>
-      </div>
-      <div fxFlex="38" style="padding-top:16px">
-        <div class="tipsbox">
-          <span class="sourcelength">已选择 <b> {{grid.getSelectedRecords().length}}</b> 条数据</span>
-        </div>
+        <span class="sourcelength">已选择 <b> {{grid.getSelectedRecords().length}}</b> 条数据</span>
       </div>
     </div>
   </form>

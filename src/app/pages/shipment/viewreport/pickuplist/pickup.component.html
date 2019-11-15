@@ -6,30 +6,35 @@
   <div class="contenttex-r"></div>
 </div>
 <form class="listfrom" [formGroup]="searchp" >
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+    <div fxFlex="20">
+      <mat-form-field class="col-md-3">
+        <label>
+          <input matInput  formControlName="OrderTrackServerId" />
+        </label>
+        <span  matPrefix style="color: #888">物流单号：&nbsp;</span>
+      </mat-form-field>
+    </div>
+    <div fxFlex="20">
+      <app-biz-mylogistiscstore2 [saveform]="searchp"   SettingFormControlName="ActionStoreId"   displaylabel="操作网点" mat-form-field-class="col-md-2" ></app-biz-mylogistiscstore2>
+    </div>
+    <div fxFlex="20">
+      <mat-form-field class="col-md-3">
+        <label>
+          <select matNativeControl  formControlName="PlanStatuedId">
+            <option value="10">已安排</option>
+            <option value="20">任务中</option>
+            <option value="30">已完成</option>
+          </select>
+        </label>
+        <span  matPrefix style="color: #888">任务状态：&nbsp;</span>
+      </mat-form-field>
+    </div>
+    <div fxFlex="35">
+      <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
+    </div>
+  </div>
 
-
-
-  <mat-form-field class="col-md-3">
-    <label>
-      <input matInput  formControlName="OrderTrackServerId" />
-    </label>
-    <span  matPrefix style="color: #888">物流单号：&nbsp;</span>
-  </mat-form-field>
-
-  <app-biz-mylogistiscstore2   displaylabel="操作网点" mat-form-field-class="col-md-2" formControlName="ActionStoreId" ></app-biz-mylogistiscstore2>
-  <mat-form-field class="col-md-3">
-    <label>
-            <select matNativeControl  formControlName="PlanStatuedId">
-              <option value="10">已安排</option>
-              <option value="20">任务中</option>
-              <option value="30">已完成</option>
-            </select>
-    </label>
-    <span  matPrefix style="color: #888">任务状态：&nbsp;</span>
-  </mat-form-field>
-
-
-  <button ejs-button cssClass="e-info mat-width" (click)="searching()">查询</button>
 </form>
 <ejs-grid #grid  allowResizing= 'true' height="{{gridheight}}"
           (dataStateChange)="dataStateChange($event)"

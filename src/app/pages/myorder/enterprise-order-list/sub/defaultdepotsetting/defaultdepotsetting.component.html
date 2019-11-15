@@ -1,34 +1,35 @@
-
-
-<div>
-  接单网点:
-  <ejs-dropdownlist
-    id='games' #sample
-    placeholder='请选择接单网点' [dataSource]='logistticstores'
-    [popupHeight]='200'
-    [fields]='logisticstorefiled' ></ejs-dropdownlist>
-
-  <div style="margin-top:10px">
-
+<div class="opendivs"><h3><i class="fas fa-warehouse"></i> 接单网点查询</h3></div>
+<div fxLayout="row" fxLayoutAlign="space-between center" class="margin_t_10">
+  <div fxFlex="38">
+    接单网点:
+    <ejs-dropdownlist
+      id='games' #sample
+      placeholder='请选择接单网点' [dataSource]='logistticstores'
+      [popupHeight]='200'
+      [fields]='logisticstorefiled' ></ejs-dropdownlist>
+  </div>
+  <div fxFlex="8" style="margin-top:17px">
     <button ejs-button cssClass="e-info mat-width"   (click)="settingdepotId()" >设置库位</button>
+  </div>
+  <div fxFlex="38">
+    查询查询:
+    <label>
+      <ejs-textbox  [(value)]="searchcontent" placeholder="库位名称" floatLabelType="Never"></ejs-textbox>
+    </label>
+  </div>
+  <div fxFlex="8" style="margin-top:17px">
+    <button ejs-button cssClass="e-info mat-width"   (click)="searchdepot()" >查询</button>
+  </div>
 </div>
-<div>
-  查询查询
-  <label>
-    <ejs-textbox  [(value)]="searchcontent" placeholder="库位名称" floatLabelType="Never"></ejs-textbox>
-  </label>
-  <button ejs-button cssClass="e-info mat-width"   (click)="searchdepot()" >查询</button>
-</div>
-
 
 <ejs-grid #grid>
   <e-columns >
 
     <e-column type='checkbox' width='50'></e-column>
-    <e-column field='DepotAuthorizeId' headerText='授权编号' [hidden]="true" width=170></e-column>
-    <e-column field='DepotId' headerText='库位编号'  width=170></e-column>
-    <e-column field='DepotName' headerText='库位名称'  width=170></e-column>
-    <e-column field='StoreName' headerText='提货网点'  width=170></e-column>
-    <e-column field='Address' headerText='地址'  width=170></e-column>
+    <e-column field='DepotAuthorizeId' headerText='授权编号' [hidden]="true" width=90></e-column>
+    <e-column field='DepotId' headerText='库位编号'  width=90></e-column>
+    <e-column field='DepotName' headerText='库位名称'  width=130></e-column>
+    <e-column field='StoreName' headerText='提货网点'  width=130></e-column>
+    <e-column field='Address' headerText='地址'  width=250></e-column>
   </e-columns>
 </ejs-grid>

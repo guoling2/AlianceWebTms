@@ -1,12 +1,14 @@
-<ejs-grid #grid  allowResizing= 'true' height="{{gridheight}}"
+
+<ejs-grid #grid  allowResizing= 'true'
+          [height]="gridheight"
           (dataStateChange)="dataStateChange($event)"
-          [allowExcelExport]='true'
+          [allowExcelExport]='false'
           [allowSorting]='true'
           [allowSelection]="true"
           [enableHover]="false"
           [sortSettings]='initialSort'
           [pageSettings]="pageSettings"
-          allowPaging='true'  class="contlistbox">
+          [allowPaging]='true' >
   <e-columns >
 
     <e-column type='checkbox' width='50'></e-column>
